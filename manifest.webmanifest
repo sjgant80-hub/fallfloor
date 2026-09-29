@@ -1,0 +1,11 @@
+{
+  "name": "fallfloor — a company's AI on the laptops it already owns",
+  "short_name": "fallfloor",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d10",
+  "theme_color": "#0b0d10",
+  "description": "WebLLM in the browser, node to node over WebRTC, no server: a pre-registered, receipted reference build on public data.",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

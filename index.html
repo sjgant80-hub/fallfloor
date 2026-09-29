@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>fallfloor — a company's AI on the laptops it already owns</title>
+<meta name="description" content="A reference build: a modelled digital bank's everyday AI work — customer support, message screening, a staff helpdesk — running on WebLLM in the browsers of laptops it already owns, passed node to node over WebRTC with no server. Pre-registered, receipted hop by hop, scored against public labelled data, and costed against public cloud list prices." />
+<link rel="canonical" href="https://sjgant80-hub.github.io/fallfloor/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="fallfloor — a company's AI on the laptops it already owns" />
+<meta property="og:description" content="WebLLM in the browser, node to node over WebRTC, no server. Pre-registered thresholds, signed receipts for every hop, a chain-vs-pool-vs-one-model test on public data, and the cost against cloud list prices." />
+<meta property="og:url" content="https://sjgant80-hub.github.io/fallfloor/" />
+<meta name="theme-color" content="#0b0d10" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0d10'/%3E%3Cpath d='M7 22h18M9 22v-6h4v6M15 22v-10h4v10M21 22v-4h4v4' stroke='%2339d0a8' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebApplication", "name": "fallfloor", "url": "https://sjgant80-hub.github.io/fallfloor/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any browser with WebGPU",
+      "description": "A reference build that runs a modelled company's AI work on WebLLM in the browsers of laptops it already owns, node to node over WebRTC with no server, with pre-registered thresholds, signed hop receipts and a cost comparison against public cloud list prices.",
+      "creator": { "@type": "Organization", "name": "AI-Native Solutions", "url": "https://www.ai-nativesolutions.com/" }, "license": "https://opensource.org/licenses/MIT" },
+    { "@type": "FAQPage", "mainEntity": [
+      { "@type": "Question", "name": "Is this a real client?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a reference build for a modelled company, built on public labelled datasets. No client, name, quote or testimonial is involved." } },
+      { "@type": "Question", "name": "How many machines did it run on?", "acceptedAnswer": { "@type": "Answer", "text": "One laptop. Each node is its own Chrome process with its own profile, and the nodes talk over real WebRTC data channels. The page lets more machines join by pasting two codes." } },
+      { "@type": "Question", "name": "Is there a server?", "acceptedAnswer": { "@type": "Answer", "text": "No signalling server, no relay server and no cloud model. The page and the model files are downloaded once from public hosts; after that the work runs in the browsers and passes between them directly." } },
+      { "@type": "Question", "name": "How are the answers graded?", "acceptedAnswer": { "@type": "Answer", "text": "Deterministically, against each dataset's own labels, by the same kernel the page runs. No model judges another model." } },
+      { "@type": "Question", "name": "Where do the cost figures come from?", "acceptedAnswer": { "@type": "Answer", "text": "Cloud prices are public list prices, each linked to its source with the date it was checked. Local cost is electricity: GPU time measured in the run, times a wattage estimate from the chip's published power, times the Ofgem price-cap unit rate. Monthly volumes are modelled assumptions you can change." } }
+    ] }
+  ]
+}
+</script>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--panel2:#eef1f5;--ink:#10151c;--muted:#566172;--faint:#8a94a3;--line:#dde3ea;--accent:#0e9f7e;--accent2:#2f6fed;--warn:#c47d0a;--bad:#d2413a;--good:#0e9f7e;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;--r:14px;--maxw:1080px}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b0d10;--panel:#12161c;--panel2:#171c24;--ink:#e7ecf2;--muted:#9aa5b4;--faint:#66707e;--line:#232a34;--accent:#39d0a8;--accent2:#6d9bff;--warn:#e8a93a;--bad:#f06a60;--good:#39d0a8}}
+:root[data-theme=dark]{--bg:#0b0d10;--panel:#12161c;--panel2:#171c24;--ink:#e7ecf2;--muted:#9aa5b4;--faint:#66707e;--line:#232a34;--accent:#39d0a8;--accent2:#6d9bff;--warn:#e8a93a;--bad:#f06a60;--good:#39d0a8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent2)}code,.mono{font-family:var(--mono);font-size:.88em}
+code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:.05em .35em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+nav.top{position:sticky;top:0;z-index:5;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:14px;min-height:54px;flex-wrap:wrap}
+nav.top b{font-size:1.02rem;letter-spacing:-.01em}nav.top .links{display:flex;gap:12px;flex-wrap:wrap;font-size:.86rem}nav.top .links a{color:var(--muted);text-decoration:none}nav.top .links a:hover{color:var(--ink)}
+.theme{margin-left:auto;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:.8rem}
+header.hero{padding:54px 0 18px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+h1{font-size:clamp(1.9rem,5vw,3rem);line-height:1.1;letter-spacing:-.03em;margin:.35rem 0 .7rem;font-weight:800}
+h2{font-size:clamp(1.35rem,3vw,1.85rem);letter-spacing:-.02em;margin:0 0 .4rem;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 .3rem}
+.lede{font-size:1.1rem;color:var(--muted);max-width:74ch}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.pill{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line);border-radius:20px;padding:.28rem .7rem;background:var(--panel);color:var(--muted)}
+.pill b{color:var(--ink)}.pill.good{color:var(--good);border-color:color-mix(in oklab,var(--good) 45%,var(--line))}.pill.bad{color:var(--bad);border-color:color-mix(in oklab,var(--bad) 45%,var(--line))}.pill.warn{color:var(--warn);border-color:color-mix(in oklab,var(--warn) 45%,var(--line))}
+section{padding:26px 0}section+section{border-top:1px solid var(--line)}
+.step{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:700;letter-spacing:.08em}
+.sub{color:var(--muted);max-width:76ch;margin:.2rem 0 1rem}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.card p{margin:.3rem 0}.card .k{font-family:var(--mono);font-size:.72rem;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.big{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.note{color:var(--muted);font-size:.9rem;border-left:3px solid var(--line);padding:.2rem 0 .2rem .8rem;margin:.8rem 0}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700}
+td.n{font-family:var(--mono);white-space:nowrap}.tw{overflow-x:auto}
+.verdict{font-family:var(--mono);font-weight:800;font-size:.8rem;padding:.12rem .5rem;border-radius:6px;display:inline-block}
+.verdict.pass{background:color-mix(in oklab,var(--good) 16%,transparent);color:var(--good)}.verdict.fail{background:color-mix(in oklab,var(--bad) 16%,transparent);color:var(--bad)}
+.btn{padding:.5rem .95rem;border-radius:10px;border:1px solid var(--accent2);background:var(--accent2);color:#fff;font-weight:600;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+.btn.ghost{background:var(--panel);color:var(--ink);border-color:var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:.6rem 0}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:.45rem .6rem}
+textarea{width:100%;min-height:86px;font-family:var(--mono);font-size:.78rem}
+input[type=number]{width:130px}
+pre.log{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.75rem;max-height:260px;overflow:auto;white-space:pre-wrap}
+details{margin:.4rem 0}summary{cursor:pointer;font-weight:600}
+svg text{font-family:var(--sans)}
+footer{padding:34px 0 60px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
+.ok{color:var(--good)}.no{color:var(--bad)}
+</style>
+</head>
+<body>
+<nav class="top"><div class="wrap">
+  <b>fallfloor</b>
+  <div class="links"><a href="#company">Company</a><a href="#mesh">Mesh</a><a href="#line">Line</a><a href="#prereg">Pre-registered</a><a href="#results">Results</a><a href="#receipts">Receipts</a><a href="#costs">Costs</a><a href="#run">Run it</a><a href="#limits">Limits</a></div>
+  <button class="theme" id="themeBtn" type="button">Theme</button>
+</div></nav>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Reference build · modelled company · public data</div>
+  <h1>A company's AI, run on the laptops it already owns.</h1>
+  <p class="lede">A modelled digital bank's everyday AI work — answering customers, screening inbound messages, running the staff helpdesk — done by small open models in the <b>browser</b> (WebLLM on the laptop's own GPU), passed <b>node to node over WebRTC</b>, with <b>no server</b> in the middle. Every hop is signed. The test was fixed before it ran. The result, good and bad, is below, with the cost against the cloud.</p>
+  <div class="pills" id="heroPills"><span class="pill">Not a real client · no names, quotes or testimonials</span><span class="pill">One laptop · separate browser nodes · real WebRTC</span></div>
+</header>
+
+<section id="company">
+  <div class="step">STEP 1 · THE COMPANY</div>
+  <h2>A modelled digital bank, three departments, public data.</h2>
+  <p class="sub">Each department's AI job is fed by a public labelled dataset, so every answer can be checked against a label someone else wrote. 100 items per department were held out with a published seed; the examples the models see come from the training data and never overlap the held-out items.</p>
+  <div class="grid g3" id="deptCards"></div>
+</section>
+
+<section id="mesh">
+  <div class="step">STEP 2 · THE LAPTOPS AND THE MESH</div>
+  <h2>Every node is a browser. Every link is peer to peer.</h2>
+  <p class="sub">A node is a browser tab running a model on the machine's own GPU through WebGPU. The desk hands out work and keeps the ledger; it runs no model. Nodes join by pasting two short codes (a WebRTC offer and answer) — there is no signalling server. A message for a node that is not directly linked is relayed through the peers that are, the way meshos does it.</p>
+  <div class="card" style="overflow-x:auto">
+    <svg id="meshSvg" viewBox="0 0 760 250" width="100%" role="img" aria-label="The mesh: a desk and three station nodes linked by WebRTC, plus the baseline node">
+      <g id="meshG"></g>
+    </svg>
+  </div>
+  <p class="note" id="machineNote">Machines: the run below used ONE laptop. Each node is a separate Chrome process with its own profile and its own model copy, talking over real WebRTC data channels on that machine.</p>
+</section>
+
+<section id="line">
+  <div class="step">STEP 3 · THE LINE</div>
+  <h2>Route → intent → reply, with a gate before anything leaves.</h2>
+  <p class="sub">Customer support runs as a three-station line. Each station is the same small model with a different job-specific prompt: a <b>router</b> picks one of seven teams, the team's <b>intent</b> station picks the exact topic (or says "not my team" and stops the line), and the <b>reply</b> station drafts an answer that must cite the topic's help article. A deterministic gate then checks the draft: the right article, and no other codes, numbers, links or emails. Anything that fails is <b>caught</b> and goes to a person — it is not sent.</p>
+  <div class="grid g3">
+    <div class="card"><div class="k">Station 1</div><h3>Route</h3><p>7 teams · answer forced to one of them (JSON schema)</p></div>
+    <div class="card"><div class="k">Station 2</div><h3>Intent</h3><p>that team's topics, one example each, plus "not my team"</p></div>
+    <div class="card"><div class="k">Station 3</div><h3>Reply + gate</h3><p>2–3 sentences citing the article; the gate catches anything invented</p></div>
+  </div>
+  <p class="note">Every hop writes a receipt: which node (its Ed25519 key), which model, a hash of what it was given, what it answered, tokens, time, and the hash of the hop before. The next station checks the whole chain and every signature before it adds to it.</p>
+</section>
+
+<section id="prereg">
+  <div class="step">STEP 4 · FIXED BEFORE IT RAN</div>
+  <h2>The test, and how it could fail.</h2>
+  <p class="sub">Three ways to do the same support work, on the same 100 items: a <b>chain</b> (each station on its own laptop), a <b>pool</b> (each laptop runs the whole line on its own share), and a <b>one-model baseline</b> (the largest model the laptop holds, answering in one prompt). The thresholds below were committed and pushed before the first run.</p>
+  <div class="card"><div class="tw"><table id="preregTable"><thead><tr><th>Rule</th><th>Threshold</th></tr></thead><tbody></tbody></table></div>
+  <p class="note" id="preregHash"></p></div>
+  <details class="card" id="preregLogBox"><summary>What changed after the pre-registration, and why (committed before the measured run)</summary><div id="preregLog"></div></details>
+</section>
+
+<section id="results">
+  <div class="step">STEP 5 · WHAT HAPPENED</div>
+  <h2>Results — every rule, pass or fail.</h2>
+  <div id="resultsBody"><p class="sub">The measured run has not been published yet.</p></div>
+</section>
+
+<section id="receipts">
+  <div class="step">STEP 6 · CHECK IT YOURSELF</div>
+  <h2>Every hop is a signed receipt. Re-check them here.</h2>
+  <p class="sub">This loads the run's full ledger, re-hashes every hop, checks every Ed25519 signature and every link in every chain, then re-scores every item with the same kernel — in your browser. If one byte had been changed, it says so.</p>
+  <div class="row"><button class="btn" id="btnVerify" type="button">Verify the ledger</button><span id="verifyOut" class="mono"></span></div>
+</section>
+
+<section id="costs">
+  <div class="step">STEP 7 · WHAT IT COSTS</div>
+  <h2>The same work, priced two ways.</h2>
+  <p class="sub">Cloud: the measured tokens per item, at public list prices (each linked, with the date it was checked). Local: the laptops are already owned, so what the work adds is electricity — GPU time measured in the run, times an <b>estimated</b> wattage from the chip's published power, times the price-cap unit rate. The monthly volumes are modelled assumptions: change them.</p>
+  <div class="card">
+    <div class="row" id="volInputs"></div>
+    <div class="tw"><table id="costTable"><thead><tr><th>The same month of work, sent to…</th><th>Per month</th><th>Source</th></tr></thead><tbody></tbody></table></div>
+    <div id="costNotes"></div>
+  </div>
+</section>
+
+<section id="run">
+  <div class="step">STEP 8 · RUN IT YOURSELF</div>
+  <h2>Make this browser a node.</h2>
+  <p class="sub">Load a model onto this machine's GPU, then link to another node by swapping two codes. On another laptop, open this page and do the same. Nothing goes through a server; tick STUN only if the two machines are on different networks.</p>
+  <details id="runYourself" class="card"><summary>Node console</summary>
+    <div class="row"><input id="nodeName" placeholder="node name, e.g. n4" /><button class="btn ghost" id="btnStart" type="button">Start node</button>
+      <select id="nodeModel"><option>Qwen2.5-1.5B-Instruct-q4f16_1-MLC</option><option>Qwen2.5-0.5B-Instruct-q4f16_1-MLC</option><option>Qwen2.5-3B-Instruct-q4f16_1-MLC</option></select>
+      <button class="btn" id="btnLoad" type="button">Load model</button></div>
+    <p class="mono" id="nodeLoad"></p><p class="mono" id="nodeStatus">not started</p>
+    <div class="row"><label><input type="checkbox" id="useStun" /> use a public STUN server (different networks)</label></div>
+    <div class="row"><button class="btn ghost" id="btnOffer" type="button">1 · Make an offer code</button><button class="btn ghost" id="btnAnswer" type="button">2 · Answer the code pasted below</button><button class="btn ghost" id="btnAccept" type="button">3 · Accept the answer pasted below</button></div>
+    <textarea id="sigIn" placeholder="paste the other node's code here"></textarea>
+    <textarea id="sigOut" placeholder="your code appears here — send it to the other node" readonly></textarea>
+    <p class="mono" id="deskStatus"></p>
+    <pre class="log" id="nodeLog"></pre>
+  </details>
+</section>
+
+<section id="limits">
+  <div class="step">WHAT THIS SHOWS, AND WHAT IT DOESN'T</div>
+  <h2>Limits, stated plainly.</h2>
+  <ul id="limitsList" class="sub">
+    <li><b>One laptop.</b> The nodes are separate browser processes on one machine, so they share one GPU. Spreading them over several laptops would add throughput; this run does not measure that.</li>
+    <li><b>Small models, narrow jobs.</b> 1.5B and 3B models on classification and short templated replies. Open-ended work is out of scope here.</li>
+    <li><b>Licences.</b> The station model (Qwen2.5-1.5B-Instruct) is Apache 2.0. The 3B model is used only as the comparison baseline; its licence is research-only, so a company would not run it in production as-is.</li>
+    <li><b>Prompts were written on a development set.</b> Separate items from the training side of each dataset, never the held-out ones; what changed and why is logged above, committed before the measured run.</li>
+    <li><b>Grading is by label.</b> Deterministic, against the datasets' own labels. The reply gate checks citation and invented figures, not tone.</li>
+    <li><b>Cost is electricity only.</b> The laptops, their wear and the time to set a node up are not costed. The wattage is an estimate.</li>
+    <li><b>Downloads.</b> The page, the WebLLM library and the model weights are fetched once from public hosts (GitHub Pages, jsDelivr, Hugging Face). After that the work runs locally.</li>
+  </ul>
+</section>
+
+<footer>
+  <p><b>fallfloor</b> — a reference build by AI-Native Solutions. MIT. Powered by the Konomi architecture, created by Thomas Frumkin.</p>
+  <p>Data: Banking77 by PolyAI (CC BY 4.0) · SMS Spam Collection by Tiago A. Almeida and José María Gómez Hidalgo (CC BY 4.0) · CLINC150 by Larson et al. (CC BY 3.0). Models: Qwen2.5-1.5B-Instruct (Apache 2.0) for the stations; Qwen2.5-3B-Instruct (Qwen Research licence — research use) for the one-model baseline only; both via WebLLM (Apache 2.0). <a href="https://github.com/sjgant80-hub/fallfloor">Source</a> · <a href="llms.txt">llms.txt</a></p>
+</footer>
+</div>
+
+<!-- ⟦DATA-BEGIN⟧ generated by make-page.mjs — do not edit here -->
+<script type="application/json" id="floorData">{"departments":[{"job":"support","department":"Customer support","jobLine":"Answer customers: route → intent → reply","source":{"name":"Banking77","by":"PolyAI (Casanueva et al., 2020, \"Efficient Intent Detection with Dual Sentence Encoders\")","url":"https://github.com/PolyAI-LDN/task-specific-datasets","license":"CC BY 4.0","split":"held-out from test.csv; examples from train.csv"},"heldOut":100,"examples":91},{"job":"security","department":"Security (inbound message screening)","jobLine":"Screen inbound messages: legit or spam","source":{"name":"SMS Spam Collection v.1","by":"Tiago A. Almeida and José María Gómez Hidalgo","url":"https://archive.ics.uci.edu/dataset/228/sms+spam+collection","license":"CC BY 4.0","split":"held-out and examples drawn from the one published file, disjoint"},"heldOut":100,"examples":6},{"job":"hr","department":"People (staff helpdesk)","jobLine":"Staff helpdesk: which HR topic, or not HR","source":{"name":"CLINC150 (\"work\" domain and out-of-scope)","by":"Larson et al., 2019, \"An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction\"","url":"https://github.com/clinc/oos-eval","license":"CC BY 3.0","split":"held-out from test + oos_test; examples from train"},"heldOut":100,"examples":15}],"prereg":{"v":1,"kind":"fallfloor-prereg","written":"2026-09-29","statement":"Fixed and committed before the first run. The run reports every rule below as PASS or FAIL with the number that decided it, whichever way it lands.","question":"Can a company's everyday AI work run on WebLLM in the browsers of laptops it already owns, passed node to node over WebRTC with no server, and is a chain of stations the right shape for it?","design":{"company":"A modelled digital bank (not a real client). Three departments, each fed by a public labelled dataset: support (Banking77, CC BY 4.0), security (SMS Spam Collection, CC BY 4.0), people/HR helpdesk (CLINC150 work domain + out-of-scope, CC BY 3.0). 100 held-out items per department, drawn with a published seed; examples drawn from the training data, disjoint from the held-out items.","arms":{"chain":"Three browser nodes, one station each: route (7 teams) -> intent (the routed team's topics, or 'not my team') -> reply (cites the topic's article). Each node runs Qwen2.5-1.5B-Instruct (q4f16_1) in WebLLM. Items flow node to node over WebRTC.","pool":"The same three nodes, the same model and the same three station prompts, but each node runs the whole line on its own share of the items. The desk reassigns an item stuck on a node that has gone after 45 s.","baseline":"One node running the largest model this laptop holds, Qwen2.5-3B-Instruct (q4f16_1), answering intent and reply in ONE prompt that carries every topic and example the chain's stations see."},"sameItems":"All three arms answer the same 100 support items; comparisons are paired, item by item, with an exact McNemar test.","grading":"Deterministic, against the dataset's own labels. An item is correct end to end only if the topic is right, the line did not stop itself, and the reply passes the reply gate (cites the right article; no other codes, numbers, links or emails). No model judges another model.","inFlight":"The desk keeps at most 3 items in flight in every arm.","killTest":"In the chain and the pool, the node running the middle station (n2) is closed after 40 support results and reopened 60 s later; it re-joins by pasting codes again.","machines":"ONE laptop (Intel Core i7-1255U, Iris Xe graphics, 16 GB). Each node is its own Chrome process with its own profile, joined by real WebRTC data channels on this machine. Signalling codes are carried between the nodes by the test harness, as a person would paste them. No signalling server, no relay server, no cloud model.","sampling":"temperature 0, top_p 1, seed 7; JSON-schema-constrained answers for the classification stations."},"thresholds":{"capabilityMaxDropPts":5,"lostMax":0,"duplicatesMax":0,"chainP95MaxSec":60,"chainVsPoolMinGainPts":5,"coldStartMaxSec":600},"rules":["capability: chain end-to-end accuracy is no more than 5 points below the one-model baseline on the same items","no-loss: no support item is lost and none is accepted twice, in either kill test","latency: chain p95 time per item is 60 s or less","chain-shape: the chain beats the pool by 5 points or more, or loses fewer items, or stalls for less time, when a node dies. If not, the chain is the wrong shape and the report says so.","cold-start: every node gives its first answer within 600 s of starting, model download included"],"alsoReported":["team, intent and reply-gate rates per arm","caught (the line stopped itself) versus silent errors","p50/p95 latency and throughput","security and HR accuracy","tokens and GPU seconds per item","model download size and load time per node","duplicate deliveries dropped and hops refused"],"noiseNote":"With 100 items, a difference under about 5 points is noise: it is reported as a tie, not a win.","prediction":"The builder's stated bet before the run: on a narrow job the pool beats the chain, and the three 1.5B specialists roughly tie the single 3B model."},"preregHash":"44410fff5c41dc4c833b2f0e1e1458b8bbc53ebc744abb32f15928d8fc30b242","preregCommit":{"sha":"f4d80b0827e133de0994d284c5e0215d939b428a","at":"2026-09-29T09:31:50Z","url":"https://github.com/sjgant80-hub/fallfloor/commit/f4d80b0827e133de0994d284c5e0215d939b428a","note":"The commit that published prereg.json, pushed before the first measured run."},"preregLog":{"v":1,"kind":"fallfloor-prereg-log","statement":"Everything that changed between the pre-registration (commit f4d80b0) and the measured run, with the reason. Committed and pushed before the measured run. The thresholds, the arms, the models, the held-out items and the examples did not change.","entries":[{"date":"2026-09-29","what":"A development set (data/dev.json, tools/prepare-dev.mjs): 40 support, 40 security (10 spam) and 35 HR items drawn from the training side of each dataset, disjoint from every held-out item and every example (checked by the tool).","why":"So that smoke tests and prompt writing never touch the held-out items. Disclosure: the first two plumbing smoke tests (before this set existed) ran 4 held-out items per department through the line; those answers were used only to find bugs, and the prompts were then written against the development set."},{"date":"2026-09-29","what":"The prompts were written against the development set. The security station now asks \"Is this SMS spam?\" and answers with JSON {\"spam\": \"yes\" | \"no\"}, which the kernel maps to spam / legit. It is still schema-constrained, still uses the same six examples, and is graded against the same labels.","why":"Measured on the 40 development items with the 1.5B station model: the first prompt (\"label it legit or spam\") scored 21 of 40, below answering \"legit\" every time (30 of 40); the yes/no form with the examples scored 34 of 40. Variants tried and their scores are in the README."},{"date":"2026-09-29","what":"Engine faults are handled and reported, not hidden. On this laptop the WebGPU device is occasionally lost mid-run (Chrome reports DXGI_ERROR_DEVICE_HUNG from the Intel Iris Xe driver). A node now rebuilds its engine and asks again; if its browser process can no longer use the GPU, it stops taking work (its items stay in its own storage) and the harness relaunches it with the same profile, re-links it, and logs an UNPLANNED RESTART. Each node also warms up with one plain and one schema-constrained answer before it takes work; the warm-up is inside the measured cold start.","why":"Found in the development runs: without this, a lost device turned into lost or empty answers. Every unplanned restart during the measured run is listed in the summary and the timeline."},{"date":"2026-09-29","what":"Every answer the desk records, the verifier re-checks and the page re-scores is rebuilt from the signed hop outputs by one kernel function (outcomeFromHops), and the gold labels are read from the published data files.","why":"So a result can never say more than its receipts."}]},"costs":{"_rule":"Every figure here is a public list price, a published specification or a measured value, with where it came from and when it was checked. Volumes are the modelled company's assumptions, labelled as such, and the page lets you change them.","checked":"2026-09-29","prices":[{"id":"gpt-5-nano","provider":"OpenAI","model":"gpt-5-nano","inPerM":0.05,"outPerM":0.4,"currency":"USD","tier":"standard","source":"https://developers.openai.com/api/docs/pricing","checked":"2026-09-29"},{"id":"gpt-4o-mini","provider":"OpenAI","model":"gpt-4o-mini","inPerM":0.15,"outPerM":0.6,"currency":"USD","tier":"standard","source":"https://developers.openai.com/api/docs/pricing","checked":"2026-09-29"},{"id":"gpt-5-mini","provider":"OpenAI","model":"gpt-5-mini","inPerM":0.25,"outPerM":2,"currency":"USD","tier":"standard","source":"https://developers.openai.com/api/docs/pricing","checked":"2026-09-29"},{"id":"gemini-3.1-flash-lite","provider":"Google","model":"Gemini 3.1 Flash-Lite","inPerM":0.25,"outPerM":1.5,"currency":"USD","tier":"paid, standard","source":"https://ai.google.dev/gemini-api/docs/pricing","checked":"2026-09-29"},{"id":"claude-haiku-4.5","provider":"Anthropic","model":"Claude Haiku 4.5","inPerM":1,"outPerM":5,"currency":"USD","tier":"base input / output","source":"https://platform.claude.com/docs/en/about-claude/pricing","checked":"2026-09-29"},{"id":"claude-sonnet-5","provider":"Anthropic","model":"Claude Sonnet 5","inPerM":2,"outPerM":10,"currency":"USD","tier":"base input / output","source":"https://platform.claude.com/docs/en/about-claude/pricing","checked":"2026-09-29"}],"tokenizerNote":"Token counts below are measured with the local model's own tokenizer (Qwen2.5). Cloud providers count with their own tokenizers; Anthropic's pricing page notes that its newer tokenizer produces approximately 30% more tokens for the same text. The cloud figures are therefore approximate, in either direction.","fx":{"gbpPerUsd":0.75396,"how":"ECB euro reference rates for 2026-09-28: USD 1.1378 and GBP 0.85785 per euro, so GBP per USD = 0.85785 / 1.1378","source":"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml","checked":"2026-09-29"},"power":{"wattsLow":15,"wattsHigh":55,"chip":"Intel Core i7-1255U (Iris Xe graphics)","how":"An ESTIMATE, not a meter reading: the chip's published Processor Base Power (15 W) to Maximum Turbo Power (55 W). The whole laptop draws more (screen, memory), and GPU work does not hold turbo continuously.","source":"https://www.intel.com/content/www/us/en/products/sku/226259/intel-core-i71255u-processor-12m-cache-up-to-4-70-ghz/specifications.html","checked":"2026-09-29"},"electricity":{"pencePerKwh":26.32,"period":"1 October to 31 December 2026","how":"Ofgem energy price cap, GB average electricity unit rate, Direct Debit. The page states there is no VAT on electricity from 1 October 2026 to 31 March 2027.","source":"https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges","checked":"2026-09-29"},"volumes":{"support":15000,"security":40000,"hr":2000,"how":"MODELLED ASSUMPTIONS for a mid-sized digital bank's month — not measured, not a client's figures. Change them on the page."},"hardware":{"how":"The laptops are already owned: no new hardware is bought for this work. Wear and the staff time to set a node up are not costed here."}},"summary":null}</script>
+<!-- ⟦DATA-END⟧ -->
+
+<script type="module">
+// ⟦KERNEL-BEGIN⟧ generated from kernel.mjs by make-page.mjs — do not edit here
+// fallfloor — the pure core of a company whose AI work runs on the laptops it already owns.
+// Browser nodes (WebLLM on WebGPU) pass work to each other over WebRTC, meshos-style: no server in the middle.
+// Everything that JUDGES lives here — prompts, parsing, the reply gate, grading against the datasets' own labels,
+// hop receipts, scoring, the pre-registered thresholds and the cost arithmetic — so the page, the harness and CI
+// all run the same code, and the mutation gate proves the tests guard it.
+// No I/O here. Pure and total: garbage in → { ok:false, why }, never a throw.
+
+const isStr = (v) => typeof v === 'string';
+const isNum = (v) => typeof v === 'number' && Number.isFinite(v);
+const isInt = (v) => Number.isInteger(v);
+const isObj = (v) => typeof v === 'object' && v !== null && !Array.isArray(v);
+const HEX = /^[0-9a-f]+$/;
+
+// ── SHA-256 + canonical JSON (the same proven pair the gate runs on) ────────────────────────────
+const K256 = new Uint32Array([
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+]);
+
+function sha256(text) {
+  if (!isStr(text)) return { ok: false, why: 'sha256 takes a string' };
+  const data = new TextEncoder().encode(text);
+  const len = data.length;
+  const padded = new Uint8Array((((len + 8) >> 6) << 6) + 64);
+  padded.set(data);
+  padded[len] = 0x80;
+  const dv = new DataView(padded.buffer);
+  const bitLen = len * 8;
+  dv.setUint32(padded.length - 8, Math.floor(bitLen / 4294967296));
+  dv.setUint32(padded.length - 4, bitLen >>> 0);
+  let h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a;
+  let h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
+  const w = new Uint32Array(64);
+  for (let i = 0; i < padded.length; i += 64) {
+    for (let t = 0; t < 16; t++) w[t] = dv.getUint32(i + t * 4);
+    for (let t = 16; t < 64; t++) {
+      const x = w[t - 15], y = w[t - 2];
+      const s0 = (((x >>> 7) | (x << 25)) ^ ((x >>> 18) | (x << 14)) ^ (x >>> 3)) >>> 0;
+      const s1 = (((y >>> 17) | (y << 15)) ^ ((y >>> 19) | (y << 13)) ^ (y >>> 10)) >>> 0;
+      w[t] = (w[t - 16] + s0 + w[t - 7] + s1) >>> 0;
+    }
+    let a = h0, b = h1, c = h2, d = h3, e = h4, f = h5, g = h6, hh = h7;
+    for (let t = 0; t < 64; t++) {
+      const S1 = (((e >>> 6) | (e << 26)) ^ ((e >>> 11) | (e << 21)) ^ ((e >>> 25) | (e << 7))) >>> 0;
+      const ch = ((e & f) ^ (~e & g)) >>> 0;
+      const t1 = (hh + S1 + ch + K256[t] + w[t]) >>> 0;
+      const S0 = (((a >>> 2) | (a << 30)) ^ ((a >>> 13) | (a << 19)) ^ ((a >>> 22) | (a << 10))) >>> 0;
+      const maj = ((a & b) ^ (a & c) ^ (b & c)) >>> 0;
+      const t2 = (S0 + maj) >>> 0;
+      hh = g; g = f; f = e; e = (d + t1) >>> 0; d = c; c = b; b = a; a = (t1 + t2) >>> 0;
+    }
+    h0 = (h0 + a) >>> 0; h1 = (h1 + b) >>> 0; h2 = (h2 + c) >>> 0; h3 = (h3 + d) >>> 0;
+    h4 = (h4 + e) >>> 0; h5 = (h5 + f) >>> 0; h6 = (h6 + g) >>> 0; h7 = (h7 + hh) >>> 0;
+  }
+  const hex = (n) => n.toString(16).padStart(8, '0');
+  return { ok: true, hash: hex(h0) + hex(h1) + hex(h2) + hex(h3) + hex(h4) + hex(h5) + hex(h6) + hex(h7) };
+}
+
+function canon(v) {
+  if (v === null || typeof v === 'number' || typeof v === 'boolean') return JSON.stringify(v);
+  if (typeof v === 'string') return JSON.stringify(v);
+  if (Array.isArray(v)) return '[' + v.map(canon).join(',') + ']';
+  if (typeof v === 'object') return '{' + Object.keys(v).sort().map((k) => JSON.stringify(k) + ':' + canon(v[k])).join(',') + '}';
+  return '"?"';
+}
+
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+// THE COMPANY — a modelled digital bank whose AI work runs on the laptops it already owns.
+// Three departments, each fed by a public labelled dataset:
+//   support   · Banking77 (PolyAI, CC BY 4.0) — a three-station line: route → intent → reply
+//   security  · SMS Spam Collection (Almeida & Gómez Hidalgo, UCI, CC BY 4.0) — screen inbound texts
+//   hr        · CLINC150 "work" domain + out-of-scope (Larson et al., CC BY 3.0) — the staff helpdesk
+// The seven support teams and the reply article codes are this modelled company's own design.
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+const JOBS = ['support', 'security', 'hr'];
+const ARMS = ['chain', 'pool', 'baseline'];
+const STATIONS = { support: ['route', 'intent', 'reply'], security: ['screen'], hr: ['helpdesk'] };
+const NONE = 'not_my_team';
+const NOT_HR = 'not_hr';
+const SECURITY_LABELS = ['legit', 'spam'];
+
+const TEAMS = {
+  cards_delivery: { label: 'Card orders & delivery', about: 'ordering, activating, delivering or choosing cards',
+    intents: ['card_arrival', 'card_delivery_estimate', 'get_physical_card', 'order_physical_card', 'getting_virtual_card', 'get_disposable_virtual_card', 'getting_spare_card', 'card_about_to_expire', 'activate_my_card', 'card_linking', 'visa_or_mastercard', 'disposable_card_limits', 'supported_cards_and_currencies', 'apple_pay_or_google_pay'] },
+  cards_problems: { label: 'Card problems & security', about: 'a card, PIN or passcode that is not working, lost, stolen, blocked or not accepted',
+    intents: ['card_not_working', 'virtual_card_not_working', 'contactless_not_working', 'card_swallowed', 'lost_or_stolen_card', 'compromised_card', 'pin_blocked', 'change_pin', 'passcode_forgotten', 'lost_or_stolen_phone', 'card_acceptance'] },
+  card_payments: { label: 'Card payments', about: 'card payments, refunds, charges or direct debits on the statement',
+    intents: ['card_payment_wrong_exchange_rate', 'card_payment_fee_charged', 'card_payment_not_recognised', 'declined_card_payment', 'pending_card_payment', 'reverted_card_payment?', 'transaction_charged_twice', 'extra_charge_on_statement', 'request_refund', 'Refund_not_showing_up', 'direct_debit_payment_not_recognised'] },
+  cash_atm: { label: 'Cash & ATMs', about: 'cash withdrawals and ATMs',
+    intents: ['pending_cash_withdrawal', 'wrong_amount_of_cash_received', 'declined_cash_withdrawal', 'cash_withdrawal_not_recognised', 'cash_withdrawal_charge', 'wrong_exchange_rate_for_cash_withdrawal', 'atm_support'] },
+  top_ups: { label: 'Top-ups & deposits', about: 'topping up, adding money and deposits',
+    intents: ['automatic_top_up', 'top_up_by_bank_transfer_charge', 'pending_top_up', 'top_up_limits', 'top_up_reverted', 'topping_up_by_card', 'verify_top_up', 'top_up_by_cash_or_cheque', 'top_up_failed', 'top_up_by_card_charge', 'balance_not_updated_after_cheque_or_cash_deposit', 'balance_not_updated_after_bank_transfer'] },
+  transfers: { label: 'Transfers', about: 'sending or receiving transfers',
+    intents: ['cancel_transfer', 'transfer_not_received_by_recipient', 'declined_transfer', 'pending_transfer', 'transfer_timing', 'beneficiary_not_allowed', 'transfer_fee_charged', 'receiving_money', 'failed_transfer', 'transfer_into_account'] },
+  account_fx: { label: 'Account, identity & FX', about: 'identity checks, personal details, closing the account, currencies and exchange',
+    intents: ['exchange_rate', 'fiat_currency_support', 'exchange_via_app', 'exchange_charge', 'age_limit', 'edit_personal_details', 'why_verify_identity', 'unable_to_verify_identity', 'verify_my_identity', 'verify_source_of_funds', 'terminate_account', 'country_support'] },
+};
+const TEAM_IDS = Object.keys(TEAMS);
+const ALL_INTENTS = TEAM_IDS.flatMap((t) => TEAMS[t].intents);
+const HR_INTENTS = ['pto_request_status', 'next_holiday', 'insurance_change', 'insurance', 'meeting_schedule', 'payday', 'taxes', 'income', 'rollover_401k', 'pto_balance', 'pto_request', 'w2', 'schedule_meeting', 'direct_deposit', 'pto_used'];
+
+/** teamOf(intent) — the one team an intent belongs to, or null. */
+function teamOf(intent) {
+  if (!isStr(intent)) return null;
+  for (const t of TEAM_IDS) if (TEAMS[t].intents.includes(intent)) return t;
+  return null;
+}
+
+/** articleCode(intent) — the modelled help-centre article for a support intent: HC-101 … HC-177. */
+function articleCode(intent) {
+  const i = ALL_INTENTS.indexOf(intent);
+  return i < 0 ? null : 'HC-' + (101 + i);
+}
+
+/** humanize('card_not_working') → 'card not working' (display only). */
+const humanize = (s) => String(s).replace(/\?$/, '').replace(/_/g, ' ').toLowerCase();
+
+// ── deterministic selection (seeded, re-runnable) ──────────────────────────────────────────────────
+/** seededOrder(keys, seed) — the keys sorted by sha256(seed|key): a draw anyone can repeat. */
+function seededOrder(keys, seed) {
+  if (!Array.isArray(keys) || !keys.every(isStr)) return { ok: false, why: 'seededOrder takes a list of strings' };
+  if (!isStr(seed) || seed.length === 0) return { ok: false, why: 'seededOrder needs a seed' };
+  const order = keys.map((k) => sha256(seed + '|' + k).hash + '|' + k).sort().map((x) => x.slice(65));
+  return { ok: true, order };
+}
+
+// ── prompts: every station's instructions, built the same way on every node ─────────────────────────
+const line = (text) => String(text).replace(/\s+/g, ' ').trim();
+const schemaFor = (key, labels) => JSON.stringify({ type: 'object', properties: { [key]: { type: 'string', enum: labels } }, required: [key] });
+
+const REPLY_RULE = (code) => 'begin the reply with "Thanks for getting in touch. Help article ' + code + ' covers this." then add one or two polite sentences. '
+  + 'No other numbers, amounts, dates, times, phone numbers, emails or links. No promises of refunds or timescales.';
+
+/** buildPrompt(job, station, ctx) → { ok, messages, labels, key, schema, maxTokens }.
+ *  ctx: { text, examples, team?, intent? } — examples are [{ text, label }] from the dataset's training split. */
+function buildPrompt(job, station, ctx) {
+  if (!isObj(ctx) || !isStr(ctx.text) || line(ctx.text).length === 0) return { ok: false, why: 'the message text is required' };
+  const ex = Array.isArray(ctx.examples) ? ctx.examples.filter((e) => isObj(e) && isStr(e.text) && isStr(e.label)) : [];
+  const msg = line(ctx.text);
+  const shots = (list) => list.map((e) => '"' + line(e.text) + '" => ' + e.label).join('\n');
+  if (job === 'support' && station === 'route') {
+    const labels = TEAM_IDS;
+    const sys = 'You route customer messages for a digital bank to exactly one team.\nTeams:\n'
+      + labels.map((t) => '- ' + t + ': ' + TEAMS[t].about).join('\n')
+      + (ex.length ? '\nExamples:\n' + shots(ex) : '') + '\nAnswer with JSON: {"team": "<team>"}';
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }], labels, key: 'team', schema: schemaFor('team', labels), maxTokens: 24 };
+  }
+  if (job === 'support' && station === 'intent') {
+    if (!TEAM_IDS.includes(ctx.team)) return { ok: false, why: 'the intent station needs the routed team' };
+    const own = TEAMS[ctx.team].intents, labels = [...own, NONE];
+    const byIntent = new Map(ex.filter((e) => own.includes(e.label)).map((e) => [e.label, e.text]));
+    const sys = 'You are the "' + TEAMS[ctx.team].label + '" team of a digital bank. Pick the exact topic of the customer message.\nTopics:\n'
+      + own.map((i) => '- ' + i + (byIntent.has(i) ? ': e.g. "' + line(byIntent.get(i)) + '"' : '')).join('\n')
+      + '\n- ' + NONE + ': the message belongs to a different team\nAnswer with JSON: {"intent": "<topic>"}';
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }], labels, key: 'intent', schema: schemaFor('intent', labels), maxTokens: 32 };
+  }
+  if (job === 'support' && station === 'reply') {
+    const code = articleCode(ctx.intent), team = teamOf(ctx.intent);
+    if (code === null) return { ok: false, why: 'the reply station needs a known intent' };
+    // the reply opens with a fixed sentence naming the article (on the dev set the small model cited it 29 times in 30
+    // this way, 19 in 30 when only told to "mention" it)
+    const sys = 'You write short replies for the "' + TEAMS[team].label + '" team of a digital bank. The customer\'s topic is: ' + humanize(ctx.intent) + '. '
+      + 'Our help article for it is ' + code + '.\nRules: ' + REPLY_RULE(code);
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: 'Customer message: "' + msg + '"' }], labels: null, key: null, schema: null, maxTokens: 90 };
+  }
+  if (job === 'support' && station === 'baseline') {
+    // the one-model alternative: everything the chain's stations see, in one prompt, answered in one call
+    const byIntent = new Map(ex.filter((e) => ALL_INTENTS.includes(e.label)).map((e) => [e.label, e.text]));
+    // every topic is listed with its help-article code, so the one model has what the chain's reply station is handed
+    const sys = 'You handle customer messages for a digital bank. Pick the exact topic, then write the reply.\nTopics by team, each with its help article:\n'
+      + TEAM_IDS.map((t) => t + ' (' + TEAMS[t].about + '):\n' + TEAMS[t].intents.map((i) => '- ' + i + ' [' + articleCode(i) + ']' + (byIntent.has(i) ? ': e.g. "' + line(byIntent.get(i)) + '"' : '')).join('\n')).join('\n')
+      + '\nReply rules: ' + REPLY_RULE('<the topic\'s article>') + '\n'
+      + 'Answer with JSON: {"intent": "<topic>", "reply": "<reply>"}';
+    const schema = JSON.stringify({ type: 'object', properties: { intent: { type: 'string', enum: ALL_INTENTS }, reply: { type: 'string' } }, required: ['intent', 'reply'] });
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: 'Customer message: "' + msg + '"' }], labels: ALL_INTENTS, key: 'intent', schema, maxTokens: 150 };
+  }
+  if (job === 'security' && station === 'screen') {
+    // asked as a yes/no question, which the small model answers far better than "label it" (measured on the dev set)
+    const labels = ['no', 'yes'];
+    const sp = ex.filter((e) => e.label === 'spam'), lg = ex.filter((e) => e.label !== 'spam');
+    const mixed = Array.from({ length: Math.max(sp.length, lg.length) }, (_, i) => [sp[i], lg[i]]).flat().filter(Boolean);
+    const sys = 'You check SMS messages for spam. Spam means marketing or scams: it offers a prize, award, free gift, cash, ringtones, '
+      + 'subscriptions or dating, and usually asks you to text or call a number, click a link or claim something. Anything else is legit: '
+      + 'personal chat, plans, jokes, questions, even if short, rude, odd or in text-speak.'
+      + (mixed.length ? '\nExamples (is it spam?):\n' + mixed.map((e) => 'SMS: "' + line(e.text) + '" -> ' + (e.label === 'spam' ? 'yes' : 'no')).join('\n') : '');
+    const user = 'SMS: "' + msg + '"\nIs this SMS spam? Answer with JSON: {"spam": "yes"} or {"spam": "no"}';
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: user }], labels, key: 'spam', schema: schemaFor('spam', labels), maxTokens: 12, answers: { no: 'legit', yes: 'spam' } };
+  }
+  if (job === 'hr' && station === 'helpdesk') {
+    const labels = [...HR_INTENTS, NOT_HR];
+    const byIntent = new Map(ex.filter((e) => HR_INTENTS.includes(e.label)).map((e) => [e.label, e.text]));
+    const sys = 'You are the staff helpdesk (HR, pay and benefits). Pick the topic of the employee\'s request.\nTopics:\n'
+      + HR_INTENTS.map((i) => '- ' + i + (byIntent.has(i) ? ': e.g. "' + line(byIntent.get(i)) + '"' : '')).join('\n')
+      + '\n- ' + NOT_HR + ': not an HR, pay or benefits request\nAnswer with JSON: {"intent": "<topic>"}';
+    return { ok: true, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }], labels, key: 'intent', schema: schemaFor('intent', labels), maxTokens: 32 };
+  }
+  return { ok: false, why: 'no such station: ' + String(job) + '/' + String(station) };
+}
+
+/** parseLabel(text, labels, key) — the model's answer, read strictly: JSON first, then an exact label mention. */
+function parseLabel(text, labels, key) {
+  if (!isStr(text)) return { ok: false, why: 'no answer text' };
+  if (!Array.isArray(labels) || labels.length === 0) return { ok: false, why: 'no label set' };
+  const t = text.trim();
+  let v = null;
+  const m = t.match(/\{[\s\S]*\}/);
+  if (m) { try { const j = JSON.parse(m[0]); if (isStr(j[key])) v = j[key].trim(); } catch { v = null; } }
+  if (v !== null && labels.includes(v)) return { ok: true, value: v, how: 'json' };
+  const hits = labels.filter((l) => new RegExp('(^|[^a-z0-9_?])' + l.replace(/[?]/g, '\\?') + '($|[^a-z0-9_])', 'i').test(t));
+  if (hits.length === 1) return { ok: true, value: hits[0], how: 'mention' };
+  return { ok: true, value: null, how: hits.length === 0 ? 'unreadable' : 'ambiguous' };
+}
+
+/** readStation(prompt, text) — a classification station's answer: read strictly (parseLabel), then mapped to the job's
+ *  label when the station asks its question another way (security asks "is it spam? yes/no"). */
+function readStation(pr, text) {
+  if (!isObj(pr) || !Array.isArray(pr.labels)) return { ok: false, why: 'readStation(prompt, text)' };
+  const p = parseLabel(text, pr.labels, pr.key);
+  if (!p.ok) return p;
+  if (isObj(pr.answers) && p.how !== 'json') return { ok: true, value: null, how: 'unreadable' };   // "no idea" is not a "no"
+  const value = p.value !== null && isObj(pr.answers) ? (isStr(pr.answers[p.value]) ? pr.answers[p.value] : null) : p.value;
+  return { ok: true, value, how: p.how };
+}
+
+/** parseBaseline(text) — the one-model answer: { intent, reply } from its JSON. */
+function parseBaseline(text) {
+  if (!isStr(text)) return { ok: false, why: 'no answer text' };
+  const m = text.match(/\{[\s\S]*\}/);
+  let j = null;
+  if (m) { try { j = JSON.parse(m[0]); } catch { j = null; } }
+  const intent = isObj(j) && isStr(j.intent) && ALL_INTENTS.includes(j.intent.trim()) ? j.intent.trim() : null;
+  const reply = isObj(j) && isStr(j.reply) ? j.reply.trim() : '';
+  return { ok: true, intent, reply };
+}
+
+/** checkReply(draft, intent) — the deterministic gate before a reply leaves the building. It must cite the
+ *  right article and nothing else: no other codes, numbers, links or emails (a small model's favourite way to
+ *  make something up). A draft that fails is caught and goes to a person. */
+function checkReply(draft, intent) {
+  const code = articleCode(intent);
+  if (code === null) return { ok: false, why: 'checkReply needs a known intent' };
+  if (!isStr(draft)) return { ok: true, pass: false, reasons: ['no draft'] };
+  const reasons = [];
+  const words = draft.trim().split(/\s+/).filter(Boolean).length;
+  if (words < 8) reasons.push('too short');
+  if (words > 90) reasons.push('too long');
+  if (!draft.includes(code)) reasons.push('does not cite ' + code);
+  const codes = draft.match(/HC-\d+/g) || [];
+  if (codes.some((c) => c !== code)) reasons.push('cites another article');
+  if (/\d/.test(draft.split(code).join(''))) reasons.push('contains a number that is not the article');
+  if (/https?:\/\/|www\.|@[a-z0-9-]+\./i.test(draft)) reasons.push('contains a link or email');
+  return { ok: true, pass: reasons.length === 0, reasons };
+}
+
+// ── grading: against the dataset's own gold labels, never a model's opinion ────────────────────────
+/** gradeSupport(gold, out) — gold: { intent }; out: { team, intent, reply, bounced }.
+ *  caught = the line stopped itself (a station said "not my team", a consistency check failed, or the reply
+ *  gate failed) and a person takes over. silent = a wrong answer that went out unchallenged. */
+function gradeSupport(gold, out) {
+  if (!isObj(gold) || teamOf(gold.intent) === null) return { ok: false, why: 'gold needs a known intent' };
+  if (!isObj(out)) return { ok: false, why: 'the answer is missing' };
+  const goldTeam = teamOf(gold.intent);
+  const teamOk = out.team === goldTeam;
+  const intentOk = out.intent === gold.intent;
+  const known = teamOf(out.intent) !== null;
+  const consistent = known && (out.team === undefined || out.team === null || teamOf(out.intent) === out.team);
+  const reply = known ? checkReply(out.reply, out.intent) : { pass: false };
+  const caught = out.bounced === true || !consistent || reply.pass !== true;
+  const e2e = !caught && intentOk;
+  return { ok: true, teamOk, intentOk, replyPass: reply.pass === true, caught, silent: !caught && !intentOk, e2e };
+}
+
+function gradeLabel(gold, value) {
+  if (!isStr(gold)) return { ok: false, why: 'gold label missing' };
+  return { ok: true, correct: value === gold };
+}
+
+/** outcomeFromHops(job, arm, hops) — the answer, read ONLY from the signed hop outputs. The desk records this, the
+ *  verifier rebuilds it, the page re-checks it: one rule, so a result can never say more than its receipts. */
+function outcomeFromHops(job, arm, hops) {
+  if (!JOBS.includes(job) || !Array.isArray(hops)) return { ok: false, why: 'outcomeFromHops(job, arm, hops)' };
+  const outOf = (h) => (isObj(h) ? h.output : undefined);
+  if (job !== 'support') { const o = outOf(hops[0]); return { ok: true, out: { label: isStr(o) ? o : null } }; }
+  if (arm === 'baseline') {
+    const o = isObj(outOf(hops[0])) ? outOf(hops[0]) : {};
+    const intent = ALL_INTENTS.includes(o.intent) ? o.intent : null;
+    return { ok: true, out: { team: intent ? teamOf(intent) : null, intent, reply: isStr(o.reply) ? o.reply : '', bounced: false } };
+  }
+  const team = TEAM_IDS.includes(outOf(hops[0])) ? outOf(hops[0]) : null;
+  if (team === null) return { ok: true, out: { team: null, intent: null, reply: '', bounced: true } };
+  const intent = TEAMS[team].intents.includes(outOf(hops[1])) ? outOf(hops[1]) : null;
+  if (intent === null) return { ok: true, out: { team, intent: null, reply: '', bounced: true } };
+  const reply = outOf(hops[2]);
+  return { ok: true, out: { team, intent, reply: isStr(reply) ? reply : '', bounced: false } };
+}
+
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+// RECEIPTS — every hop a node makes is a signed, hash-linked record. The next hop checks the chain before it
+// works; the desk checks it again; anyone can re-check it later. The signature is added at the edge (Ed25519
+// in the browser); the kernel owns the bytes it covers.
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+const HEX64 = /^[0-9a-f]{64}$/;
+const START = 'START';
+
+/** hopReceipt(input) → { ok, receipt } — one station's work on one item, self-hashed and linked to the last hop. */
+function hopReceipt(input) {
+  if (!isObj(input)) return { ok: false, why: 'hopReceipt takes an object' };
+  const { run, arm, job, item, station, node, model, input: inHash, output, prev, promptTokens, completionTokens, ms, at } = input;
+  if (!isStr(run) || run.length === 0) return { ok: false, why: 'run is required' };
+  if (!ARMS.includes(arm) && arm !== 'company') return { ok: false, why: 'arm must be chain, pool, baseline or company' };
+  if (!JOBS.includes(job)) return { ok: false, why: 'job must be one of ' + JOBS.join(', ') };
+  if (!isStr(item) || item.length === 0) return { ok: false, why: 'item is required' };
+  if (!(STATIONS[job].includes(station) || (job === 'support' && station === 'baseline'))) return { ok: false, why: 'station ' + String(station) + ' is not part of ' + job };
+  if (!isStr(node) || !HEX64.test(node)) return { ok: false, why: 'node must be the 64-hex public key of the node that did the work' };
+  if (!isStr(model) || model.length === 0) return { ok: false, why: 'model is required' };
+  if (!isStr(inHash) || !HEX64.test(inHash)) return { ok: false, why: 'input must be the 64-hex hash of what the station was given' };
+  if (!(output === null || isStr(output) || isObj(output))) return { ok: false, why: 'output must be a string, an object or null' };
+  if (!(prev === START || (isStr(prev) && HEX64.test(prev)))) return { ok: false, why: 'prev must be START or the previous hop\'s hash' };
+  for (const [k, v] of [['promptTokens', promptTokens], ['completionTokens', completionTokens], ['ms', ms]]) if (!isInt(v) || v < 0) return { ok: false, why: k + ' must be a whole number ≥ 0' };
+  if (!isStr(at) || !Number.isFinite(Date.parse(at))) return { ok: false, why: 'at must be a timestamp' };
+  const body = { v: 1, kind: 'fallfloor-hop', run, arm, job, item, station, node, model, input: inHash, output, prev, promptTokens, completionTokens, ms, at };
+  return { ok: true, receipt: { ...body, hash: sha256(canon(body)).hash } };
+}
+
+/** hopSignable(r) — the exact bytes a node signs: the receipt without its signature. */
+function hopSignable(r) {
+  if (!isObj(r) || r.kind !== 'fallfloor-hop' || !isStr(r.hash)) return { ok: false, why: 'not a fallfloor hop receipt' };
+  const body = { ...r }; delete body.signature;
+  return { ok: true, payload: canon(body) };
+}
+
+/** verifyHop(r) — the receipt matches its own fingerprint. */
+function verifyHop(r) {
+  if (!isObj(r) || r.kind !== 'fallfloor-hop' || !isStr(r.hash)) return { ok: false, why: 'not a fallfloor hop receipt' };
+  const body = { ...r }; delete body.hash; delete body.signature;
+  const valid = sha256(canon(body)).hash === r.hash;
+  return { ok: true, valid, why: valid ? 'hop intact' : 'the hop does not match its own fingerprint — it was changed after it was issued' };
+}
+
+/** verifyChain(hops, stations) — one item's hops: each intact, linked START → … in station order, all about the same
+ *  run, arm, job and item. Signatures are checked at the edge; this checks everything else. */
+function verifyChain(hops, stations) {
+  if (!Array.isArray(hops) || hops.length === 0) return { ok: false, why: 'a chain needs at least one hop' };
+  if (!Array.isArray(stations) || stations.length !== hops.length) return { ok: true, valid: false, why: 'the chain has ' + hops.length + ' hops, the line has ' + (Array.isArray(stations) ? stations.length : 0) + ' stations' };
+  for (let i = 0; i < hops.length; i++) {
+    const h = hops[i], v = verifyHop(h);
+    if (!v.ok || !v.valid) return { ok: true, valid: false, why: 'hop ' + (i + 1) + ': ' + (v.why || 'not a hop') };
+    if (h.station !== stations[i]) return { ok: true, valid: false, why: 'hop ' + (i + 1) + ' is station ' + h.station + ', expected ' + stations[i] };
+    if (h.prev !== (i === 0 ? START : hops[i - 1].hash)) return { ok: true, valid: false, why: 'hop ' + (i + 1) + ' does not link to the hop before it' };
+    for (const k of ['run', 'arm', 'job', 'item']) if (h[k] !== hops[0][k]) return { ok: true, valid: false, why: 'hop ' + (i + 1) + ' is about a different ' + k };
+  }
+  return { ok: true, valid: true, why: 'chain intact' };
+}
+
+// ── mesh envelopes: what may travel between nodes ────────────────────────────────────────────────────
+const MSG_TYPES = ['hello', 'work', 'ack', 'result', 'ping'];
+const MAX_MSG_BYTES = 64000;
+/** validEnvelope(m) — refuse anything that is not a well-formed floor message (a node never executes a surprise). */
+function validEnvelope(m) {
+  if (!isObj(m)) return { ok: false, why: 'a message is an object' };
+  if (!MSG_TYPES.includes(m.type)) return { ok: false, why: 'unknown message type' };
+  if (!isStr(m.id) || m.id.length === 0 || m.id.length > 200) return { ok: false, why: 'a message needs an id' };
+  if (!isStr(m.from) || m.from.length === 0 || m.from.length > 64) return { ok: false, why: 'a message needs a sender' };
+  if (!isStr(m.to) || m.to.length === 0 || m.to.length > 64) return { ok: false, why: 'a message needs a recipient' };
+  if (!isInt(m.ttl) || m.ttl < 0 || m.ttl > 4) return { ok: false, why: 'ttl must be 0–4' };
+  if (canon(m).length > MAX_MSG_BYTES) return { ok: false, why: 'the message is too large' };
+  if (m.type === 'work') {
+    const w = m.work;
+    if (!isObj(w) || !JOBS.includes(w.job) || !isStr(w.item) || !isStr(w.text)) return { ok: false, why: 'work needs job, item and text' };
+    if (!Array.isArray(w.route) || w.route.length === 0 || !w.route.every(isStr)) return { ok: false, why: 'work needs a route' };
+    if (!isInt(w.step) || w.step < 0 || w.step >= w.route.length) return { ok: false, why: 'work step is outside its route' };
+    if (!Array.isArray(w.hops)) return { ok: false, why: 'work carries its hops so far' };
+  }
+  if (m.type === 'ack' && (!isStr(m.of) || m.of.length === 0)) return { ok: false, why: 'an ack names the message it acknowledges' };
+  if (m.type === 'result' && (!isObj(m.result) || !isStr(m.result.item))) return { ok: false, why: 'a result names its item' };
+  return { ok: true };
+}
+
+// ── dispatch: which node gets which item ────────────────────────────────────────────────────────────
+/** routeFor(arm, job, nodes) — the stations an item visits, as node names, ending back at the desk.
+ *  chain: each station on its own node; pool: every station on one node (chosen by the desk); baseline: one call. */
+function routeFor(arm, job, nodes, desk = 'desk') {
+  if (!ARMS.includes(arm) && arm !== 'company') return { ok: false, why: 'unknown arm' };
+  if (!JOBS.includes(job)) return { ok: false, why: 'unknown job' };
+  if (!Array.isArray(nodes) || nodes.length === 0 || !nodes.every(isStr)) return { ok: false, why: 'nodes must be a list of names' };
+  const stations = arm === 'baseline' ? ['baseline'] : STATIONS[job];
+  if (arm === 'chain') {
+    if (nodes.length < stations.length) return { ok: false, why: 'the chain needs one node per station (' + stations.length + ')' };
+    return { ok: true, stations, route: [...stations.map((_, i) => nodes[i]), desk] };
+  }
+  return { ok: true, stations, route: [...stations.map(() => nodes[0]), desk] };
+}
+
+/** reassign(pending, live, now, timeoutMs) — pool only: work stuck on a node that is not live is handed to the
+ *  least-loaded live node once it has waited past the timeout. Returns [{ item, from, to }]. The chain has no
+ *  such move: each station exists on exactly one node. */
+function reassign(pending, live, now, timeoutMs) {
+  if (!Array.isArray(pending) || !Array.isArray(live) || !isNum(now) || !isNum(timeoutMs) || timeoutMs < 0) return { ok: false, why: 'reassign(pending, live, now, timeoutMs)' };
+  const load = new Map(live.map((n) => [n, 0]));
+  for (const p of pending) if (isObj(p) && load.has(p.node)) load.set(p.node, load.get(p.node) + 1);
+  const moves = [];
+  if (load.size === 0) return { ok: true, moves };
+  for (const p of pending) {
+    if (!isObj(p) || !isStr(p.item) || !isNum(p.since) || load.has(p.node)) continue;
+    if (now - p.since < timeoutMs) continue;
+    const least = Math.min(...load.values());
+    const best = [...load.keys()].filter((n) => load.get(n) === least).sort()[0];
+    moves.push({ item: p.item, from: p.node, to: best });
+    load.set(best, load.get(best) + 1);
+  }
+  return { ok: true, moves };
+}
+
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+// SCORING — from the ledger, never from a node's say-so.
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+/** percentile(values, p) — nearest-rank; null for an empty list. */
+function percentile(values, p) {
+  if (!Array.isArray(values) || !isNum(p) || p <= 0 || p > 100) return null;
+  const xs = values.filter(isNum).sort((a, b) => a - b);
+  if (xs.length === 0) return null;
+  return xs[Math.ceil((p / 100) * xs.length) - 1];
+}
+
+/** exactMcNemar(b, c) — two-sided exact p for paired right/wrong disagreements (b: A right & B wrong; c: A wrong & B right). */
+function exactMcNemar(b, c) {
+  if (!isInt(b) || !isInt(c) || b < 0 || c < 0) return null;
+  const n = b + c;
+  if (n === 0) return 1;
+  let tail = 0, coef = 1;                       // C(n, 0)
+  for (let k = 0; k <= Math.min(b, c); k++) { tail += coef; coef = coef * (n - k) / (k + 1); }
+  return Math.min(1, 2 * tail / Math.pow(2, n));
+}
+
+const r3 = (x) => Math.round(x * 1000) / 1000;
+/** scoreRun(records, expected) — one arm (or one job) over its items.
+ *  records: [{ item, gold, out, startMs, endMs, results, tokens: { prompt, completion }, gpuMs }]; expected: the item ids sent. */
+function scoreRun(records, expected, job = 'support') {
+  if (!Array.isArray(records) || !Array.isArray(expected) || !expected.every(isStr)) return { ok: false, why: 'scoreRun(records, expectedItemIds)' };
+  if (!JOBS.includes(job)) return { ok: false, why: 'unknown job' };
+  const byItem = new Map();
+  let duplicates = 0;
+  for (const r of records) {
+    if (!isObj(r) || !isStr(r.item)) continue;
+    if (byItem.has(r.item)) { duplicates++; continue; }
+    byItem.set(r.item, r);
+  }
+  const extra = [...byItem.keys()].filter((k) => !expected.includes(k)).length;
+  const done = expected.filter((k) => byItem.has(k)).map((k) => byItem.get(k));
+  const lost = expected.length - done.length;
+  let e2e = 0, correct = 0, teamOk = 0, intentOk = 0, replyPass = 0, caught = 0, silent = 0;
+  const lat = [], per = { prompt: 0, completion: 0, gpuMs: 0 };
+  for (const r of done) {
+    if (job === 'support') {
+      const g = gradeSupport(r.gold, r.out);
+      if (!g.ok) continue;
+      e2e += g.e2e ? 1 : 0; teamOk += g.teamOk ? 1 : 0; intentOk += g.intentOk ? 1 : 0; replyPass += g.replyPass ? 1 : 0;
+      caught += g.caught ? 1 : 0; silent += g.silent ? 1 : 0;
+    } else {
+      correct += isObj(r.gold) && isObj(r.out) && r.gold.label === r.out.label ? 1 : 0;
+    }
+    if (isNum(r.startMs) && isNum(r.endMs) && r.endMs >= r.startMs) lat.push(r.endMs - r.startMs);
+    if (isObj(r.tokens)) { per.prompt += isNum(r.tokens.prompt) ? r.tokens.prompt : 0; per.completion += isNum(r.tokens.completion) ? r.tokens.completion : 0; }
+    per.gpuMs += isNum(r.gpuMs) ? r.gpuMs : 0;
+  }
+  const n = expected.length, d = done.length || 1;
+  const timed = done.filter((r) => isNum(r.startMs) && isNum(r.endMs));
+  const spanMin = timed.length ? (Math.max(...timed.map((r) => r.endMs)) - Math.min(...timed.map((r) => r.startMs))) / 60000 : 0;
+  const out = {
+    ok: true, job, n, completed: done.length, lost, duplicates, extra,
+    latencyMs: { p50: percentile(lat, 50), p95: percentile(lat, 95), max: lat.length ? Math.max(...lat) : null },
+    throughputPerMin: spanMin > 0 ? r3(done.length / spanMin) : null,
+    perItem: { promptTokens: r3(per.prompt / d), completionTokens: r3(per.completion / d), gpuSeconds: r3(per.gpuMs / d / 1000) },
+  };
+  if (job === 'support') Object.assign(out, { e2e: r3(e2e / n), teamAcc: r3(teamOk / n), intentAcc: r3(intentOk / n), replyPass: r3(replyPass / n), caught: r3(caught / n), silent: r3(silent / n) });
+  else out.accuracy = r3(correct / n);
+  return out;
+}
+
+/** pairedCompare(recA, recB, expected) — the same items, two arms: how many A got right that B did not, and back. */
+function pairedCompare(recA, recB, expected) {
+  if (!Array.isArray(recA) || !Array.isArray(recB) || !Array.isArray(expected)) return { ok: false, why: 'pairedCompare(recordsA, recordsB, expected)' };
+  const right = (recs) => { const m = new Map(); for (const r of recs) if (isObj(r) && isStr(r.item) && !m.has(r.item)) { const g = gradeSupport(r.gold, r.out); m.set(r.item, g.ok && g.e2e); } return m; };
+  const a = right(recA), b = right(recB);
+  let onlyA = 0, onlyB = 0, both = 0, neither = 0;
+  for (const k of expected) { const x = a.get(k) === true, y = b.get(k) === true; if (x && y) both++; else if (x) onlyA++; else if (y) onlyB++; else neither++; }
+  return { ok: true, both, onlyA, onlyB, neither, diffPts: r3(100 * (onlyA - onlyB) / (expected.length || 1)), p: exactMcNemar(onlyA, onlyB) };
+}
+
+// ── pre-registration: the thresholds, fixed and hashed before the first run ─────────────────────────
+/** evaluatePrereg(prereg, s) — s: { chain, pool, baseline, chainVsBaseline, chainVsPool, coldStartSec }.
+ *  Every rule is reported PASS or FAIL with the number that decided it. */
+function evaluatePrereg(prereg, s) {
+  if (!isObj(prereg) || !isObj(prereg.thresholds)) return { ok: false, why: 'prereg needs thresholds' };
+  if (!isObj(s) || !isObj(s.chain) || !isObj(s.pool) || !isObj(s.baseline) || !isObj(s.chainVsBaseline) || !isObj(s.chainVsPool)) return { ok: false, why: 'the summary needs chain, pool, baseline and both comparisons' };
+  const t = prereg.thresholds, rules = [];
+  const add = (id, rule, value, pass) => rules.push({ id, rule, value, pass: pass === true });
+  add('capability', 'chain end-to-end ≥ baseline − ' + t.capabilityMaxDropPts + ' points (same items)', s.chainVsBaseline.diffPts, s.chainVsBaseline.diffPts >= -t.capabilityMaxDropPts);
+  add('no-loss', 'no item lost and no item accepted twice, in either kill test', { chainLost: s.chain.lost, poolLost: s.pool.lost, chainDup: s.chain.duplicates, poolDup: s.pool.duplicates },
+    s.chain.lost <= t.lostMax && s.pool.lost <= t.lostMax && s.chain.duplicates <= t.duplicatesMax && s.pool.duplicates <= t.duplicatesMax);
+  add('latency', 'chain p95 ≤ ' + t.chainP95MaxSec + ' s per item', s.chain.latencyMs.p95 === null ? null : r3(s.chain.latencyMs.p95 / 1000), s.chain.latencyMs.p95 !== null && s.chain.latencyMs.p95 <= t.chainP95MaxSec * 1000);
+  const chainBetter = s.chainVsPool.diffPts >= t.chainVsPoolMinGainPts || (s.chain.lost < s.pool.lost) || (isNum(s.chainStallSec) && isNum(s.poolStallSec) && s.chainStallSec < s.poolStallSec);
+  add('chain-shape', 'the chain beats the pool by ≥ ' + t.chainVsPoolMinGainPts + ' points, or loses less, or stalls less, when a node dies', { diffPts: s.chainVsPool.diffPts, chainStallSec: s.chainStallSec ?? null, poolStallSec: s.poolStallSec ?? null }, chainBetter);
+  add('cold-start', 'every node gives its first answer within ' + t.coldStartMaxSec + ' s of starting, model download included', s.coldStartSec ?? null, isNum(s.coldStartSec) && s.coldStartSec <= t.coldStartMaxSec);
+  return { ok: true, rules, passed: rules.filter((r) => r.pass).length, of: rules.length };
+}
+
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+// COSTS — the same work, priced two ways. Cloud: tokens × public list price (each with its source and the date
+// it was checked). Local: the laptops are already owned; what the work adds is electricity (GPU seconds measured,
+// wattage an estimate from the chip's published power, the unit rate from the price cap). No figure is invented:
+// every input carries where it came from, and the page lets you change the volumes.
+// ══════════════════════════════════════════════════════════════════════════════════════════════════
+/** costModel(input) → { ok, cloud: [{ id, usdPerMonth, gbpPerMonth }], local: { kwhLow, kwhHigh, gbpLow, gbpHigh, laptopHours }, savingsGbp } */
+function costModel(input) {
+  if (!isObj(input)) return { ok: false, why: 'costModel takes an object' };
+  const { jobs, prices, fx, power, electricity } = input;
+  if (!Array.isArray(jobs) || jobs.length === 0) return { ok: false, why: 'jobs: the monthly volume and measured cost of each job' };
+  for (const j of jobs) {
+    if (!isObj(j) || !isStr(j.job)) return { ok: false, why: 'each job needs a name' };
+    for (const k of ['volumePerMonth', 'promptTokensPerItem', 'completionTokensPerItem', 'gpuSecondsPerItem']) if (!isNum(j[k]) || j[k] < 0) return { ok: false, why: j.job + ': ' + k + ' must be a number ≥ 0' };
+  }
+  if (!Array.isArray(prices) || prices.length === 0) return { ok: false, why: 'prices: at least one public list price' };
+  for (const p of prices) {
+    if (!isObj(p) || !isStr(p.id) || !isNum(p.inPerM) || !isNum(p.outPerM) || p.inPerM < 0 || p.outPerM < 0) return { ok: false, why: 'each price needs id, inPerM and outPerM' };
+    if (!isStr(p.source) || !/^https:\/\//.test(p.source) || !isStr(p.checked)) return { ok: false, why: p.id + ': a price needs its https source and the date it was checked' };
+  }
+  if (!isObj(fx) || !isNum(fx.gbpPerUsd) || fx.gbpPerUsd <= 0 || !isStr(fx.source)) return { ok: false, why: 'fx: GBP per USD, with its source' };
+  if (!isObj(power) || !isNum(power.wattsLow) || !isNum(power.wattsHigh) || power.wattsLow < 0 || power.wattsHigh < power.wattsLow || !isStr(power.source)) return { ok: false, why: 'power: an estimated watt range, low ≤ high, with its source' };
+  if (!isObj(electricity) || !isNum(electricity.pencePerKwh) || electricity.pencePerKwh < 0 || !isStr(electricity.source)) return { ok: false, why: 'electricity: pence per kWh, with its source' };
+  let inTok = 0, outTok = 0, gpuSec = 0;
+  for (const j of jobs) { inTok += j.volumePerMonth * j.promptTokensPerItem; outTok += j.volumePerMonth * j.completionTokensPerItem; gpuSec += j.volumePerMonth * j.gpuSecondsPerItem; }
+  const cloud = prices.map((p) => { const usd = (inTok / 1e6) * p.inPerM + (outTok / 1e6) * p.outPerM; return { id: p.id, usdPerMonth: r3(usd), gbpPerMonth: r3(usd * fx.gbpPerUsd) }; });
+  const hours = gpuSec / 3600;
+  const kwhLow = hours * power.wattsLow / 1000, kwhHigh = hours * power.wattsHigh / 1000;
+  const local = { kwhLow: r3(kwhLow), kwhHigh: r3(kwhHigh), gbpLow: r3(kwhLow * electricity.pencePerKwh / 100), gbpHigh: r3(kwhHigh * electricity.pencePerKwh / 100), laptopHours: r3(hours) };
+  return { ok: true, tokensPerMonth: { prompt: inTok, completion: outTok }, cloud, local, savingsGbp: cloud.map((c) => ({ id: c.id, low: r3(c.gbpPerMonth - local.gbpHigh), high: r3(c.gbpPerMonth - local.gbpLow) })) };
+}
+// ⟦KERNEL-END⟧
+// ⟦RUNTIME-BEGIN⟧ generated from runtime.js by make-page.mjs — do not edit here
+// ── fallfloor runtime: a node (WebLLM on this machine's GPU) and a desk (the dispatcher), joined by WebRTC ──────────
+// Everything that judges comes from the kernel above. This is the edge: keys, storage, the GPU, the wire.
+const WEBLLM_URL = 'https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.85/+esm';
+const RUN_PARAMS = { temperature: 0, top_p: 1, seed: 7 };
+const $ = (id) => document.getElementById(id);
+const nowIso = () => new Date().toISOString();
+const hexOf = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+const bytesOf = (hex) => new Uint8Array(hex.match(/../g).map((h) => parseInt(h, 16)));
+const b64 = (s) => btoa(unescape(encodeURIComponent(s)));
+const unb64 = (s) => decodeURIComponent(escape(atob(s.trim())));
+const uid = () => hexOf(crypto.getRandomValues(new Uint8Array(8)));
+
+// ── storage (IndexedDB): identity, inbox, outbox, done — so a node that dies and comes back resumes its work ──
+function idb() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open('fallfloor', 1);
+    r.onupgradeneeded = () => { const d = r.result; for (const s of ['identity', 'inbox', 'outbox', 'done']) if (!d.objectStoreNames.contains(s)) d.createObjectStore(s); };
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  });
+}
+async function store(name, mode, fn) {
+  const d = await FLOOR.db; return new Promise((res, rej) => { const tx = d.transaction(name, mode); const s = tx.objectStore(name); const out = fn(s); tx.oncomplete = () => res(out && out.result !== undefined ? out.result : undefined); tx.onerror = () => rej(tx.error); });
+}
+const put = (s, k, v) => store(s, 'readwrite', (o) => o.put(v, k));
+const del = (s, k) => store(s, 'readwrite', (o) => o.delete(k));
+const get = (s, k) => store(s, 'readonly', (o) => o.get(k));
+const all = (s) => store(s, 'readonly', (o) => o.getAll());
+
+// ── identity: an Ed25519 key per node, kept in this browser; its public key names the node on every receipt ──
+async function identity() {
+  let kp = await get('identity', 'key');
+  if (!kp) { kp = await crypto.subtle.generateKey({ name: 'Ed25519' }, false, ['sign', 'verify']); await put('identity', 'key', kp); }
+  const pub = hexOf(await crypto.subtle.exportKey('raw', kp.publicKey));
+  return { kp, pub };
+}
+async function signHop(r) { const p = hopSignable(r); const sig = await crypto.subtle.sign({ name: 'Ed25519' }, FLOOR.id.kp.privateKey, new TextEncoder().encode(p.payload)); return { ...r, signature: { alg: 'Ed25519', sig: hexOf(sig) } }; }
+async function hopSigned(r) {
+  try {
+    if (!r || !r.signature || !/^[0-9a-f]{128}$/.test(r.signature.sig || '')) return false;
+    const key = await crypto.subtle.importKey('raw', bytesOf(r.node), { name: 'Ed25519' }, false, ['verify']);
+    return await crypto.subtle.verify({ name: 'Ed25519' }, key, bytesOf(r.signature.sig), new TextEncoder().encode(hopSignable(r).payload));
+  } catch { return false; }
+}
+
+// ── the floor object ──────────────────────────────────────────────────────────────────────────────────
+const FLOOR = window.FLOOR = {
+  name: null, id: null, db: null, broken: false, peers: new Map(), pending: new Map(), seen: new Set(), engine: null, models: [], data: {}, queue: [], busy: false,
+  log: [], stats: { hops: 0, relayed: 0, rejected: 0, errors: 0, resent: 0, reloads: 0 }, sentAt: new Map(), stun: false,
+  say(s) { const line = new Date().toISOString().slice(11, 19) + ' ' + s; this.log.push(line); if (this.log.length > 400) this.log.shift(); const el = $('nodeLog'); if (el) el.textContent = this.log.slice(-80).join('\n'); },
+};
+
+FLOOR.start = async function (name) {
+  if (!/^[a-z][a-z0-9-]{0,23}$/.test(name)) throw new Error('a node name is lowercase letters, digits and dashes');
+  this.name = name; this.db = idb(); this.id = await identity();
+  this.say('node ' + name + ' · key ' + this.id.pub.slice(0, 12) + '…');
+  for (const w of await all('inbox')) this.queue.push(w);            // work left from before a restart
+  if (this.queue.length) this.say('resuming ' + this.queue.length + ' item(s) from before the restart');
+  renderNode();
+  this.pump();
+  return { name, pub: this.id.pub };
+};
+
+// ── the model: WebLLM on this machine's GPU ─────────────────────────────────────────────────────────────
+// a fresh engine: WebLLM from the CDN, the model from this browser's cache (downloaded once), then one plain answer
+let lastProgress = '';
+async function freshEngine(models) {
+  const webllm = await import(WEBLLM_URL);
+  if (FLOOR.engine) { try { await FLOOR.engine.unload(); } catch {} }
+  FLOOR.engine = await webllm.CreateMLCEngine(models, { appConfig: { ...webllm.prebuiltAppConfig, useIndexedDBCache: true }, initProgressCallback: (p) => { lastProgress = p.text; const el = $('nodeLoad'); if (el) el.textContent = p.text; } });
+  await FLOOR.engine.chat.completions.create({ model: models[0], messages: [{ role: 'user', content: 'Reply with the word ready.' }], max_tokens: 4, temperature: 0 });
+}
+FLOOR.load = async function (models) {
+  if (!navigator.gpu) throw new Error('this browser has no WebGPU — the node cannot run a model here');
+  const t0 = performance.now();
+  this.models = models;
+  await freshEngine(models);
+  // one schema-constrained answer before any real work: WebLLM 0.2.85 sometimes breaks on an engine's constrained
+  // requests on this laptop (a disposed grammar matcher); complete() then rebuilds the engine and asks again
+  const filler = 'This is a warm-up message for a customer service assistant at a digital bank. It checks that the model can read a long instruction and answer in the required format. '.repeat(10);
+  await complete(models[0], { messages: [{ role: 'system', content: filler + 'Answer with JSON: {"status": "ready"}' }, { role: 'user', content: 'Are you ready?' }], maxTokens: 12, schema: JSON.stringify({ type: 'object', properties: { status: { type: 'string', enum: ['ready'] } }, required: ['status'] }) });
+  const last = lastProgress;
+  const adapter = await navigator.gpu.requestAdapter();
+  this.gpu = adapter && adapter.info ? { vendor: adapter.info.vendor, architecture: adapter.info.architecture } : null;
+  const loadMs = Math.round(performance.now() - t0);
+  this.say('loaded ' + models.join(', ') + ' in ' + (loadMs / 1000).toFixed(1) + ' s' + (last ? ' · ' + last : ''));
+  renderNode(); this.pump();
+  return { loadMs, gpu: this.gpu };
+};
+
+async function complete(model, prompt) {
+  const req = { ...RUN_PARAMS, model, messages: prompt.messages, max_tokens: prompt.maxTokens };
+  if (prompt.schema) req.response_format = { type: 'json_object', schema: prompt.schema };
+  for (let attempt = 1; ; attempt++) {
+    const t0 = performance.now();
+    try {
+      const r = await FLOOR.engine.chat.completions.create(req);
+      return { text: (r.choices[0].message.content || ''), ms: Math.round(performance.now() - t0), usage: r.usage || {} };
+    } catch (e) {
+      // an engine error is not an answer: rebuild the engine (model from this browser's cache) and ask again, up to 3 times
+      if (attempt >= 3) throw e;
+      FLOOR.stats.reloads++; FLOOR.say('engine error (' + String(e.message).slice(0, 80) + ') — rebuilding the engine, attempt ' + (attempt + 1));
+      try { await freshEngine(FLOOR.models); }
+      catch (e2) { FLOOR.broken = true; FLOOR.say('this browser process can no longer use the GPU (' + String(e2.message).slice(0, 90) + ') — the node needs a restart; its work stays in storage'); renderNode(); throw e2; }
+    }
+  }
+}
+
+// ── the wire: WebRTC data channels, signalled by pasting two codes (no signalling server) ─────────────────
+const ICE = () => ({ iceServers: FLOOR.stun ? [{ urls: 'stun:stun.cloudflare.com:3478' }] : [] });
+function gathered(pc) { return new Promise((res) => { if (pc.iceGatheringState === 'complete') return res(); const t = setTimeout(res, 4000); pc.addEventListener('icegatheringstatechange', () => { if (pc.iceGatheringState === 'complete') { clearTimeout(t); res(); } }); }); }
+function wire(pc, dc) {
+  let said = false;
+  const hello = () => { if (!said) said = send1(dc, { type: 'hello', id: uid(), from: FLOOR.name, to: '*', ttl: 0, pub: FLOOR.id.pub, models: FLOOR.models }); };
+  dc.onopen = hello; if (dc.readyState === 'open') hello();   // an answered channel can arrive already open
+  dc.onmessage = (e) => { let m; try { m = JSON.parse(e.data); } catch { return; } onMessage(m, dc); };
+  dc.onclose = () => { for (const [n, p] of FLOOR.peers) if (p.dc === dc) { FLOOR.peers.delete(n); FLOOR.say('link to ' + n + ' closed'); } renderNode(); };
+  pc.onconnectionstatechange = () => { if (['failed', 'closed', 'disconnected'].includes(pc.connectionState)) { try { dc.close(); } catch {} } };
+}
+function send1(dc, m) { try { if (dc.readyState === 'open') { dc.send(JSON.stringify(m)); return true; } } catch {} return false; }
+
+FLOOR.offer = async function () {
+  const pc = new RTCPeerConnection(ICE()), dc = pc.createDataChannel('floor', { ordered: true });
+  wire(pc, dc);
+  await pc.setLocalDescription(await pc.createOffer()); await gathered(pc);
+  const nonce = uid(); this.pending.set(nonce, pc);
+  return b64(JSON.stringify({ v: 1, kind: 'fallfloor-signal', t: 'offer', nonce, from: this.name, pub: this.id.pub, sdp: pc.localDescription.sdp }));
+};
+FLOOR.answer = async function (blob) {
+  const o = JSON.parse(unb64(blob));
+  if (o.kind !== 'fallfloor-signal' || o.t !== 'offer') throw new Error('that is not an offer code');
+  const pc = new RTCPeerConnection(ICE());
+  pc.ondatachannel = (e) => wire(pc, e.channel);
+  await pc.setRemoteDescription({ type: 'offer', sdp: o.sdp });
+  await pc.setLocalDescription(await pc.createAnswer()); await gathered(pc);
+  return b64(JSON.stringify({ v: 1, kind: 'fallfloor-signal', t: 'answer', nonce: o.nonce, from: this.name, pub: this.id.pub, sdp: pc.localDescription.sdp }));
+};
+FLOOR.accept = async function (blob) {
+  const a = JSON.parse(unb64(blob));
+  if (a.kind !== 'fallfloor-signal' || a.t !== 'answer') throw new Error('that is not an answer code');
+  const pc = this.pending.get(a.nonce); if (!pc) throw new Error('no offer is waiting for that answer');
+  await pc.setRemoteDescription({ type: 'answer', sdp: a.sdp }); this.pending.delete(a.nonce);
+  return true;
+};
+FLOOR.linked = function (name) { const p = this.peers.get(name); return !!(p && p.dc.readyState === 'open'); };
+
+// deliver: straight to the peer if linked, otherwise relay through the peers we have (meshos-style, bounded ttl)
+function deliver(m) {
+  const direct = FLOOR.peers.get(m.to);
+  if (direct && send1(direct.dc, m)) return true;
+  if (m.ttl <= 0) return false;
+  let sent = false; const relayed = { ...m, ttl: m.ttl - 1 };
+  for (const [n, p] of FLOOR.peers) if (n !== m.from && send1(p.dc, relayed)) sent = true;
+  return sent;
+}
+// messages that need an ack are kept in the outbox until acked, and re-sent whenever the recipient says hello
+async function sendReliable(m) {
+  if (m.to === FLOOR.name && m.type === 'work') { await put('inbox', m.id, m); FLOOR.queue.push(m); return; }   // the next station is on this node: no wire
+  await put('outbox', m.id, m); FLOOR.sentAt.set(m.id, Date.now()); deliver(m);
+}
+// an outbox message not acked within 8 s is sent again over a direct link (the receiver de-duplicates by id and re-acks)
+setInterval(async () => {
+  if (!FLOOR.db) return;
+  const now = Date.now();
+  for (const m of await all('outbox')) {
+    const t = FLOOR.sentAt.get(m.id) || 0; const p = FLOOR.peers.get(m.to);
+    if (now - t > 8000 && p && send1(p.dc, m)) { FLOOR.sentAt.set(m.id, now); FLOOR.stats.resent++; }
+  }
+}, 4000);
+async function flushTo(name) { for (const m of await all('outbox')) if (m.to === name) deliver(m); }
+
+async function onMessage(m, dc) {
+  const v = validEnvelope(m); if (!v.ok) { FLOOR.stats.rejected++; return; }
+  if (m.type === 'hello') {
+    FLOOR.peers.set(m.from, { dc, pub: m.pub, models: m.models || [] });
+    FLOOR.say('linked to ' + m.from + (m.models && m.models.length ? ' (' + m.models.join(', ') + ')' : ''));
+    renderNode(); await flushTo(m.from); return;
+  }
+  if (m.to !== FLOOR.name) { if (!FLOOR.seen.has(m.id)) { FLOOR.seen.add(m.id); if (deliver(m)) FLOOR.stats.relayed++; } return; }
+  if (m.type === 'ack') { await del('outbox', m.of); FLOOR.sentAt.delete(m.of); return; }
+  if (FLOOR.seen.has(m.id)) { deliver({ type: 'ack', id: uid(), from: FLOOR.name, to: m.from, ttl: 3, of: m.id }); return; }
+  FLOOR.seen.add(m.id);
+  if (m.type === 'work') {
+    const key = [m.work.run, m.work.arm, m.work.item, m.work.step].join('|');
+    if (!(await get('done', key))) { await put('inbox', m.id, m); FLOOR.queue.push(m); }
+    deliver({ type: 'ack', id: uid(), from: FLOOR.name, to: m.from, ttl: 3, of: m.id });
+    FLOOR.pump(); return;
+  }
+  if (m.type === 'result') {
+    deliver({ type: 'ack', id: uid(), from: FLOOR.name, to: m.from, ttl: 3, of: m.id });
+    if (FLOOR.desk) FLOOR.desk.onResult(m.result);
+  }
+}
+
+// ── a station at work: check the chain so far, run the model, sign the hop, pass it on ───────────────────
+FLOOR.pump = async function () {
+  if (this.busy || !this.engine || this.broken) return;
+  const m = this.queue.shift(); if (!m) return;
+  this.busy = true;
+  try { await work(m); } catch (e) { this.say('work failed: ' + e.message); }
+  finally { this.busy = false; renderNode(); setTimeout(() => FLOOR.pump(), 0); }
+};
+
+async function work(m) {
+  const w = m.work, station = w.stations[w.step];
+  const doneKey = [w.run, w.arm, w.item, w.step].join('|');
+  // 1 · the chain so far must be intact and signed, or this node refuses to add to it
+  if (w.hops.length) {
+    const c = verifyChain(w.hops, w.stations.slice(0, w.hops.length));
+    const sigs = await Promise.all(w.hops.map(hopSigned));
+    if (!c.valid || !sigs.every(Boolean)) { FLOOR.stats.rejected++; FLOOR.say('REFUSED ' + w.item + ': ' + (c.valid ? 'a hop signature does not verify' : c.why)); await del('inbox', m.id); return; }
+  }
+  // 2 · the station's prompt, from the kernel, and the model's answer
+  const ctx = { text: w.text, examples: w.examples[station] || [], team: w.state.team, intent: w.state.intent };
+  const pr = buildPrompt(w.job, station, ctx);
+  if (!pr.ok) throw new Error(pr.why);
+  const model = w.model || FLOOR.models[0];
+  let r;
+  try { r = await complete(model, pr); }
+  catch (e) {
+    if (FLOOR.broken) throw e;                                  // the GPU is gone: leave the item in the inbox for the restarted node
+    FLOOR.stats.errors++; FLOOR.say('model error on ' + w.item + ' (' + station + '): ' + e.message + ' — answered as nothing'); r = { text: '', ms: 0, usage: {} };
+  }
+  let output, next = { ...w.state }, exit = false;
+  if (station === 'reply') { output = r.text.trim(); next.reply = output; next.replyCheck = checkReply(output, w.state.intent); }
+  else if (station === 'baseline') { const b = parseBaseline(r.text); output = { intent: b.intent, reply: b.reply }; next.intent = b.intent; next.team = b.intent ? teamOf(b.intent) : null; next.reply = b.reply; }
+  else {
+    const p = readStation(pr, r.text); output = p.value;
+    if (station === 'route') { next.team = p.value; if (p.value === null) { next.bounced = true; exit = true; } }
+    if (station === 'intent') { if (p.value === null || p.value === NONE) { next.bounced = true; exit = true; } else next.intent = p.value; }
+    if (station === 'screen' || station === 'helpdesk') next.label = p.value;
+  }
+  // 3 · the signed, hash-linked receipt of this hop
+  const hr = hopReceipt({ run: w.run, arm: w.arm, job: w.job, item: w.item, station, node: FLOOR.id.pub, model, input: sha256(canon({ text: w.text, state: w.state })).hash,
+    output, prev: w.hops.length ? w.hops[w.hops.length - 1].hash : START, promptTokens: r.usage.prompt_tokens || 0, completionTokens: r.usage.completion_tokens || 0, ms: r.ms, at: nowIso() });
+  if (!hr.ok) throw new Error(hr.why);
+  const hop = await signHop(hr.receipt);
+  FLOOR.stats.hops++;
+  const hops = [...w.hops, hop];
+  // 4 · pass it on — to the next station, or back to the desk when the line is done (or has stopped itself)
+  const last = exit || w.step + 1 >= w.stations.length;
+  const msg = last
+    ? { type: 'result', id: uid(), from: FLOOR.name, to: w.route[w.route.length - 1], ttl: 3, result: { run: w.run, arm: w.arm, job: w.job, item: w.item, out: next, hops } }
+    : { type: 'work', id: uid(), from: FLOOR.name, to: w.route[w.step + 1], ttl: 3, work: { ...w, step: w.step + 1, state: next, hops } };
+  await sendReliable(msg);
+  await put('done', doneKey, true);
+  await del('inbox', m.id);
+  FLOOR.say(w.item + ' · ' + station + ' → ' + (typeof output === 'string' ? output.slice(0, 40) : JSON.stringify(output).slice(0, 60)) + ' (' + r.ms + ' ms)');
+}
+
+// ── ask one station directly: the prompt from the kernel, this node's model, the parsed answer ────────────────
+FLOOR.ask = async function (job, station, ctx) {
+  if (!this.engine) throw new Error('load a model first');
+  const pr = buildPrompt(job, station, ctx); if (!pr.ok) throw new Error(pr.why);
+  const r = await complete(this.models[0], pr);
+  const parsed = station === 'reply' ? { reply: r.text.trim(), check: checkReply(r.text.trim(), ctx.intent) } : station === 'baseline' ? parseBaseline(r.text) : readStation(pr, r.text);
+  return { text: r.text, parsed, ms: r.ms, promptTokens: r.usage.prompt_tokens || 0, completionTokens: r.usage.completion_tokens || 0 };
+};
+
+// ── the desk: dispatches the company's work, keeps the ledger, never runs a model ──────────────────────────
+FLOOR.dataset = async function (job) { if (!this.data[job]) this.data[job] = await (await fetch('data/' + job + '.json', { cache: 'no-store' })).json(); return this.data[job]; };
+
+FLOOR.runJob = async function ({ run, arm, job, nodes, limit, window = 3, model = null, reassignMs = 45000, maxIdleMs = 600000, set = 'heldOut' }) {
+  const ds = await this.dataset(job);
+  const pool = set === 'dev' ? (await this.dataset('dev'))[job] : ds.heldOut;
+  const items = pool.slice(0, limit || pool.length);
+  const examples = job === 'support' ? { route: ds.examples.route, intent: ds.examples.intent, baseline: [...ds.examples.route, ...ds.examples.intent] } : ds.examples;
+  const desk = this.desk = { run, arm, job, records: new Map(), dupes: 0, rejected: 0, pending: new Map(), completions: [], started: Date.now() };
+  const expected = items.map((x) => x.id);
+  const queue = [...items];
+  const stations = arm === 'baseline' ? ['baseline'] : STATIONS[job];
+  desk.onResult = async (res) => {
+    if (res.run !== run || res.arm !== arm) return;
+    const c = verifyChain(res.hops, (arm === 'baseline' ? ['baseline'] : STATIONS[job]).slice(0, res.hops.length));
+    const sigs = await Promise.all(res.hops.map(hopSigned));
+    if (!c.valid || !sigs.every(Boolean)) { desk.rejected++; FLOOR.say('desk REFUSED a result for ' + res.item); return; }
+    if (desk.records.has(res.item)) { desk.dupes++; return; }
+    const p = desk.pending.get(res.item); desk.pending.delete(res.item);
+    const gold = items.find((x) => x.id === res.item).gold;
+    const tokens = res.hops.reduce((a, h) => ({ prompt: a.prompt + h.promptTokens, completion: a.completion + h.completionTokens }), { prompt: 0, completion: 0 });
+    const out = outcomeFromHops(job, arm, res.hops).out;           // the answer is what the signed hops say, nothing else
+    desk.records.set(res.item, { item: res.item, gold, out, hops: res.hops, startMs: p ? p.startMs : null, endMs: Date.now(), tokens, gpuMs: res.hops.reduce((a, h) => a + h.ms, 0) });
+    desk.completions.push(Date.now());
+    renderDesk(run, arm, job, expected.length);
+  };
+  const live = () => nodes.filter((n) => FLOOR.linked(n));
+  const dispatch = async (x, node) => {
+    const rt = arm === 'chain' ? routeFor('chain', job, nodes) : routeFor(arm, job, [node]);
+    const work = { run, arm, job, item: x.id, text: x.text, route: rt.route, stations, step: 0, state: {}, hops: [], examples, model };
+    desk.pending.set(x.id, { item: x.id, node: rt.route[0], since: Date.now(), startMs: desk.pending.get(x.id)?.startMs ?? Date.now() });
+    await sendReliable({ type: 'work', id: uid(), from: FLOOR.name, to: rt.route[0], ttl: 3, work });
+  };
+  const load = (n) => [...desk.pending.values()].filter((p) => p.node === n).length;
+  let lastSize = 0, lastProgress = Date.now();
+  while (desk.records.size < expected.length) {
+    if (desk.records.size > lastSize) { lastSize = desk.records.size; lastProgress = Date.now(); }
+    if (Date.now() - lastProgress > maxIdleMs) { FLOOR.say('no progress for ' + Math.round(maxIdleMs / 60000) + ' min — stopping; unfinished items count as lost'); break; }
+    // pool: work stuck on a node that has gone is handed to a live one (the chain cannot do this — each station has one node)
+    if (arm !== 'chain') {
+      const mv = reassign([...desk.pending.values()], live(), Date.now(), reassignMs);
+      for (const m of mv.moves) { FLOOR.say('reassigning ' + m.item + ' from ' + m.from + ' to ' + m.to); await dispatch(items.find((x) => x.id === m.item), m.to); }
+    }
+    while (queue.length && desk.pending.size < window) {
+      const x = queue.shift();
+      if (arm === 'chain') await dispatch(x, nodes[0]);
+      else { const l = live(); if (!l.length) { queue.unshift(x); break; } const n = l.slice().sort((a, b) => load(a) - load(b) || (a < b ? -1 : 1))[0]; await dispatch(x, n); }
+    }
+    await new Promise((r) => setTimeout(r, 250));
+    if (FLOOR.abortRun) break;
+  }
+  const records = [...desk.records.values()];
+  const score = scoreRun(records, expected, job);
+  const gaps = desk.completions.map((t, i) => (i === 0 ? t - desk.started : t - desk.completions[i - 1]));
+  score.maxGapSec = gaps.length ? Math.round(Math.max(...gaps) / 100) / 10 : null;
+  score.rejected = desk.rejected; score.duplicatesDropped = desk.dupes;
+  return { run, arm, job, nodes, expected, records, score };
+};
+
+// ── page wiring (the human way to be a node or a desk) ─────────────────────────────────────────────────
+function renderNode() {
+  const el = $('nodeStatus'); if (!el || !FLOOR.name) return;
+  el.textContent = FLOOR.name + ' · ' + (FLOOR.models.length ? FLOOR.models.join(', ') : 'no model loaded') + ' · links: ' + ([...FLOOR.peers.keys()].join(', ') || 'none') + ' · hops signed: ' + FLOOR.stats.hops + ' · queue: ' + FLOOR.queue.length;
+}
+function renderDesk(run, arm, job, n) { const el = $('deskStatus'); if (el && FLOOR.desk) el.textContent = run + ' · ' + arm + ' · ' + job + ': ' + FLOOR.desk.records.size + '/' + n + ' done'; }
+window.addEventListener('DOMContentLoaded', () => {
+  const q = new URLSearchParams(location.search);
+  if (q.get('node')) { const d = $('runYourself'); if (d) d.open = true; FLOOR.start(q.get('node')).catch((e) => FLOOR.say(e.message)); }
+  const on = (id, fn) => { const b = $(id); if (b) b.addEventListener('click', () => fn().catch((e) => FLOOR.say('✗ ' + e.message))); };
+  on('btnStart', async () => { await FLOOR.start(($('nodeName').value || 'node-' + uid().slice(0, 4)).toLowerCase()); });
+  on('btnLoad', async () => { if (!FLOOR.name) await FLOOR.start('node-' + uid().slice(0, 4)); await FLOOR.load([$('nodeModel').value]); });
+  on('btnOffer', async () => { if (!FLOOR.name) await FLOOR.start('node-' + uid().slice(0, 4)); FLOOR.stun = $('useStun').checked; $('sigOut').value = await FLOOR.offer(); });
+  on('btnAnswer', async () => { if (!FLOOR.name) await FLOOR.start('node-' + uid().slice(0, 4)); FLOOR.stun = $('useStun').checked; $('sigOut').value = await FLOOR.answer($('sigIn').value); });
+  on('btnAccept', async () => { await FLOOR.accept($('sigIn').value); FLOOR.say('answer accepted — the link opens in a moment'); });
+});
+// ⟦RUNTIME-END⟧
+
+// ── the page: renders the committed run from the embedded data, with the same kernel ─────────────────────
+const D = JSON.parse(document.getElementById('floorData').textContent);
+(function () { try { const s = localStorage.getItem('ff-theme'); if (s) document.documentElement.setAttribute('data-theme', s); } catch {}
+  $('themeBtn').onclick = () => { const c = document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); const n = c === 'dark' ? 'light' : 'dark'; document.documentElement.setAttribute('data-theme', n); try { localStorage.setItem('ff-theme', n); } catch {} }; })();
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const pct = (x) => (x === null || x === undefined ? '—' : (Math.round(x * 1000) / 10) + '%');
+const sec = (ms) => (ms === null || ms === undefined ? '—' : (Math.round(ms / 100) / 10) + ' s');
+
+function renderDepts() {
+  const box = $('deptCards'); if (!box) return;
+  box.innerHTML = D.departments.map((d) => '<div class="card"><div class="k">' + esc(d.department) + '</div><h3>' + esc(d.jobLine) + '</h3><p>' + esc(d.source.name) + ' — ' + esc(d.source.by) + ' · <a href="' + esc(d.source.url) + '">source</a> · ' + esc(d.source.license) + '</p><p class="mono">' + d.heldOut + ' held-out items · ' + d.examples + ' examples</p></div>').join('');
+}
+function renderMesh() {
+  const g = $('meshG'); if (!g) return;
+  const nodes = (D.summary && D.summary.nodes) || [{ name: 'desk', role: 'desk (no model)' }, { name: 'n1', role: 'route' }, { name: 'n2', role: 'intent' }, { name: 'n3', role: 'reply' }, { name: 'n4', role: 'one-model baseline' }];
+  const pos = { desk: [110, 125], n1: [330, 55], n2: [520, 125], n3: [330, 195], n4: [680, 125] };
+  const links = [['desk', 'n1'], ['desk', 'n2'], ['desk', 'n3'], ['n1', 'n2'], ['n2', 'n3'], ['desk', 'n4']];
+  let s = '';
+  for (const [a, b] of links) { const [x1, y1] = pos[a], [x2, y2] = pos[b]; s += '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="var(--accent)" stroke-width="2" stroke-dasharray="' + (b === 'n4' ? '5 5' : '') + '" opacity=".7"/>'; }
+  for (const n of nodes) { const p = pos[n.name]; if (!p) continue; s += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="30" fill="var(--panel2)" stroke="var(--accent2)" stroke-width="2"/><text x="' + p[0] + '" y="' + (p[1] + 5) + '" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">' + esc(n.name) + '</text><text x="' + p[0] + '" y="' + (p[1] + 48) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + esc(n.role) + '</text>'; }
+  g.innerHTML = s;
+}
+function renderPrereg() {
+  const tb = document.querySelector('#preregTable tbody'); if (!tb) return;
+  tb.innerHTML = D.prereg.rules.map((r) => { const [id, ...rest] = r.split(': '); return '<tr><td><b>' + esc(id) + '</b></td><td>' + esc(rest.join(': ')) + '</td></tr>'; }).join('');
+  $('preregHash').innerHTML = 'prereg.json sha256 <code>' + esc(D.preregHash) + '</code> · committed and pushed before the first run: <a href="' + esc(D.preregCommit.url) + '">' + esc(D.preregCommit.sha.slice(0, 7)) + '</a> at ' + esc(D.preregCommit.at) + '. The builder\'s bet, written with it: <i>' + esc(D.prereg.prediction) + '</i>';
+}
+function renderPreregLog() {
+  const box = $('preregLog'); if (!box || !D.preregLog) return;
+  box.innerHTML = '<p class="sub">' + esc(D.preregLog.statement) + '</p>' + D.preregLog.entries.map((e) => '<p><b>' + esc(e.date) + ' · ' + esc(e.what) + '</b><br><span class="sub">' + esc(e.why) + '</span></p>').join('');
+}
+function renderResults() {
+  const S = D.summary, box = $('resultsBody'); if (!S || !box) return;
+  const v = S.prereg, pills = $('heroPills');
+  if (pills) pills.innerHTML += '<span class="pill ' + (v.passed === v.of ? 'good' : 'warn') + '">Pre-registered rules: <b>' + v.passed + ' of ' + v.of + ' passed</b></span>';
+  let h = '<div class="card"><div class="tw"><table><thead><tr><th>Rule</th><th>Measured</th><th></th></tr></thead><tbody>';
+  for (const r of v.rules) h += '<tr><td><b>' + esc(r.id) + '</b><br><span class="sub" style="font-size:.85rem">' + esc(r.rule) + '</span></td><td class="n">' + esc(typeof r.value === 'object' && r.value !== null ? JSON.stringify(r.value) : String(r.value)) + '</td><td><span class="verdict ' + (r.pass ? 'pass' : 'fail') + '">' + (r.pass ? 'PASS' : 'FAIL') + '</span></td></tr>';
+  h += '</tbody></table></div></div>';
+  h += '<h3 style="margin-top:22px">Customer support — the same 100 items, three ways</h3><div class="card"><div class="tw"><table><thead><tr><th></th><th>Chain</th><th>Pool</th><th>One model (3B)</th></tr></thead><tbody>';
+  const A = S.arms, rows = [['Correct end to end', (a) => pct(a.e2e)], ['Right team', (a) => pct(a.teamAcc)], ['Right topic', (a) => pct(a.intentAcc)], ['Reply passed the gate', (a) => pct(a.replyPass)], ['Caught (went to a person)', (a) => pct(a.caught)], ['Silent errors (wrong, and sent)', (a) => pct(a.silent)],
+    ['Time per item p50 / p95', (a) => sec(a.latencyMs.p50) + ' / ' + sec(a.latencyMs.p95)], ['Items per minute', (a) => a.throughputPerMin ?? '—'], ['Lost / accepted twice', (a) => a.lost + ' / ' + a.duplicates], ['Duplicate deliveries dropped', (a) => a.duplicatesDropped ?? 0], ['Longest gap between answers', (a) => (a.maxGapSec ?? '—') + ' s'],
+    ['Tokens per item (in / out)', (a) => a.perItem.promptTokens + ' / ' + a.perItem.completionTokens], ['GPU seconds per item', (a) => a.perItem.gpuSeconds]];
+  for (const [label, f] of rows) h += '<tr><td>' + esc(label) + '</td><td class="n">' + esc(f(A.chain)) + '</td><td class="n">' + esc(f(A.pool)) + '</td><td class="n">' + esc(f(A.baseline)) + '</td></tr>';
+  h += '</tbody></table></div><p class="note">Paired on the same items — chain vs one model: ' + S.compare.chainVsBaseline.diffPts + ' points (exact McNemar p = ' + (Math.round(S.compare.chainVsBaseline.p * 1000) / 1000) + '); chain vs pool: ' + S.compare.chainVsPool.diffPts + ' points (p = ' + (Math.round(S.compare.chainVsPool.p * 1000) / 1000) + '). Under about 5 points is a tie.</p></div>';
+  h += '<h3 style="margin-top:22px">The rest of the company</h3><div class="grid g2">';
+  for (const [k, label] of [['security', 'Security · message screening'], ['hr', 'People · staff helpdesk']]) { const j = S.jobs[k]; h += '<div class="card"><div class="k">' + esc(label) + '</div><div class="big">' + pct(j.accuracy) + '</div><p>correct on ' + j.n + ' held-out items · ' + j.completed + ' completed · p50 ' + sec(j.latencyMs.p50) + ' · ' + (j.throughputPerMin ?? '—') + ' items/min across the pool</p></div>'; }
+  h += '</div>';
+  h += '<h3 style="margin-top:22px">The nodes</h3><div class="card"><div class="tw"><table><thead><tr><th>Node</th><th>Role</th><th>Model</th><th>Cold start → first answer</th><th>Downloaded</th></tr></thead><tbody>';
+  for (const n of S.nodes) h += '<tr><td class="n">' + esc(n.name) + '</td><td>' + esc(n.role) + '</td><td class="n">' + esc(n.model || '—') + '</td><td class="n">' + (n.coldStartSec === undefined || n.coldStartSec === null ? '—' : n.coldStartSec + ' s') + '</td><td class="n">' + (n.downloadMB ? n.downloadMB + ' MB' : '—') + '</td></tr>';
+  h += '</tbody></table></div><p class="note">' + esc(S.machine) + '</p></div>';
+  if (S.faults) {
+    const F = S.faults, u = F.unplannedRestarts || [], lf = F.gpuFaultsWhileLoading || [];
+    h += '<h3 style="margin-top:22px">What went wrong on the hardware</h3><div class="card"><p><b>' + u.length + '</b> unplanned node restart' + (u.length === 1 ? '' : 's') + ' during the work' + (u.length ? ' (' + esc(u.map((x) => x.node + ' in the ' + x.arm).join('; ')) + ')' : '') + ' · <b>' + lf.length + '</b> GPU fault' + (lf.length === 1 ? '' : 's') + ' while a model was loading · Windows standby entries during the run: <b>' + (F.standbyEntriesDuringRun ?? 'not read') + '</b></p><p class="note">' + esc(F.note) + '</p>';
+    const C = F.nodeCounters || {};
+    if (Object.keys(C).length) { h += '<div class="tw"><table><thead><tr><th>Node</th><th>Hops signed</th><th>Engine rebuilds</th><th>Model errors</th><th>Messages re-sent</th><th>Relayed</th><th>Refused</th></tr></thead><tbody>'; for (const [n, c] of Object.entries(C)) h += '<tr><td class="n">' + esc(n) + '</td><td class="n">' + (c.hops || 0) + '</td><td class="n">' + (c.reloads || 0) + '</td><td class="n">' + (c.errors || 0) + '</td><td class="n">' + (c.resent || 0) + '</td><td class="n">' + (c.relayed || 0) + '</td><td class="n">' + (c.rejected || 0) + '</td></tr>'; h += '</tbody></table></div><p class="note">Counts include hops that were done twice (a restarted node resuming work the pool had already moved elsewhere); the desk keeps only the first result per item.</p>'; }
+    h += '</div>';
+  }
+  if (S.events && S.events.length) h += '<details class="card"><summary>Run timeline (kills, restarts, re-joins)</summary><pre class="log">' + esc(S.events.map((e) => e.at + '  ' + e.what).join('\n')) + '</pre></details>';
+  h += '<p class="note">Run <code>' + esc(S.run) + '</code> · ' + esc(S.started) + ' → ' + esc(S.finished) + ' · ledger <a href="' + esc(S.ledgerPath) + '">' + esc(S.ledgerPath) + '</a> · ' + S.hops + ' signed hops.</p>';
+  box.innerHTML = h;
+}
+function renderCosts() {
+  const C = D.costs, S = D.summary; if (!C) return;
+  const vol = { ...C.volumes }; delete vol.how;
+  const inputs = $('volInputs');
+  inputs.innerHTML = Object.keys(vol).map((k) => '<label>' + esc(k) + ' items / month <input type="number" min="0" step="100" id="vol_' + k + '" value="' + vol[k] + '" /></label>').join(' ') + '<span class="pill warn">modelled volumes — assumptions</span>';
+  const draw = () => {
+    const per = S ? S.costPerItem : null;
+    if (!per) { $('costTable').querySelector('tbody').innerHTML = '<tr><td colspan="3">The measured run supplies the tokens and GPU time per item.</td></tr>'; return; }
+    const jobs = Object.keys(vol).map((k) => ({ job: k, volumePerMonth: Math.max(0, Number($('vol_' + k).value) || 0), promptTokensPerItem: per[k].promptTokens, completionTokensPerItem: per[k].completionTokens, gpuSecondsPerItem: per[k].gpuSeconds }));
+    const m = costModel({ jobs, prices: C.prices, fx: C.fx, power: C.power, electricity: C.electricity });
+    if (!m.ok) { $('costTable').querySelector('tbody').innerHTML = '<tr><td colspan="3">' + esc(m.why) + '</td></tr>'; return; }
+    const gbp = (x) => '£' + x.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    let rows = '<tr><td><b>These laptops (already owned)</b> — electricity only</td><td class="n">' + gbp(m.local.gbpLow) + ' – ' + gbp(m.local.gbpHigh) + '</td><td>' + m.local.laptopHours + ' laptop-GPU hours · <a href="' + esc(C.power.source) + '">power</a> · <a href="' + esc(C.electricity.source) + '">unit rate</a></td></tr>';
+    for (const c of m.cloud) { const p = C.prices.find((x) => x.id === c.id); rows += '<tr><td>' + esc(p.provider + ' · ' + p.model) + '</td><td class="n">' + gbp(c.gbpPerMonth) + ' <span class="sub">($' + c.usdPerMonth.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ')</span></td><td><a href="' + esc(p.source) + '">list price</a>, checked ' + esc(p.checked) + '</td></tr>'; }
+    $('costTable').querySelector('tbody').innerHTML = rows;
+    $('costNotes').innerHTML = '<p class="note">Tokens per month: ' + m.tokensPerMonth.prompt.toLocaleString('en-GB') + ' in, ' + m.tokensPerMonth.completion.toLocaleString('en-GB') + ' out (measured per item × your volumes). ' + esc(C.tokenizerNote) + '</p><p class="note">FX: ' + esc(C.fx.how) + ' (<a href="' + esc(C.fx.source) + '">ECB</a>). Power: ' + esc(C.power.how) + ' Electricity: ' + C.electricity.pencePerKwh + 'p/kWh, ' + esc(C.electricity.period) + ' — ' + esc(C.electricity.how) + ' Hardware: ' + esc(C.hardware.how) + '</p><p class="note"><b>Capacity is the real constraint:</b> at these volumes the work needs ' + m.local.laptopHours + ' laptop-GPU hours a month on laptops like this one — spread across the office\'s idle hours.</p>';
+  };
+  inputs.querySelectorAll('input').forEach((i) => i.addEventListener('input', draw));
+  draw();
+}
+async function verifyLedger() {
+  const out = $('verifyOut'), S = D.summary; if (!S) { out.textContent = 'no run published yet'; return; }
+  out.textContent = 'loading the ledger…';
+  let L; try { L = await (await fetch(S.ledgerPath, { cache: 'no-store' })).json(); } catch (e) { out.textContent = 'could not load the ledger: ' + e.message; return; }
+  let hops = 0, bad = 0, badSig = 0;
+  for (const it of L.items) {
+    const stations = it.arm === 'baseline' ? ['baseline'] : STATIONS[it.job];
+    const c = verifyChain(it.hops, stations.slice(0, it.hops.length)); if (!c.valid) bad++;
+    for (const h of it.hops) { hops++; if (!(await hopSigned(h))) badSig++; }
+  }
+  // the answers come from the signed hops (the kernel's outcomeFromHops) and the gold labels from the published data files
+  const gold = {};
+  for (const j of JOBS) for (const x of (await FLOOR.dataset(j)).heldOut) gold[x.id] = x.gold;
+  const mism = [];
+  for (const key of Object.keys(L.expected)) {
+    const job = key === 'security' || key === 'hr' ? key : 'support';
+    const recs = L.items.filter((x) => x.key === key).map((x) => ({ ...x.record, gold: gold[x.item], out: outcomeFromHops(job, x.arm, x.hops).out }));
+    const sc = scoreRun(recs, L.expected[key], job), want = job === 'support' ? S.arms[key] : S.jobs[key];
+    const f = job === 'support' ? 'e2e' : 'accuracy'; if (!want || sc[f] !== want[f]) mism.push(key);
+  }
+  out.innerHTML = (bad || badSig || mism.length ? '<span class="no">✗ ' : '<span class="ok">✓ ') + hops + ' hops re-hashed · ' + (hops - badSig) + ' signatures valid · ' + (L.items.length - bad) + '/' + L.items.length + ' chains intact · scores ' + (mism.length ? 'DIFFER: ' + mism.join(', ') : 're-computed and equal') + '</span>';
+}
+renderDepts(); renderMesh(); renderPrereg(); renderPreregLog(); renderResults(); renderCosts();
+$('btnVerify').addEventListener('click', () => verifyLedger().catch((e) => { $('verifyOut').textContent = e.message; }));
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "v": 1,
+  "kind": "fallfloor-prereg-log",
+  "statement": "Everything that changed between the pre-registration (commit f4d80b0) and the measured run, with the reason. Committed and pushed before the measured run. The thresholds, the arms, the models, the held-out items and the examples did not change.",
+  "entries": [
+    {
+      "date": "2026-09-29",
+      "what": "A development set (data/dev.json, tools/prepare-dev.mjs): 40 support, 40 security (10 spam) and 35 HR items drawn from the training side of each dataset, disjoint from every held-out item and every example (checked by the tool).",
+      "why": "So that smoke tests and prompt writing never touch the held-out items. Disclosure: the first two plumbing smoke tests (before this set existed) ran 4 held-out items per department through the line; those answers were used only to find bugs, and the prompts were then written against the development set."
+    },
+    {
+      "date": "2026-09-29",
+      "what": "The prompts were written against the development set. The security station now asks \"Is this SMS spam?\" and answers with JSON {\"spam\": \"yes\" | \"no\"}, which the kernel maps to spam / legit. It is still schema-constrained, still uses the same six examples, and is graded against the same labels.",
+      "why": "Measured on the 40 development items with the 1.5B station model: the first prompt (\"label it legit or spam\") scored 21 of 40, below answering \"legit\" every time (30 of 40); the yes/no form with the examples scored 34 of 40. Variants tried and their scores are in the README."
+    },
+    {
+      "date": "2026-09-29",
+      "what": "Engine faults are handled and reported, not hidden. On this laptop the WebGPU device is occasionally lost mid-run (Chrome reports DXGI_ERROR_DEVICE_HUNG from the Intel Iris Xe driver). A node now rebuilds its engine and asks again; if its browser process can no longer use the GPU, it stops taking work (its items stay in its own storage) and the harness relaunches it with the same profile, re-links it, and logs an UNPLANNED RESTART. Each node also warms up with one plain and one schema-constrained answer before it takes work; the warm-up is inside the measured cold start.",
+      "why": "Found in the development runs: without this, a lost device turned into lost or empty answers. Every unplanned restart during the measured run is listed in the summary and the timeline."
+    },
+    {
+      "date": "2026-09-29",
+      "what": "Every answer the desk records, the verifier re-checks and the page re-scores is rebuilt from the signed hop outputs by one kernel function (outcomeFromHops), and the gold labels are read from the published data files.",
+      "why": "So a result can never say more than its receipts."
+    }
+  ]
+}

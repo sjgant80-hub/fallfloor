@@ -1,0 +1,23 @@
+# fallfloor
+
+> A reference build (a modelled company, not a real client) that runs a digital bank's everyday AI work — customer support, inbound message screening, a staff HR helpdesk — on WebLLM in the browsers of laptops it already owns, passed node to node over WebRTC with no server. Pre-registered thresholds, Ed25519-signed hash-linked receipts for every hop, grading against public labelled datasets, and a cost comparison against public cloud list prices with every source linked.
+
+- Live page: https://sjgant80-hub.github.io/fallfloor/
+- Source: https://github.com/sjgant80-hub/fallfloor
+- Pre-registration (committed before the first run): https://github.com/sjgant80-hub/fallfloor/blob/main/prereg.json
+- Changes after the pre-registration, with reasons: https://github.com/sjgant80-hub/fallfloor/blob/main/prereg-log.json
+- Cost sources: https://github.com/sjgant80-hub/fallfloor/blob/main/sources/costs.json
+
+## Facts
+
+- Machines in the measured run: one laptop (Intel Core i7-1255U, Iris Xe graphics, 16 GB). Each node was a separate Chrome process with its own profile, linked by real WebRTC data channels on that machine. No signalling server, no relay server, no cloud model.
+- Models: Qwen2.5-1.5B-Instruct (q4f16_1, Apache 2.0) at every station; Qwen2.5-3B-Instruct (q4f16_1, Qwen Research licence) as the one-model baseline only.
+- Data: Banking77 (CC BY 4.0), SMS Spam Collection v.1 (CC BY 4.0), CLINC150 (CC BY 3.0); 100 held-out items per department.
+
+## Results
+
+<!-- ⟦RESULTS-BEGIN⟧ generated from runs/latest.json by make-page.mjs — do not edit here -->
+The measured run has not been published yet.
+<!-- ⟦RESULTS-END⟧ -->
+
+Powered by the Konomi architecture, created by Thomas Frumkin.

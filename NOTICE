@@ -1,0 +1,22 @@
+fallfloor — a reference build by AI-Native Solutions. MIT licence (see LICENSE).
+Powered by the Konomi architecture, created by Thomas Frumkin.
+
+This is a reference build for a MODELLED company. It is not a real client. No client, name, quote or testimonial is used.
+
+Data (held-out items and examples are drawn from these public datasets; files in data/ are derived from them):
+  - Banking77 — PolyAI; Casanueva et al., 2020, "Efficient Intent Detection with Dual Sentence Encoders".
+    https://github.com/PolyAI-LDN/task-specific-datasets — licence CC BY 4.0 (sources/banking77-LICENSE.txt).
+  - SMS Spam Collection v.1 — Tiago A. Almeida and José María Gómez Hidalgo.
+    https://archive.ics.uci.edu/dataset/228/sms+spam+collection — licence CC BY 4.0 (sources/sms-spam-collection-readme.txt).
+  - CLINC150 — Larson et al., 2019, "An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction".
+    https://github.com/clinc/oos-eval — licence CC BY 3.0 (sources/clinc150-LICENSE.txt).
+  Changes: items were sampled with a published seed, re-labelled into the modelled company's teams (Banking77) and
+  its HR topics (CLINC150 "work" domain plus out-of-scope as "not_hr"). Nothing else was altered.
+
+Models and runtime (downloaded by the browser at run time, not redistributed here):
+  - Qwen2.5-1.5B-Instruct and Qwen2.5-3B-Instruct, q4f16_1 MLC builds (Qwen team, Alibaba Cloud) — Apache 2.0 and
+    the Qwen Research licence respectively; see each model card on Hugging Face (mlc-ai).
+  - WebLLM (@mlc-ai/web-llm 0.2.85) — Apache 2.0.
+
+Cost inputs are public list prices and published figures; each is linked with the date it was checked in
+sources/costs.json. They belong to their publishers.

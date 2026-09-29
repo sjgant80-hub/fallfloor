@@ -1,0 +1,33 @@
+name: gate
+# fallfloor proves itself on every push, on GitHub's runner: the kernel's contract holds, the mutation gate is CLEAN,
+# the live page runs that exact kernel and runtime (fixpoint), the page passes its own gate, and the committed run
+# re-verifies from its receipts alone (hashes, Ed25519 signatures, re-scored from the signed hops, pre-registration
+# byte-identical to the commit made before the run). No green is faked here.
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+
+      - name: the kernel's contract holds
+        run: node --test kernel.test.mjs
+
+      - name: the mutation gate is CLEAN (kernel.mjs is not test-theatre)
+        run: |
+          node tools/witness.mjs mutate kernel.mjs --timeout 30000 --cap 900 --test node --test kernel.test.mjs | tee gate.out || true
+          node -e "const b=require('fs').readFileSync('gate.out','utf8');const j=JSON.parse(b.slice(b.indexOf('{'),b.lastIndexOf('}')+1));if(j.clean!==true){console.error('GATE NOT CLEAN');process.exit(1)}console.log('CLEAN '+j.killed+'/'+j.total)"
+
+      - name: the live page IS the gated kernel and runtime (fixpoint)
+        run: |
+          node make-page.mjs
+          git diff --exit-code index.html README.md llms.txt
+
+      - name: the page passes its own gate (controls, links, CSS variables, scripts, pricing, credits, AI-GEO)
+        run: node tools/page-gate.mjs
+
+      - name: the committed run re-verifies from its receipts alone
+        run: node tools/verify-run.mjs

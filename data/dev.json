@@ -1,0 +1,856 @@
+{
+ "kind": "fallfloor-dev",
+ "seed": "fallfloor-2026-09-29|dev",
+ "note": "Development items for smoke tests and prompt writing. Never scored in the measured run. Disjoint from every held-out item and every example.",
+ "support": [
+  {
+   "id": "dev-sup-d31e5c3a7e",
+   "text": "How can I exchange USD and GBP in the app?",
+   "gold": {
+    "intent": "exchange_via_app",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-be141d2ab2",
+   "text": "Do you have a list of businesses that accept this card?",
+   "gold": {
+    "intent": "card_acceptance",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "dev-sup-c2dbfbd22d",
+   "text": "What currencies can I not hold many in, if so what are they?",
+   "gold": {
+    "intent": "fiat_currency_support",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-b0632a0623",
+   "text": "The ATM won't let me take out cash",
+   "gold": {
+    "intent": "declined_cash_withdrawal",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "dev-sup-f9f25805d3",
+   "text": "I was charged a fee for a transfer. Where did it come from?",
+   "gold": {
+    "intent": "transfer_fee_charged",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-d3b0f0014c",
+   "text": "Will you work with any fiat currencies?",
+   "gold": {
+    "intent": "fiat_currency_support",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-07486f0de4",
+   "text": "I'm having trouble with proving my identity.",
+   "gold": {
+    "intent": "unable_to_verify_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-3a42e5d3e5",
+   "text": "My card was not accepted in a shop",
+   "gold": {
+    "intent": "declined_card_payment",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "dev-sup-357c0e0d10",
+   "text": "Is there a charge for SEPA transfers?",
+   "gold": {
+    "intent": "top_up_by_bank_transfer_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-8aa8afaee8",
+   "text": "Please help me figure out the reason for the odd withdrawal amount from my account?",
+   "gold": {
+    "intent": "cash_withdrawal_not_recognised",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "dev-sup-d32a0ce4bd",
+   "text": "I sent you a cheque a few days ago and I noticed that nothing has happened yet. Can you tell me the status of my cheque please?",
+   "gold": {
+    "intent": "balance_not_updated_after_cheque_or_cash_deposit",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-6acc6d1171",
+   "text": "I moved, can I edit my personal details?",
+   "gold": {
+    "intent": "edit_personal_details",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-afe1ee1e7b",
+   "text": "Activate my card",
+   "gold": {
+    "intent": "activate_my_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-3b3225fe36",
+   "text": "What documents do I need to validate my identity?",
+   "gold": {
+    "intent": "verify_my_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-173bf67538",
+   "text": "At what age can my children use your service?",
+   "gold": {
+    "intent": "age_limit",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-fe749fdcd4",
+   "text": "do i need to add money before i order a card",
+   "gold": {
+    "intent": "order_physical_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-ed14802bf0",
+   "text": "I see a direct debit transaction that I didn't make.",
+   "gold": {
+    "intent": "direct_debit_payment_not_recognised",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "dev-sup-3615188a3c",
+   "text": "How can I tell if my top-up has been cancelled?",
+   "gold": {
+    "intent": "top_up_reverted",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-d7455ff4e1",
+   "text": "Where did my top-up go? I can't find it in my wallet",
+   "gold": {
+    "intent": "topping_up_by_card",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-0829ed4ba2",
+   "text": "Are there any disposable virtual cards?",
+   "gold": {
+    "intent": "get_disposable_virtual_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-1446b62f48",
+   "text": "On my app I can see that a direct debit payment that I didn't do, appears.",
+   "gold": {
+    "intent": "direct_debit_payment_not_recognised",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "dev-sup-16c9eb4bee",
+   "text": "I need help as fast as possible! I made a mistake on my most recent transfer; can you please stop it before it goes through?",
+   "gold": {
+    "intent": "cancel_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-a9773805ce",
+   "text": "I do not think the pop up went through yet.",
+   "gold": {
+    "intent": "pending_top_up",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-9ed5f71128",
+   "text": "i cannot seem to activate card",
+   "gold": {
+    "intent": "activate_my_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-bda989d2f6",
+   "text": "What is the reason my cash withdrawal is still pending?",
+   "gold": {
+    "intent": "pending_cash_withdrawal",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "dev-sup-668e2e3598",
+   "text": "Why would my transfer result in a decline message?",
+   "gold": {
+    "intent": "declined_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-cc81dc74c0",
+   "text": "My friend wants to send me money, can she?",
+   "gold": {
+    "intent": "receiving_money",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-7c89cbcf9e",
+   "text": "I tried to transfer some money and it hasn't done it yet - what's going on?",
+   "gold": {
+    "intent": "transfer_not_received_by_recipient",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-325b9b00d2",
+   "text": "How can I set a new pin.",
+   "gold": {
+    "intent": "change_pin",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "dev-sup-32d2e9b5ae",
+   "text": "What is the process for getting an actual physical card?",
+   "gold": {
+    "intent": "order_physical_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-7e81ea81cf",
+   "text": "Is there a Mastercard ATM nearby?",
+   "gold": {
+    "intent": "atm_support",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "dev-sup-ebedd6ef93",
+   "text": "Can you tell me where my readily available cash has come from?",
+   "gold": {
+    "intent": "verify_source_of_funds",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-caa4279289",
+   "text": "Can you tell me what i need for the identity check?",
+   "gold": {
+    "intent": "verify_my_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-7e40a0e40e",
+   "text": "Hello, I'm a brand new customer and tried topping up for the first time today. It has been pending for half an hour and doesn't seem to be working. Please resolve this.",
+   "gold": {
+    "intent": "pending_top_up",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "dev-sup-95315e0d8d",
+   "text": "I tried to transfer money but it didn't go through",
+   "gold": {
+    "intent": "failed_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "dev-sup-710320a22b",
+   "text": "Why does my identity need to be verified?",
+   "gold": {
+    "intent": "why_verify_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-e8044dbff7",
+   "text": "What is the source of your exchange rates?",
+   "gold": {
+    "intent": "exchange_rate",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "dev-sup-8379e59ffb",
+   "text": "I believe i was charged for making a withdrawal after i went grocery shopping. Are you guys charging for this now?",
+   "gold": {
+    "intent": "cash_withdrawal_charge",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "dev-sup-4930405179",
+   "text": "I'd like to provide my daughter with a card - could I get an additional card from my account to give her?",
+   "gold": {
+    "intent": "getting_spare_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "dev-sup-beb7d7f200",
+   "text": "why hasn't my cash arrived yet from my cheque?!",
+   "gold": {
+    "intent": "balance_not_updated_after_cheque_or_cash_deposit",
+    "team": "top_ups"
+   }
+  }
+ ],
+ "security": [
+  {
+   "id": "dev-sec-707b196f69",
+   "text": "Message:some text missing* Sender:Name Missing* *Number Missing *Sent:Date missing *Missing U a lot thats y everything is missing sent via fullonsms.com",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-da912f5592",
+   "text": "K go and sleep well. Take rest:-).",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-65404deab5",
+   "text": "Beautiful Truth against Gravity.. Read carefully: \"Our heart feels light when someone is in it.. But it feels very heavy when someone leaves it..\" GOODMORNING",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-e78403cbba",
+   "text": "What class of  &lt;#&gt;  reunion?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-c978bf95f1",
+   "text": "My friend, she's studying at warwick, we've planned to go shopping and to concert tmw, but it may be canceled, havn't seen  for ages, yeah we should get together sometime!",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-94d754f4bf",
+   "text": "You see the requirements please",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-a6c10a6632",
+   "text": "You do your studies alone without anyones help. If you cant no need to study.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-9da973858f",
+   "text": "Now u sound like manky scouse boy steve,like! I is travelling on da bus home.wot has u inmind 4 recreation dis eve?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-aede8df733",
+   "text": "Really dun bluff me leh... U sleep early too. Nite...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-f9af2dc660",
+   "text": "Never y lei... I v lazy... Got wat? Dat day ü send me da url cant work one...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-877220b9ea",
+   "text": "Hey darlin.. i can pick u up at college if u tell me wen & where 2 mt.. love Pete xx",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-39bee9b055",
+   "text": "Pls go there today  &lt;#&gt; . I dont want any excuses",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-dce48e21f5",
+   "text": "I'm leaving my house now...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-3a4751d7e3",
+   "text": "Cbe is really good nowadays:)lot of shop and showrooms:)city is shaping good.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-17da485726",
+   "text": "Haha awesome, I might need to take you up on that, what you doin tonight?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-c522cc7fce",
+   "text": "Then why no one talking to me",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-f846b812a7",
+   "text": "No dude, its not fake..my frnds got money, thts y i'm reffering u..if u member wit my mail link, u vl be credited  &lt;#&gt; rs and il be getiing  &lt;#&gt; rs..i can draw my acc wen it is  &lt;#&gt; rs..",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-bf656b4de2",
+   "text": "Thinkin about someone is all good. No drugs for that",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-7a120df4be",
+   "text": "I'm putting it on now. It should be ready for  &lt;TIME&gt;",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-817c9d1273",
+   "text": "Lol wtf random. Btw is that your lunch break",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-1bce63b557",
+   "text": "Ok lor then we go tog lor...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-44467b0df7",
+   "text": "So i could kiss and feel you next to me...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-971b9144b3",
+   "text": "You getting back any time soon?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-c1f182e35d",
+   "text": "No message..no responce..what happend?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-63bad01bfb",
+   "text": "Happy or sad , one thing about past is- \"Its no more\" GOOD MORNING :-):-).",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-bc1f7399e2",
+   "text": "I know you are serving. I mean what are you doing now.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-0cc36e1f81",
+   "text": "I think the other two still need to get cash but we can def be ready by 9",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-56b646f8d5",
+   "text": "Miles and smiles r made frm same letters but do u know d difference..? smile on ur face keeps me happy even though I am miles away from u.. :-)keep smiling.. Good nyt",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-bd7baa2f1d",
+   "text": "Yes. Nigh you cant aha.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-673311c89b",
+   "text": "Dont flatter yourself... Tell that man of mine two pints of carlin in ten minutes please....",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "dev-sec-ce4f2073b1",
+   "text": "More people are dogging in your area now. Call 09090204448 and join like minded guys. Why not arrange 1 yourself. There's 1 this evening. A£1.50 minAPN LS278BB",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-f3dce12a48",
+   "text": "Hello. We need some posh birds and chaps to user trial prods for champneys. Can i put you down? I need your address and dob asap. Ta r",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-21dc476e90",
+   "text": "Ever thought about living a good life with a perfect partner? Just txt back NAME and AGE to join the mobile community. (100p/SMS)",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-50979b9ba7",
+   "text": "CDs 4u: Congratulations ur awarded £500 of CD gift vouchers or £125 gift guaranteed & Freeentry 2 £100 wkly draw xt MUSIC to 87066 TnCs www.ldew.com1win150ppmx3age16",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-4f70730321",
+   "text": "This is the 2nd time we have tried 2 contact u. U have won the £750 Pound prize. 2 claim is easy, call 087187272008 NOW1! Only 10p per minute. BT-national-rate.",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-3a625f36bd",
+   "text": "Rock yr chik. Get 100's of filthy films &XXX pics on yr phone now. rply FILTH to 69669. Saristar Ltd, E14 9YT 08701752560. 450p per 5 days. Stop2 cancel",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-07e8c8a362",
+   "text": "**FREE MESSAGE**Thanks for using the Auction Subscription Service. 18 . 150p/MSGRCVD 2 Skip an Auction txt OUT. 2 Unsubscribe txt STOP CustomerCare 08718726270",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-630e7aa872",
+   "text": "Txt: CALL to No: 86888 & claim your reward of 3 hours talk time to use from your phone now! Subscribe6GBP/mnth inc 3hrs 16 stop?txtStop www.gamb.tv",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-ab6c81f29f",
+   "text": "Get 3 Lions England tone, reply lionm 4 mono or lionp 4 poly. 4 more go 2 www.ringtones.co.uk, the original n best. Tones 3GBP network operator rates apply.",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "dev-sec-8d8559ae3b",
+   "text": "Free entry to the gr8prizes wkly comp 4 a chance to win the latest Nokia 8800, PSP or £250 cash every wk.TXT GREAT to 80878 http//www.gr8prizes.com 08715705022",
+   "gold": {
+    "label": "spam"
+   }
+  }
+ ],
+ "hr": [
+  {
+   "id": "dev-hr-e8e1917545",
+   "text": "how many days have i used",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "dev-hr-8e934bbd33",
+   "text": "i would like to request pto for march 2 and 3",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "dev-hr-13e9e866ce",
+   "text": "what is the tax rate that applies to me",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-fd9b0386a3",
+   "text": "how much do i pay in taxes every year",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-cb8b76ae82",
+   "text": "what's the status on my vacation approval",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "dev-hr-edd00d4f06",
+   "text": "what was my income last year",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "dev-hr-e00ad87c11",
+   "text": "will my 401k rollover",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "dev-hr-30e7bc6756",
+   "text": "how many day off i have taken",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "dev-hr-f91b241503",
+   "text": "do you know my health benefits",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "dev-hr-15edf4f819",
+   "text": "how much am i being taxed",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-388b417733",
+   "text": "what's my income tax",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-18e4ca686f",
+   "text": "what are my health benefits like",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "dev-hr-c7641ef376",
+   "text": "i have a vacation request that i need made",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "dev-hr-f294d5e24e",
+   "text": "what's my total earnings",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "dev-hr-a26e9b3dc4",
+   "text": "how much is on my paycheck this week",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "dev-hr-0c45a9f406",
+   "text": "i need to change my insurance policy, how",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "dev-hr-9fc7634561",
+   "text": "do i have any meetings today between 9 and 10:15",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "dev-hr-7f40ce9359",
+   "text": "when's my next paycheck coming in",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "dev-hr-f625f572d6",
+   "text": "could my 401k be rolled over",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "dev-hr-a4c4e20f5b",
+   "text": "rolling over my 401k help",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "dev-hr-73971be884",
+   "text": "i'd like to know how changes are made to my insurance policy",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "dev-hr-3620bf17ac",
+   "text": "what's the status of my medical leave",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "dev-hr-f769f9f82c",
+   "text": "what insurance do i have",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "dev-hr-ed8f14d041",
+   "text": "can you please set up a meeting for 3:00 on wednesday",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "dev-hr-8ce1a140a7",
+   "text": "where can i get the form for my taxes",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "dev-hr-c588555d11",
+   "text": "what number of vacation days do i have available",
+   "gold": {
+    "label": "pto_balance"
+   }
+  },
+  {
+   "id": "dev-hr-86019e97df",
+   "text": "is dan aware of any meetings with me today",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "dev-hr-b9ff374b99",
+   "text": "what is my tax burden",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-769d6bbfce",
+   "text": "how much money a year do i spend in taxes",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "dev-hr-8f204acc4c",
+   "text": "what is the total day off have i taken",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "dev-hr-3916923bc4",
+   "text": "what dog breed sold the most in 2018",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "dev-hr-3f936a6604",
+   "text": "where do eggs come from",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "dev-hr-dff4cc8dd0",
+   "text": "what do geese eat",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "dev-hr-2727c044d9",
+   "text": "suo2",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "dev-hr-1042c32e53",
+   "text": "can you tell me how to compute price per ounce",
+   "gold": {
+    "label": "not_hr"
+   }
+  }
+ ]
+}

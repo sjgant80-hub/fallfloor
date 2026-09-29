@@ -1,2 +1,6 @@
 node_modules/
 *.log
+!runs/*/timeline.log
+!runs/*/nodes/*.log
+runs/smoke-*/
+runs/probe/
