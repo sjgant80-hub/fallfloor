@@ -19,10 +19,17 @@ const departments = ['support', 'security', 'hr'].map((j) => {
 const latest = existsSync(at('runs/latest.json')) ? json('runs/latest.json').run : null;
 const summary = latest ? json('runs/' + latest + '/summary.json') : null;
 const costs = json('sources/costs.json');
+// security taken apart, from the signed hops (outcomeFromHops) and the published gold labels — not from the desk's record
+let breakdown = null;
+if (summary && existsSync(at(summary.ledgerPath))) {
+  const gold = Object.fromEntries(json('data/security.json').heldOut.map((x) => [x.id, x.gold]));
+  const recs = json(summary.ledgerPath).items.filter((x) => x.key === 'security').map((x) => ({ item: x.item, gold: gold[x.item], out: K.outcomeFromHops('security', x.arm, x.hops).out }));
+  breakdown = { security: K.labelBreakdown(recs, 'spam') };
+}
 const data = {
   departments, prereg: json('prereg.json'),
   preregHash: createHash('sha256').update(readFileSync(at('prereg.json'))).digest('hex'),
-  preregCommit: json('prereg-commit.json'), preregLog: json('prereg-log.json'), costs, summary,
+  preregCommit: json('prereg-commit.json'), preregLog: json('prereg-log.json'), costs, summary, breakdown,
 };
 
 // ── the generated results block (markdown), shared by README.md and llms.txt ──
@@ -57,12 +64,17 @@ function resultsMarkdown(S) {
     const bits = [];
     if (c.chainVsBaseline) bits.push('chain vs one model ' + c.chainVsBaseline.diffPts + ' points (exact McNemar p = ' + p(c.chainVsBaseline.p) + ')');
     if (c.chainVsPool) bits.push('chain vs pool ' + c.chainVsPool.diffPts + ' points (p = ' + p(c.chainVsPool.p) + ')');
-    if (bits.length) { L.push(''); L.push('Paired on the same items: ' + bits.join('; ') + '. Under about 5 points is a tie.'); }
+    if (bits.length) { L.push(''); L.push('Paired on the same items: ' + bits.join('; ') + '. Under about 5 points is a tie; a p above 0.05 means the difference could be chance.'); }
+    if (A.chain && A.chain.silent >= 0.1) { L.push(''); L.push('**What that means:** ' + pct(A.chain.e2e) + ' correct end to end, with ' + pct(A.chain.silent) + ' of replies wrong but passing the gate. At this accuracy the support line is not good enough to answer customers on its own — every reply needs a person to check it. The plumbing held (nothing lost, every hop signed and verified); the small models are the limit.'); }
   }
   const J = S.jobs, jl = [];
   if (J.security) jl.push('security screening ' + pct(J.security.accuracy) + ' correct (' + J.security.completed + '/' + J.security.n + ' completed)');
   if (J.hr) jl.push('HR helpdesk ' + pct(J.hr.accuracy) + ' correct (' + J.hr.completed + '/' + J.hr.n + ' completed)');
   if (jl.length) { L.push(''); L.push('The rest of the company, on the pool: ' + jl.join('; ') + '.'); }
+  if (breakdown && breakdown.security.ok) {
+    const b = breakdown.security;
+    L.push(''); L.push('Security, taken apart: spam caught ' + b.caught + ' of ' + (b.caught + b.missed) + '; legitimate messages wrongly flagged ' + b.wronglyFlagged + ' of ' + (b.wronglyFlagged + b.correctlyPassed) + '. Answering "legit" every time would have scored ' + pct(b.majorityAccuracy) + ' on these items' + (S.jobs.security && S.jobs.security.accuracy < b.majorityAccuracy ? ' — so the small model\'s accuracy is below that bar: it over-flags.' : '.'));
+  }
   if (S.faults) {
     const u = S.faults.unplannedRestarts || [], lf = S.faults.gpuFaultsWhileLoading || [];
     L.push(''); L.push('What went wrong on the hardware: ' + u.length + ' unplanned node restart' + (u.length === 1 ? '' : 's') + ' during the work' + (u.length ? ' (' + u.map((x) => x.node + ' in the ' + x.arm).join('; ') + ')' : '') + '; ' + lf.length + ' GPU fault' + (lf.length === 1 ? '' : 's') + ' while a model was loading; Windows standby entries during the run: ' + (S.faults.standbyEntriesDuringRun ?? 'not read') + '.');
@@ -79,6 +91,7 @@ function resultsMarkdown(S) {
       L.push('| These laptops (already owned) — electricity only | ' + gbp(m.local.gbpLow) + ' – ' + gbp(m.local.gbpHigh) + ' | ' + m.local.laptopHours + ' laptop-GPU hours × ' + costs.power.wattsLow + '–' + costs.power.wattsHigh + ' W (estimate, [Intel](' + costs.power.source + ')) × ' + costs.electricity.pencePerKwh + 'p/kWh ([Ofgem](' + costs.electricity.source + ')) |');
       for (const c of m.cloud) { const p = costs.prices.find((x) => x.id === c.id); L.push('| ' + p.provider + ' · ' + p.model + ' | ' + gbp(c.gbpPerMonth) + ' | [list price](' + p.source + '), checked ' + p.checked + ' |'); }
       L.push(''); L.push('Tokens are measured with the local model\'s tokenizer; cloud tokenizers differ, so cloud figures are approximate. FX ' + costs.fx.gbpPerUsd + ' GBP/USD ([ECB](' + costs.fx.source + ')).');
+      L.push(''); L.push('**This prices the same tokens, not the same quality.** No cloud model was run here; a larger cloud model would very likely answer more of these items correctly. The local figure is electricity only — the laptops are already owned, and their time is the real cost: at these volumes the work needs about ' + Math.round(m.local.laptopHours) + ' laptop-GPU hours a month, about ' + (Math.round(m.local.laptopHours / 168 * 10) / 10) + ' laptops\' worth of office hours (8 h × 21 days) on laptops like this one.');
     }
   }
   return L.join('\n');

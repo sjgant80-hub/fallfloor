@@ -1,0 +1,475 @@
+{
+ "v": 1,
+ "kind": "fallfloor-summary",
+ "run": "floor-2026-09-29",
+ "started": "2026-09-29T12:44:34.590Z",
+ "finished": "2026-09-29T16:22:09.783Z",
+ "machine": "ONE laptop: intel gen-12lp GPU (WebGPU), 12 logical cores. Each node was its own headless Chrome process with its own profile, linked by real WebRTC data channels on this machine; the harness carried the signalling codes between them as a person would paste them. No signalling server, no relay server, no cloud model.",
+ "env": {
+  "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+  "gpu": {
+   "vendor": "intel",
+   "architecture": "gen-12lp"
+  },
+  "cores": 12,
+  "memoryGB": 16
+ },
+ "nodes": [
+  {
+   "name": "desk",
+   "role": "desk — dispatch and ledger, no model",
+   "pub": "7b9228a4f4a36e22040bbd7109c650c4c16020c30de49c01be81edd8c6f1c3ea",
+   "model": null,
+   "coldStartSec": null,
+   "downloadMB": null
+  },
+  {
+   "name": "n1",
+   "role": "station: route (chain) · whole line (pool)",
+   "pub": "f54432fb19948f57f38c0c03dfa70b6c8c0dbce51c356af766a47b88d0c5e4ee",
+   "model": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
+   "coldStartSec": 122.6,
+   "restartSec": null,
+   "downloadMB": 828,
+   "loadSec": 121.3
+  },
+  {
+   "name": "n2",
+   "role": "station: intent (chain) · whole line (pool) · killed and restarted",
+   "pub": "cdd989e99d42139513d28e2096f79c58b371a7affc1e4c87f81c4f693e28fdd4",
+   "model": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
+   "coldStartSec": 114.8,
+   "restartSec": 36.3,
+   "downloadMB": 828,
+   "loadSec": 113.1
+  },
+  {
+   "name": "n3",
+   "role": "station: reply (chain) · whole line (pool)",
+   "pub": "3840a0b49af8936677742c221f038e5e8385d276f2b86ea22b493289a2733247",
+   "model": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
+   "coldStartSec": 116.1,
+   "restartSec": null,
+   "downloadMB": 828,
+   "loadSec": 114
+  },
+  {
+   "name": "n4",
+   "role": "one-model baseline",
+   "pub": "5d2042c3594571d1a078e464a8087660e9e3e896758fb6ef35cb2452fcec8d89",
+   "model": "Qwen2.5-3B-Instruct-q4f16_1-MLC",
+   "coldStartSec": 234.4,
+   "restartSec": null,
+   "downloadMB": 1656,
+   "loadSec": 232.2
+  }
+ ],
+ "events": [
+  {
+   "at": "2026-09-29T12:44:34.590Z",
+   "t": 0,
+   "what": "run floor-2026-09-29 — one laptop; each node is its own headless Chrome process with its own profile"
+  },
+  {
+   "at": "2026-09-29T12:46:38.468Z",
+   "t": 124,
+   "what": "n1 loaded Qwen2.5-1.5B-Instruct-q4f16_1-MLC — first answer 122.6 s after launch (downloaded 828 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T12:48:33.256Z",
+   "t": 239,
+   "what": "n2 loaded Qwen2.5-1.5B-Instruct-q4f16_1-MLC — first answer 114.8 s after launch (downloaded 828 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T12:50:29.323Z",
+   "t": 355,
+   "what": "n3 loaded Qwen2.5-1.5B-Instruct-q4f16_1-MLC — first answer 116.1 s after launch (downloaded 828 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T12:50:34.721Z",
+   "t": 360,
+   "what": "mesh up: desk↔n1, desk↔n2, desk↔n3, n1↔n2, n2↔n3 (WebRTC data channels)"
+  },
+  {
+   "at": "2026-09-29T12:50:34.721Z",
+   "t": 360,
+   "what": "security screening on the pool"
+  },
+  {
+   "at": "2026-09-29T12:58:13.180Z",
+   "t": 819,
+   "what": "security done: 100/100, accuracy 0.82"
+  },
+  {
+   "at": "2026-09-29T12:58:13.181Z",
+   "t": 819,
+   "what": "HR helpdesk on the pool"
+  },
+  {
+   "at": "2026-09-29T13:06:29.907Z",
+   "t": 1315,
+   "what": "HR done: 100/100, accuracy 0.85"
+  },
+  {
+   "at": "2026-09-29T13:06:29.908Z",
+   "t": 1315,
+   "what": "support as a CHAIN: n1 route → n2 intent → n3 reply"
+  },
+  {
+   "at": "2026-09-29T13:18:35.064Z",
+   "t": 2040,
+   "what": "KILL: closing n2 (its browser process) after 40 results in the chain"
+  },
+  {
+   "at": "2026-09-29T13:19:36.242Z",
+   "t": 2102,
+   "what": "RESTART: relaunching n2 with the same profile"
+  },
+  {
+   "at": "2026-09-29T13:19:47.174Z",
+   "t": 2113,
+   "what": "n2 loaded Qwen2.5-1.5B-Instruct-q4f16_1-MLC — first answer 10.9 s after launch (downloaded 0 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T13:19:49.159Z",
+   "t": 2115,
+   "what": "n2 re-joined: re-linked to desk, n1, n3 by pasting codes again"
+  },
+  {
+   "at": "2026-09-29T13:36:36.543Z",
+   "t": 3122,
+   "what": "chain done: 100/100, e2e 0.39"
+  },
+  {
+   "at": "2026-09-29T13:36:36.544Z",
+   "t": 3122,
+   "what": "support as a POOL: each node runs the whole line on its share"
+  },
+  {
+   "at": "2026-09-29T13:48:39.407Z",
+   "t": 3845,
+   "what": "KILL: closing n2 (its browser process) after 40 results in the pool"
+  },
+  {
+   "at": "2026-09-29T13:49:39.968Z",
+   "t": 3905,
+   "what": "RESTART: relaunching n2 with the same profile"
+  },
+  {
+   "at": "2026-09-29T13:50:16.288Z",
+   "t": 3942,
+   "what": "n2 loaded Qwen2.5-1.5B-Instruct-q4f16_1-MLC — first answer 36.3 s after launch (downloaded 0 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T13:50:18.924Z",
+   "t": 3944,
+   "what": "n2 re-joined: re-linked to desk, n1, n3 by pasting codes again"
+  },
+  {
+   "at": "2026-09-29T14:05:52.381Z",
+   "t": 4878,
+   "what": "pool done: 100/100, e2e 0.39"
+  },
+  {
+   "at": "2026-09-29T14:05:53.799Z",
+   "t": 4879,
+   "what": "closed n1–n3 to free the GPU for the baseline model"
+  },
+  {
+   "at": "2026-09-29T14:09:48.244Z",
+   "t": 5114,
+   "what": "n4 loaded Qwen2.5-3B-Instruct-q4f16_1-MLC — first answer 234.4 s after launch (downloaded 1656 MB this launch)"
+  },
+  {
+   "at": "2026-09-29T14:09:49.544Z",
+   "t": 5115,
+   "what": "support on the ONE-MODEL BASELINE: n4, Qwen2.5-3B-Instruct-q4f16_1-MLC, one prompt per item"
+  },
+  {
+   "at": "2026-09-29T16:22:09.034Z",
+   "t": 13054,
+   "what": "baseline done: 100/100, e2e 0.32"
+  }
+ ],
+ "arms": {
+  "chain": {
+   "ok": true,
+   "job": "support",
+   "n": 100,
+   "completed": 100,
+   "lost": 0,
+   "duplicates": 0,
+   "extra": 0,
+   "latencyMs": {
+    "p50": 52521,
+    "p95": 61962,
+    "max": 132976
+   },
+   "throughputPerMin": 3.322,
+   "perItem": {
+    "promptTokens": 830.62,
+    "completionTokens": 73.01,
+    "gpuSeconds": 38.061
+   },
+   "e2e": 0.39,
+   "teamAcc": 0.69,
+   "intentAcc": 0.45,
+   "replyPass": 0.91,
+   "caught": 0.09,
+   "silent": 0.52,
+   "maxGapSec": 80.6,
+   "rejected": 0,
+   "duplicatesDropped": 0
+  },
+  "pool": {
+   "ok": true,
+   "job": "support",
+   "n": 100,
+   "completed": 100,
+   "lost": 0,
+   "duplicates": 0,
+   "extra": 0,
+   "latencyMs": {
+    "p50": 51297,
+    "p95": 64638,
+    "max": 93281
+   },
+   "throughputPerMin": 3.418,
+   "perItem": {
+    "promptTokens": 830.62,
+    "completionTokens": 73.01,
+    "gpuSeconds": 50.455
+   },
+   "e2e": 0.39,
+   "teamAcc": 0.69,
+   "intentAcc": 0.45,
+   "replyPass": 0.91,
+   "caught": 0.09,
+   "silent": 0.52,
+   "maxGapSec": 50,
+   "rejected": 0,
+   "duplicatesDropped": 1
+  },
+  "baseline": {
+   "ok": true,
+   "job": "support",
+   "n": 100,
+   "completed": 100,
+   "lost": 0,
+   "duplicates": 0,
+   "extra": 0,
+   "latencyMs": {
+    "p50": 237841,
+    "p95": 248251,
+    "max": 253489
+   },
+   "throughputPerMin": 0.756,
+   "perItem": {
+    "promptTokens": 2484.96,
+    "completionTokens": 35.18,
+    "gpuSeconds": 79.388
+   },
+   "e2e": 0.32,
+   "teamAcc": 0.78,
+   "intentAcc": 0.4,
+   "replyPass": 0.5,
+   "caught": 0.5,
+   "silent": 0.18,
+   "maxGapSec": 86.9,
+   "rejected": 0,
+   "duplicatesDropped": 0
+  }
+ },
+ "jobs": {
+  "security": {
+   "ok": true,
+   "job": "security",
+   "n": 100,
+   "completed": 100,
+   "lost": 0,
+   "duplicates": 0,
+   "extra": 0,
+   "latencyMs": {
+    "p50": 13518,
+    "p95": 14512,
+    "max": 16361
+   },
+   "throughputPerMin": 13.091,
+   "perItem": {
+    "promptTokens": 359.77,
+    "completionTokens": 6,
+    "gpuSeconds": 13.545
+   },
+   "accuracy": 0.82,
+   "maxGapSec": 13.6,
+   "rejected": 0,
+   "duplicatesDropped": 0
+  },
+  "hr": {
+   "ok": true,
+   "job": "hr",
+   "n": 100,
+   "completed": 100,
+   "lost": 0,
+   "duplicates": 0,
+   "extra": 0,
+   "latencyMs": {
+    "p50": 14503,
+    "p95": 16288,
+    "max": 17568
+   },
+   "throughputPerMin": 12.083,
+   "perItem": {
+    "promptTokens": 370.39,
+    "completionTokens": 8.56,
+    "gpuSeconds": 14.677
+   },
+   "accuracy": 0.85,
+   "maxGapSec": 15.5,
+   "rejected": 0,
+   "duplicatesDropped": 0
+  }
+ },
+ "compare": {
+  "chainVsBaseline": {
+   "ok": true,
+   "both": 18,
+   "onlyA": 21,
+   "onlyB": 14,
+   "neither": 47,
+   "diffPts": 7,
+   "p": 0.31050465907901525
+  },
+  "chainVsPool": {
+   "ok": true,
+   "both": 39,
+   "onlyA": 0,
+   "onlyB": 0,
+   "neither": 61,
+   "diffPts": 0,
+   "p": 1
+  }
+ },
+ "costPerItem": {
+  "support": {
+   "promptTokens": 830.62,
+   "completionTokens": 73.01,
+   "gpuSeconds": 18.063,
+   "how": "tokens measured per item; laptop seconds per item = the whole chain run's wall time ÷ items (the GPU is shared and busy throughout)"
+  },
+  "security": {
+   "promptTokens": 359.77,
+   "completionTokens": 6,
+   "gpuSeconds": 4.583,
+   "how": "tokens measured per item; laptop seconds per item = the whole security run's wall time ÷ items (the GPU is shared and busy throughout)"
+  },
+  "hr": {
+   "promptTokens": 370.39,
+   "completionTokens": 8.56,
+   "gpuSeconds": 4.966,
+   "how": "tokens measured per item; laptop seconds per item = the whole hr run's wall time ÷ items (the GPU is shared and busy throughout)"
+  }
+ },
+ "ledgerPath": "runs/floor-2026-09-29/ledger.json",
+ "ledgerHash": "aec73531c3a0ec4099a845038436e38c8bbf64aa370b2bb71453edfc9a17f5c0",
+ "hops": 898,
+ "preregHash": "44410fff5c41dc4c833b2f0e1e1458b8bbc53ebc744abb32f15928d8fc30b242",
+ "limit": null,
+ "reusedProfiles": false,
+ "only": null,
+ "set": "heldOut",
+ "faults": {
+  "unplannedRestarts": [],
+  "gpuFaultsWhileLoading": [],
+  "standbyEntriesDuringRun": 0,
+  "nodeCounters": {
+   "n2": {
+    "hops": 261,
+    "relayed": 0,
+    "rejected": 0,
+    "errors": 0,
+    "resent": 0,
+    "reloads": 0
+   },
+   "n1": {
+    "hops": 271,
+    "relayed": 0,
+    "rejected": 0,
+    "errors": 0,
+    "resent": 0,
+    "reloads": 0
+   },
+   "n3": {
+    "hops": 269,
+    "relayed": 2,
+    "rejected": 0,
+    "errors": 0,
+    "resent": 0,
+    "reloads": 0
+   },
+   "desk": {
+    "hops": 0,
+    "relayed": 2,
+    "rejected": 0,
+    "errors": 0,
+    "resent": 0,
+    "reloads": 0
+   },
+   "n4": {
+    "hops": 100,
+    "relayed": 0,
+    "rejected": 0,
+    "errors": 0,
+    "resent": 0,
+    "reloads": 0
+   }
+  },
+  "note": "A browser process that loses its GPU (the driver reports the device removed) cannot use it again; the harness relaunches it with the same profile, and its unfinished work resumes from its own storage. Every such restart is listed here and in the timeline."
+ },
+ "prereg": {
+  "ok": true,
+  "rules": [
+   {
+    "id": "capability",
+    "rule": "chain end-to-end ≥ baseline − 5 points (same items)",
+    "value": 7,
+    "pass": true
+   },
+   {
+    "id": "no-loss",
+    "rule": "no item lost and no item accepted twice, in either kill test",
+    "value": {
+     "chainLost": 0,
+     "poolLost": 0,
+     "chainDup": 0,
+     "poolDup": 0
+    },
+    "pass": true
+   },
+   {
+    "id": "latency",
+    "rule": "chain p95 ≤ 60 s per item",
+    "value": 61.962,
+    "pass": false
+   },
+   {
+    "id": "chain-shape",
+    "rule": "the chain beats the pool by ≥ 5 points, or loses less, or stalls less, when a node dies",
+    "value": {
+     "diffPts": 0,
+     "chainStallSec": 80.6,
+     "poolStallSec": 50
+    },
+    "pass": false
+   },
+   {
+    "id": "cold-start",
+    "rule": "every node gives its first answer within 600 s of starting, model download included",
+    "value": 234.4,
+    "pass": true
+   }
+  ],
+  "passed": 3,
+  "of": 5
+ }
+}

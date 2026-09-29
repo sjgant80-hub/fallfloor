@@ -77,7 +77,7 @@ for (const it of ledger.items) {
   check(eq(tokens, it.record.tokens), it.key + '/' + it.item + ': token counts do not match the hops');
   (rebuilt[it.key] ||= []).push({ item: it.item, gold: gold[it.item], out, startMs: it.record.startMs, endMs: it.record.endMs, tokens, gpuMs: it.hops.reduce((a, h) => a + h.ms, 0) });
 }
-say('hops: ' + hopsSeen + ' re-hashed and linked, ' + signed + ' Ed25519 signatures verified against ' + keys.size + ' node keys');
+say('hops: ' + hopsSeen + ' checked (hash, link, owner) · ' + signed + ' Ed25519 signatures verified against ' + keys.size + ' node keys');
 
 // re-score from the rebuilt records and compare with the committed summary
 const FIELDS = ['n', 'completed', 'lost', 'duplicates', 'extra', 'latencyMs', 'throughputPerMin', 'perItem', 'e2e', 'teamAcc', 'intentAcc', 'replyPass', 'caught', 'silent', 'accuracy'];

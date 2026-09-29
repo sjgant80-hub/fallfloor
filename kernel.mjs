@@ -483,6 +483,23 @@ export function scoreRun(records, expected, job = 'support') {
   return out;
 }
 
+/** labelBreakdown(records, positive) — a two-way job, taken apart: positives caught, positives missed, negatives
+ *  wrongly flagged, and what answering the majority label every time would have scored — the bar a model must beat
+ *  before its accuracy means anything. One record per item (the first); records without a gold label are skipped. */
+export function labelBreakdown(records, positive) {
+  if (!Array.isArray(records) || !isStr(positive)) return { ok: false, why: 'labelBreakdown(records, positiveLabel)' };
+  let tp = 0, fp = 0, fn = 0, tn = 0;
+  const seen = new Set();
+  for (const r of records) {
+    if (!isObj(r) || !isObj(r.gold) || !isStr(r.gold.label) || seen.has(r.item)) continue;
+    seen.add(r.item);
+    const g = r.gold.label === positive, p = isObj(r.out) && r.out.label === positive;
+    if (g && p) tp++; else if (g) fn++; else if (p) fp++; else tn++;
+  }
+  const n = tp + fp + fn + tn, pos = tp + fn;
+  return { ok: true, n, caught: tp, missed: fn, wronglyFlagged: fp, correctlyPassed: tn, majorityAccuracy: n ? r3(Math.max(pos, n - pos) / n) : null };
+}
+
 /** pairedCompare(recA, recB, expected) — the same items, two arms: how many A got right that B did not, and back. */
 export function pairedCompare(recA, recB, expected) {
   if (!Array.isArray(recA) || !Array.isArray(recB) || !Array.isArray(expected)) return { ok: false, why: 'pairedCompare(recordsA, recordsB, expected)' };

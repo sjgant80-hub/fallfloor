@@ -17,7 +17,64 @@
 ## Results
 
 <!-- ⟦RESULTS-BEGIN⟧ generated from runs/latest.json by make-page.mjs — do not edit here -->
-The measured run has not been published yet.
+Run `floor-2026-09-29` · 2026-09-29T12:44:34.590Z → 2026-09-29T16:22:09.783Z · 898 signed hops · ledger sha256 `aec73531c3a0ec4099a845038436e38c8bbf64aa370b2bb71453edfc9a17f5c0`
+
+**Machines: ONE laptop: intel gen-12lp GPU (WebGPU), 12 logical cores. Each node was its own headless Chrome process with its own profile, linked by real WebRTC data channels on this machine; the harness carried the signalling codes between them as a person would paste them. No signalling server, no relay server, no cloud model.**
+
+**Pre-registered rules: 3 of 5 passed.**
+
+| Rule | Measured | Verdict |
+|---|---|---|
+| capability — chain end-to-end ≥ baseline − 5 points (same items) | 7 | PASS |
+| no-loss — no item lost and no item accepted twice, in either kill test | `{"chainLost":0,"poolLost":0,"chainDup":0,"poolDup":0}` | PASS |
+| latency — chain p95 ≤ 60 s per item | 61.962 | FAIL |
+| chain-shape — the chain beats the pool by ≥ 5 points, or loses less, or stalls less, when a node dies | `{"diffPts":0,"chainStallSec":80.6,"poolStallSec":50}` | FAIL |
+| cold-start — every node gives its first answer within 600 s of starting, model download included | 234.4 | PASS |
+
+Customer support — the same 100 held-out items:
+
+| | Chain | Pool | One model (3B) |
+|---|---|---|---|
+| Correct end to end | 39% | 39% | 32% |
+| Right team | 69% | 69% | 78% |
+| Right topic | 45% | 45% | 40% |
+| Reply passed the gate | 91% | 91% | 50% |
+| Caught (went to a person) | 9% | 9% | 50% |
+| Silent errors (wrong, and sent) | 52% | 52% | 18% |
+| Time per item p50 / p95 | 52.5 s / 62 s | 51.3 s / 64.6 s | 237.8 s / 248.3 s |
+| Items per minute | 3.322 | 3.418 | 0.756 |
+| Lost / accepted twice | 0 / 0 | 0 / 0 | 0 / 0 |
+| Duplicate deliveries dropped | 0 | 1 | 0 |
+| Longest gap between answers | 80.6 s | 50 s | 86.9 s |
+| Tokens per item (in / out) | 830.62 / 73.01 | 830.62 / 73.01 | 2484.96 / 35.18 |
+
+Paired on the same items: chain vs one model 7 points (exact McNemar p = 0.311); chain vs pool 0 points (p = 1). Under about 5 points is a tie; a p above 0.05 means the difference could be chance.
+
+**What that means:** 39% correct end to end, with 52% of replies wrong but passing the gate. At this accuracy the support line is not good enough to answer customers on its own — every reply needs a person to check it. The plumbing held (nothing lost, every hop signed and verified); the small models are the limit.
+
+The rest of the company, on the pool: security screening 82% correct (100/100 completed); HR helpdesk 85% correct (100/100 completed).
+
+Security, taken apart: spam caught 8 of 8; legitimate messages wrongly flagged 18 of 92. Answering "legit" every time would have scored 92% on these items — so the small model's accuracy is below that bar: it over-flags.
+
+What went wrong on the hardware: 0 unplanned node restarts during the work; 0 GPU faults while a model was loading; Windows standby entries during the run: 0.
+
+Cold starts (browser launch → first answer, model download included): n1 122.6 s (828 MB downloaded), n2 114.8 s (828 MB downloaded), n3 116.1 s (828 MB downloaded), n4 234.4 s (1656 MB downloaded).
+
+Cost of one month at the **modelled** volumes (support 15,000, security 40,000, hr 2,000 items — assumptions, change them on the page):
+
+| The same month of work, sent to… | Per month | Source |
+|---|---|---|
+| These laptops (already owned) — electricity only | £0.51 – £1.87 | 128.944 laptop-GPU hours × 15–55 W (estimate, [Intel](https://www.intel.com/content/www/us/en/products/sku/226259/intel-core-i71255u-processor-12m-cache-up-to-4-70-ghz/specifications.html)) × 26.32p/kWh ([Ofgem](https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges)) |
+| OpenAI · gpt-5-nano | £1.45 | [list price](https://developers.openai.com/api/docs/pricing), checked 2026-09-29 |
+| OpenAI · gpt-4o-mini | £3.73 | [list price](https://developers.openai.com/api/docs/pricing), checked 2026-09-29 |
+| OpenAI · gpt-5-mini | £7.24 | [list price](https://developers.openai.com/api/docs/pricing), checked 2026-09-29 |
+| Google · Gemini 3.1 Flash-Lite | £6.73 | [list price](https://ai.google.dev/gemini-api/docs/pricing), checked 2026-09-29 |
+| Anthropic · Claude Haiku 4.5 | £25.90 | [list price](https://platform.claude.com/docs/en/about-claude/pricing), checked 2026-09-29 |
+| Anthropic · Claude Sonnet 5 | £51.80 | [list price](https://platform.claude.com/docs/en/about-claude/pricing), checked 2026-09-29 |
+
+Tokens are measured with the local model's tokenizer; cloud tokenizers differ, so cloud figures are approximate. FX 0.75396 GBP/USD ([ECB](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml)).
+
+**This prices the same tokens, not the same quality.** No cloud model was run here; a larger cloud model would very likely answer more of these items correctly. The local figure is electricity only — the laptops are already owned, and their time is the real cost: at these volumes the work needs about 129 laptop-GPU hours a month, about 0.8 laptops' worth of office hours (8 h × 21 days) on laptops like this one.
 <!-- ⟦RESULTS-END⟧ -->
 
 Powered by the Konomi architecture, created by Thomas Frumkin.

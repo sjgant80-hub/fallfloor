@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   sha256, canon, JOBS, ARMS, STATIONS, NONE, NOT_HR, SECURITY_LABELS, TEAMS, TEAM_IDS, ALL_INTENTS, HR_INTENTS,
-  teamOf, articleCode, humanize, seededOrder, buildPrompt, parseLabel, parseBaseline, checkReply, gradeSupport, gradeLabel, outcomeFromHops, readStation,
+  teamOf, articleCode, humanize, seededOrder, buildPrompt, parseLabel, parseBaseline, checkReply, gradeSupport, gradeLabel, outcomeFromHops, readStation, labelBreakdown,
   START, hopReceipt, hopSignable, verifyHop, verifyChain, MSG_TYPES, MAX_MSG_BYTES, validEnvelope, routeFor, reassign,
   percentile, exactMcNemar, scoreRun, pairedCompare, evaluatePrereg, costModel,
 } from './kernel.mjs';
@@ -408,6 +408,16 @@ test('scoreRun: accuracy, caught vs silent, lost, duplicates, latency and throug
   assert.equal(scoreRun([], [5]).ok, false);
   assert.equal(scoreRun([], 'a').ok, false);
   assert.equal(scoreRun([], [], 'x').ok, false);
+});
+
+test('labelBreakdown: caught, missed, wrongly flagged — and the majority-label bar', () => {
+  const r = (item, g, o) => ({ item, gold: { label: g }, out: o === undefined ? null : { label: o } });
+  const recs = [r('a', 'spam', 'spam'), r('b', 'spam', 'legit'), r('c', 'legit', 'spam'), r('d', 'legit', 'legit'), r('e', 'legit', 'legit'), r('f', 'legit'), r('a', 'spam', 'legit'), { item: 'g', gold: {} }, null, { item: 'h', gold: { label: 'spam' }, out: 'spam' }];
+  assert.deepEqual(labelBreakdown(recs, 'spam'), { ok: true, n: 7, caught: 1, missed: 2, wronglyFlagged: 1, correctlyPassed: 3, majorityAccuracy: 0.571 });
+  assert.deepEqual(labelBreakdown([r('a', 'spam', 'spam'), r('b', 'spam', 'spam'), r('c', 'legit', 'spam')], 'spam').majorityAccuracy, 0.667);
+  assert.deepEqual(labelBreakdown([], 'spam'), { ok: true, n: 0, caught: 0, missed: 0, wronglyFlagged: 0, correctlyPassed: 0, majorityAccuracy: null });
+  assert.equal(labelBreakdown('x', 'spam').ok, false);
+  assert.equal(labelBreakdown([], 5).ok, false);
 });
 
 test('pairedCompare: the same items, both arms, with the exact test', () => {
