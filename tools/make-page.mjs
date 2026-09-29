@@ -4,7 +4,7 @@
 // generated from the same summary, so no number is typed by hand. CI regenerates all three and fails if any differs.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-const at = (f) => new URL('./' + f, import.meta.url);
+const at = (f) => new URL('../' + f, import.meta.url);
 const read = (f) => readFileSync(at(f), 'utf8').replace(/\r\n/g, '\n');
 const json = (f) => JSON.parse(read(f));
 const K = await import(at('kernel.mjs').href);
@@ -29,7 +29,7 @@ if (summary && existsSync(at(summary.ledgerPath))) {
 const data = {
   departments, prereg: json('prereg.json'),
   preregHash: createHash('sha256').update(readFileSync(at('prereg.json'))).digest('hex'),
-  preregCommit: json('prereg-commit.json'), preregLog: json('prereg-log.json'), costs, summary, breakdown,
+  preregCommit: json('prereg-commit.json'), preregLog: json('prereg-log.json'), why: json('sources/why.json'), costs, summary, breakdown,
 };
 
 // ── the generated results block (markdown), shared by README.md and llms.txt ──

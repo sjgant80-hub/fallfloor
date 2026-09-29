@@ -53,12 +53,16 @@ for (const f of ['index.html', 'README.md', 'llms.txt']) if (existsSync(join(roo
 // 7 · no own-product pricing: the static page names no money amounts at all; the third-party prices it renders come
 //     from sources/costs.json, where every one carries an https source and the date it was checked
 check(!/[£$€]\s?\d/.test(text), 'the static page shows a money amount (own-product pricing is never shown; third-party prices come from sources/costs.json)');
-check(!/\b(pricing|per seat|\/mo\b|subscribe|buy now|free trial)/i.test(text), 'the static page reads like a price list');
+// 'per seat' is allowed: the page describes how the corporate model is sold; it never offers a price of its own
+check(!/\b(pricing|\/mo\b|subscribe|buy now|free trial)/i.test(text), 'the static page reads like a price list');
 const costs = JSON.parse(read('sources/costs.json'));
 for (const p of costs.prices) check(/^https:\/\//.test(p.source) && /^\d{4}-\d{2}-\d{2}$/.test(p.checked), 'price ' + p.id + ' lacks an https source or a checked date');
 for (const k of ['fx', 'power', 'electricity']) check(/^https:\/\//.test(costs[k].source) && costs[k].checked, 'cost input ' + k + ' lacks a source or date');
 check(/ESTIMATE/.test(costs.power.how), 'the wattage must be labelled an estimate');
 check(/MODELLED ASSUMPTIONS/.test(costs.volumes.how), 'the volumes must be labelled modelled assumptions');
+const why = JSON.parse(read('sources/why.json'));
+for (const x of [...why.removes, ...why.stays]) check(/^https:\/\//.test(x.url) && typeof x.ref === 'string' && x.ref.length > 3, 'why: every claim cites its primary text (' + x.what.slice(0, 40) + ')');
+check(/^\d{4}-\d{2}-\d{2}$/.test(why.checked), 'why: the date the law was checked');
 // 8 · credits and the honest framing
 check(html.includes('Powered by the Konomi architecture, created by Thomas Frumkin'), 'the Konomi credit is missing or not verbatim');
 check(/Not a real client/.test(markup), 'the page must say it is not a real client');

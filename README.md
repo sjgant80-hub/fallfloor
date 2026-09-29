@@ -2,6 +2,12 @@
 
 **Live page: https://sjgant80-hub.github.io/fallfloor/** — the results, every signed receipt (with a "verify the ledger" button that re-checks them in your browser), the cost comparison with its sources, and a node console to join from your own machine.
 
+**The full enterprise case — local-first vs the corporate model, costed over five years (seats, APIs, hardware, power, people, compliance) and mapped to GDPR, UK GDPR and the EU AI Act: https://sjgant80-hub.github.io/fallfloor-enterprise/** — this repository is the measured evidence it stands on.
+
+## Why local-first
+
+The corporate model rents AI per seat and per token from a vendor's cloud: prompts leave the building, the vendor becomes a processor, and the bill grows with headcount. Run on the company's own machines, **for inference there is no AI processor** (GDPR / UK GDPR Art 28) and **no international transfer** to assess (Chapter V; the UK rules as amended by the Data (Use and Access) Act 2025, in force 5 February 2026), prompts and answers never leave (Art 25), and every step is a signed receipt the company holds (Art 5(2)). What stays with the company on any stack: a lawful basis (Art 6), a DPIA (Art 35 — the ICO lists AI as innovative technology), accuracy (Art 5(1)(d) — this run shows why that matters), security (Art 32), safeguards for significant automated decisions (EU Art 22; UK Arts 22A–22D), and under the EU AI Act the provider duties for systems it builds (Art 3(3), 3(11)): Article 50 transparency since 2 August 2026, AI literacy since 2 February 2025, and high-risk duties from 2 December 2027 after the Digital Omnibus (Regulation (EU) 2026/1744). Every line is sourced in [`sources/why.json`](sources/why.json), checked 2026-09-29.
+
 A **reference build** for a **modelled** digital bank. It is not a real client: no client, name, quote or testimonial is involved. Everything runs on public labelled data, so every answer is checked against a label someone else wrote.
 
 The question, fixed before the first run ([`prereg.json`](prereg.json), pushed in commit [`f4d80b0`](https://github.com/sjgant80-hub/fallfloor/commit/f4d80b0827e133de0994d284c5e0215d939b428a) at 2026-09-29T09:31:50Z):
@@ -86,7 +92,7 @@ Tokens are measured with the local model's tokenizer; cloud tokenizers differ, s
 ```
 node --test kernel.test.mjs                       # the kernel's contract
 node tools/witness.mjs mutate kernel.mjs --timeout 30000 --cap 900 --test node --test kernel.test.mjs   # mutation gate
-node make-page.mjs && git diff --exit-code index.html README.md llms.txt                                # the page IS this kernel
+node tools/make-page.mjs && git diff --exit-code index.html README.md llms.txt                                # the page IS this kernel
 node tools/page-gate.mjs                          # the page's own gate
 node tools/verify-run.mjs                         # re-hash, re-sign-check, re-score the committed run from its receipts
 ```

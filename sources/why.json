@@ -1,0 +1,26 @@
+{
+ "_rule": "The local-first case, as verified law: every line quotes or cites the primary text, links it, and gives the date checked. The full costed case for a whole company is the enterprise design.",
+ "checked": "2026-09-29",
+ "enterprise": { "url": "https://sjgant80-hub.github.io/fallfloor-enterprise/", "what": "The full enterprise design for a modelled 1,200-person bank: architecture, capacity, a five-year cost against Copilot-style seats and cloud APIs (seats, tokens, hardware, power, people, compliance — every price sourced), the compliance map, a sealed go/no-go board, the team and the rollout." },
+ "removes": [
+  { "what": "An AI processor for inference — no vendor processes the prompts or answers, so there is no processor contract, due diligence or monitoring for it", "ref": "GDPR / UK GDPR Art 28(1)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679" },
+  { "what": "International transfers for inference — nothing leaves the building to be assessed", "ref": "EU GDPR Art 44; UK Chapter V as amended by the Data (Use and Access) Act 2025, in force 5 February 2026 (SI 2026/82 reg 2)", "url": "https://www.legislation.gov.uk/uksi/2026/82/regulation/2" },
+  { "what": "Vendor retention of what staff and customers typed — prompts and answers stay on the company's machines, the strongest form of data protection by design", "ref": "GDPR / UK GDPR Art 25(1)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679" },
+  { "what": "Evidence held by someone else — every step is a signed receipt the company keeps", "ref": "GDPR Art 5(2) accountability; EU AI Act Art 26(6) logs for high-risk uses", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689" }
+ ],
+ "stays": [
+  { "what": "A lawful basis for each use", "ref": "GDPR / UK GDPR Art 6(1)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679" },
+  { "what": "A DPIA — the ICO lists processing with innovative technology, including AI, as needing one when combined with the European criteria", "ref": "Art 35; ICO list of high-risk processing", "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/when-do-we-need-to-do-a-dpia/" },
+  { "what": "Accuracy — this run measured the small models well short of answering customers alone", "ref": "GDPR / UK GDPR Art 5(1)(d)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679" },
+  { "what": "Security — on a local stack all of it is in-house", "ref": "GDPR / UK GDPR Art 32(1)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679" },
+  { "what": "Safeguards for significant decisions made solely by automated means", "ref": "EU Art 22; UK Arts 22A–22D (Data (Use and Access) Act 2025 s.80, in force 5 February 2026)", "url": "https://www.legislation.gov.uk/eur/2016/679/article/22C" },
+  { "what": "Building an AI system for your own use makes you its provider under the AI Act", "ref": "EU AI Act Art 3(3), 3(11); in scope for a UK firm when the output is used in the EU, Art 2(1)(c)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689" },
+  { "what": "Telling people when they are talking to an AI — applies since 2 August 2026", "ref": "EU AI Act Art 50(1); Art 113", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689" },
+  { "what": "AI literacy for staff — applies since 2 February 2025", "ref": "EU AI Act Art 4, as replaced by the Digital Omnibus on AI (Regulation (EU) 2026/1744)", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R1744" },
+  { "what": "High-risk duties (for example credit scoring) — from 2 December 2027, moved from 2 August 2026 by the Digital Omnibus", "ref": "EU AI Act Annex III; Art 113 as amended by Regulation (EU) 2026/1744", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32026R1744" }
+ ],
+ "costShape": [
+  { "side": "Corporate", "what": "Seats × people, plus tokens × volume. The bill grows with headcount and with use." },
+  { "side": "Local-first", "what": "Capacity the company owns — the laptops it already has and a few inference nodes — plus the people who run it. Growth costs hardware in steps; the power is measured." }
+ ]
+}

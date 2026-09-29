@@ -7,12 +7,15 @@
 - Pre-registration (committed before the first run): https://github.com/sjgant80-hub/fallfloor/blob/main/prereg.json
 - Changes after the pre-registration, with reasons: https://github.com/sjgant80-hub/fallfloor/blob/main/prereg-log.json
 - Cost sources: https://github.com/sjgant80-hub/fallfloor/blob/main/sources/costs.json
+- The full enterprise case (local-first vs the corporate model, five-year cost, GDPR / UK GDPR / EU AI Act map): https://sjgant80-hub.github.io/fallfloor-enterprise/
+- The law behind the local-first case, quoted and dated: https://github.com/sjgant80-hub/fallfloor/blob/main/sources/why.json
 
 ## Facts
 
 - Machines in the measured run: one laptop (Intel Core i7-1255U, Iris Xe graphics, 16 GB). Each node was a separate Chrome process with its own profile, linked by real WebRTC data channels on that machine. No signalling server, no relay server, no cloud model.
 - Models: Qwen2.5-1.5B-Instruct (q4f16_1, Apache 2.0) at every station; Qwen2.5-3B-Instruct (q4f16_1, Qwen Research licence) as the one-model baseline only.
 - Data: Banking77 (CC BY 4.0), SMS Spam Collection v.1 (CC BY 4.0), CLINC150 (CC BY 3.0); 100 held-out items per department.
+- Local-first removes, for inference, the AI processor (GDPR Art 28) and international transfers (Chapter V); lawful basis, DPIA, accuracy, security and individuals' rights stay with the company. EU AI Act: Article 50 since 2 August 2026; high-risk (Annex III) from 2 December 2027 after Regulation (EU) 2026/1744.
 
 ## Results
 

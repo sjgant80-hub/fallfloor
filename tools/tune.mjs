@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // tools/tune.mjs — write the prompts against the DEVELOPMENT set only (data/dev.json), one node, no mesh.
 //   node tools/tune.mjs --job support|security|hr|baseline [--model <id>] [--limit N]
-// Never touches the held-out items. The prompts live in kernel.mjs; rebuild the page (node make-page.mjs) first.
+// Never touches the held-out items. The prompts live in kernel.mjs; rebuild the page (node tools/make-page.mjs) first.
 import { readFileSync, existsSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { join, dirname, extname } from 'node:path';

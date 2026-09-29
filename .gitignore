@@ -4,3 +4,5 @@ node_modules/
 !runs/*/nodes/*.log
 runs/smoke-*/
 runs/probe/
+konomi-out/
+*.witnessbak

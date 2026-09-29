@@ -1,0 +1,10 @@
+{
+  "name": "fallfloor",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "kernel.mjs",
+  "description": "A modelled company's AI on the laptops it already owns: WebLLM in the browser, node to node over WebRTC, no server; pre-registered, receipted, scored on public data, and costed against the corporate cloud model.",
+  "author": "sjgant80-hub <sjgant80@gmail.com>",
+  "license": "MIT",
+  "scripts": { "test": "node --test" }
+}

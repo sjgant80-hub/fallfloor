@@ -23,7 +23,7 @@ jobs:
 
       - name: the live page IS the gated kernel and runtime (fixpoint)
         run: |
-          node make-page.mjs
+          node tools/make-page.mjs
           git diff --exit-code index.html README.md llms.txt
 
       - name: the page passes its own gate (controls, links, CSS variables, scripts, pricing, credits, AI-GEO)
