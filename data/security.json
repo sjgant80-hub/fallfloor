@@ -1,0 +1,742 @@
+{
+ "job": "security",
+ "seed": "fallfloor-2026-09-29",
+ "department": "Security (inbound message screening)",
+ "source": {
+  "name": "SMS Spam Collection v.1",
+  "by": "Tiago A. Almeida and José María Gómez Hidalgo",
+  "url": "https://archive.ics.uci.edu/dataset/228/sms+spam+collection",
+  "license": "CC BY 4.0",
+  "split": "held-out and examples drawn from the one published file, disjoint"
+ },
+ "heldOut": [
+  {
+   "id": "sec-ed83b03551",
+   "text": "Then we wait 4 u lor... No need 2 feel bad lar...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-db180e53e2",
+   "text": "Mum ask ü to buy food home...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-c1de647e4c",
+   "text": "Was actually about to send you a reminder today. Have a wonderful weekend",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-af20282402",
+   "text": "Just hopeing that wasn‘t too pissed up to remember and has gone off to his sisters or something!",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-9772678a17",
+   "text": "What can i do? Might accidant tookplace between somewhere ghodbandar rd. Traffic moves slovely. So plz slip &amp; don't worry.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-a11627f937",
+   "text": "S.i think he is waste for rr..",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-345d658fe7",
+   "text": "I finished my lunch already. U wake up already?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-95de4062dd",
+   "text": "Okies... I'll go yan jiu too... We can skip ard oso, go cine den go mrt one, blah blah blah...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-251d98f321",
+   "text": "I need details about that online job.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e4587ada41",
+   "text": "I'm not. She lip synced with shangela.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-aed3843004",
+   "text": "S:)8 min to go for lunch:)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-8931764cc1",
+   "text": "Horrible bf... I now v hungry...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-0193dd1409",
+   "text": "I wont get concentration dear you know you are my mind and everything :-)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-162dc42271",
+   "text": "I am not sure about night menu. . . I know only about noon menu",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e8ae07690c",
+   "text": "Please da call me any mistake from my side sorry da. Pls da goto doctor.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-aa49be4f76",
+   "text": "Just finished eating. Got u a plate. NOT leftovers this time.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-927259a204",
+   "text": "Hey. What happened? U switch off ur cell d whole day. This isnt good. Now if u do care, give me a call tomorrow.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-6073214eb9",
+   "text": "MMM ... Fuck .... Merry Christmas to me",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-93d03d11ca",
+   "text": "I'm freezing and craving ice. Fml",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-715d01be54",
+   "text": "\"NOT ENUFCREDEIT TOCALL.SHALL ILEAVE UNI AT 6 +GET A BUS TO YOR HOUSE?\"",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-01d04d4e85",
+   "text": "If u laugh really loud.. If u talk spontaneously.. If u dont care what others feel.. U are probably with your dear &amp; best friends.. GOODEVENING Dear..:)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-3cfdb19749",
+   "text": "I'm in chennai velachery:)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-451b944166",
+   "text": "Aight should I just plan to come up later tonight?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-41c3b6d50a",
+   "text": "I guess that's why you re worried. You must know that there's a way the body repairs itself. And i'm quite sure you shouldn't worry. We'll take it slow. First the tests, they will guide when your ovulation is then just relax. Nothing you've said is a reason to worry but i.ll keep on followin you up.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-a2bddac0b5",
+   "text": "happened here while you were adventuring",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e7783f25f3",
+   "text": "This is one of the days you have a billion classes, right?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-1bfdf00e23",
+   "text": "See? I thought it all through",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-386191a01b",
+   "text": "Have you not finished work yet or something?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-936a2af05f",
+   "text": "Captain vijaykanth is doing comedy in captain tv..he is drunken :)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-71d20e733a",
+   "text": "soon you will have the real thing princess! Do i make you wet? :)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-c142aa5811",
+   "text": "U've been selected to stay in 1 of 250 top British hotels - FOR NOTHING! Holiday valued at £350! Dial 08712300220 to claim - National Rate Call. Bx526, SW73SS",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-4e3cc16a7a",
+   "text": "U have a Secret Admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09065171142-stopsms-08",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-6aa3e4da3c",
+   "text": "S but mostly not like that.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4318ebe7d1",
+   "text": "Ok i'm coming home now.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e3c8b3a15b",
+   "text": "Sounds gd... Haha... Can... Wah, u yan jiu so fast liao...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e3486f7ce4",
+   "text": "Camera - You are awarded a SiPix Digital Camera! call 09061221066 fromm landline. Delivery within 28 days.",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-ac71d3a8ca",
+   "text": "Tmr then ü brin lar... Aiya later i come n c lar... Mayb ü neva set properly ü got da help sheet wif ü...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-84d4e79dbd",
+   "text": "So wat's da decision?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-878ee18f3a",
+   "text": "(And my man carlos is definitely coming by mu tonight, no excuses)",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-a82c328bce",
+   "text": "We tried to call you re your reply to our sms for a video mobile 750 mins UNLIMITED TEXT + free camcorder Reply of call 08000930705 Now",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-05adc11764",
+   "text": "Hows the pain dear?y r u smiling?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e4cdbf69c4",
+   "text": "I am literally in bed and have been up for like  &lt;#&gt;  hours",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-686a602d98",
+   "text": "As one of our registered subscribers u can enter the draw 4 a 100 G.B. gift voucher by replying with ENTER. To unsubscribe text STOP",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-541ca5ad7d",
+   "text": "Meeting u is my work. . . Tel me when shall i do my work tomorrow",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-2cd40a2b62",
+   "text": "I've sent ü my part..",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-66d5351edb",
+   "text": "And of course you should make a stink!",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-777deaf647",
+   "text": "Boo. How's things? I'm back at home and a little bored already :-(",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-47fb82f1f2",
+   "text": "I'm outside islands, head towards hard rock and you'll run into me",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-3271e22ce7",
+   "text": "Me too! Have a lovely night xxx",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-fdfc5555ad",
+   "text": "on a Tuesday night r u 4 real",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-9bf87b5900",
+   "text": "Sorry man, my stash ran dry last night and I can't pick up more until sunday",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-f810f2ad1a",
+   "text": "Machan you go to gym tomorrow,  i wil come late goodnight.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-d53003c261",
+   "text": "Long after I quit. I get on only like 5 minutes a day as it is.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-11454e3b24",
+   "text": "We r outside already.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-eb37347b56",
+   "text": "Am i that much bad to avoid like this?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-18a79591dd",
+   "text": "Want explicit SEX in 30 secs? Ring 02073162414 now! Costs 20p/min",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-87c64617ff",
+   "text": "Ok set let u noe e details later...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-dbc31106f9",
+   "text": "Hi mate its RV did u hav a nice hol just a message 3 say hello coz havent sent u 1 in ages started driving so stay off roads!RVx",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4237c5613b",
+   "text": "Merry christmas to u too annie!",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-d4ca7c6522",
+   "text": "Yes but can we meet in town cos will go to gep and then home. You could text at bus stop. And don't worry we'll have finished by march … ish!",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-7b60a97aa7",
+   "text": "Hi dude hw r u da realy mising u today",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4442a30e78",
+   "text": "Good evening Sir, Al Salam Wahleykkum.sharing a happy news.By the grace of God, i got an offer from Tayseer,TISSCO and i joined.Hope you are fine.Inshah Allah,meet you sometime.Rakhesh,visitor from India.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-fffadc3843",
+   "text": "Hai ana tomarrow am coming on morning.  &lt;DECIMAL&gt;  ill be there in sathy then we ll go to RTO office. Reply me after came to home.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e6317ce62c",
+   "text": "I will treasure every moment we spend together...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-65f300974d",
+   "text": "Dear 0776xxxxxxx U've been invited to XCHAT. This is our final attempt to contact u! Txt CHAT to 86688 150p/MsgrcvdHG/Suite342/2Lands/Row/W1J6HL LDN 18yrs",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-1f49c1f38c",
+   "text": "Haha get used to driving to usf man, I know a lot of stoners",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-8b04d59563",
+   "text": "Heart is empty without love.. Mind is empty without wisdom.. Eyes r empty without dreams &amp; Life is empty without frnds.. So Alwys Be In Touch. Good night &amp; sweet dreams",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-26e7b94439",
+   "text": "Ahhhh...just woken up!had a bad dream about u tho,so i dont like u right now :) i didnt know anything about comedy night but i guess im up for it.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-b9b52bdb1e",
+   "text": "Oh just getting even with u.... u?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-0d702d2d08",
+   "text": "Come to me right now, Ahmad",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-41642d076c",
+   "text": "Jus ans me lar. U'll noe later.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-1b3fa831b6",
+   "text": "Carlos took a while (again), we leave in a minute",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-07a65d9e5f",
+   "text": "U free on sat rite? U wan 2 watch infernal affairs wif me n darren n mayb xy?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-a9901e5a63",
+   "text": "Mind blastin.. No more Tsunamis will occur from now on.. Rajnikant stopped swimming in Indian Ocean..:-D",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4525130329",
+   "text": "That's necessarily respectful",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-aae6ac90a6",
+   "text": "Bbq this sat at mine from 6ish. Ur welcome 2 come",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-45b0dfb47e",
+   "text": "Dad went out oredi...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4af7d1d808",
+   "text": "Am watching house – very entertaining – am getting the whole hugh laurie thing – even with the stick – indeed especially with the stick.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-6b0b81a4f8",
+   "text": "It shall be fine. I have avalarr now. Will hollalater",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-1e02042e40",
+   "text": "Yes.. now only saw your message..",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-3457e9139c",
+   "text": "Please tell me not all of my car keys are in your purse",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-883892fc88",
+   "text": "I've got  &lt;#&gt; , any way I could pick up?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-520aea6829",
+   "text": "Got meh... When?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-09a1d7d1c2",
+   "text": "Yep. I do like the pink furniture tho.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-fe80bf9768",
+   "text": "I'm turning off my phone. My moms telling everyone I have cancer. And my sister won't stop calling. It hurts to talk. Can't put up with it. See u when u get home. Love u",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-fec5a1b661",
+   "text": "Wat time do u wan 2 meet me later?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-f9c0ba900d",
+   "text": "I bought the test yesterday. Its something that lets you know the exact day u ovulate.when will get 2u in about 2 to 3wks. But pls pls dont fret. I know u r worried. Pls relax. Also is there anything in ur past history u need to tell me?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-0cbc73bdc7",
+   "text": "Pls call me da. What happen.",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-78d8ee3e90",
+   "text": "Hi elaine, is today's meeting confirmed?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e948aa9206",
+   "text": "Want to send me a virtual hug?... I need one",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-249ed0072d",
+   "text": "how tall are you princess?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-e049ba87e8",
+   "text": "Xy trying smth now. U eat already? We havent...",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-c2ff59457c",
+   "text": "Then get some cash together and I'll text jason",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-c3df16ac52",
+   "text": "OK i'm waliking ard now... Do u wan me 2 buy anything go ur house?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-ddfecbe4c9",
+   "text": "Its ok, called mom instead have fun",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-a805819ca2",
+   "text": "You should know now. So how's anthony. Are you bringing money. I've school fees to pay and rent and stuff like that. Thats why i need your help. A friend in need....|",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-1c66f2c755",
+   "text": "Hey u still at the gym?",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-4bfb9fa9aa",
+   "text": "HI DARLIN IVE JUST GOT BACK AND I HAD A REALLY NICE NIGHT AND THANKS SO MUCH FOR THE LIFT SEE U TOMORROW XXX",
+   "gold": {
+    "label": "legit"
+   }
+  },
+  {
+   "id": "sec-cce1bec5d8",
+   "text": "Urgent! Please call 09061213237 from a landline. £5000 cash or a 4* holiday await collection. T &Cs SAE PO Box 177 M227XY. 16+",
+   "gold": {
+    "label": "spam"
+   }
+  },
+  {
+   "id": "sec-211a1134f0",
+   "text": "Oh right, ok. I'll make sure that i do loads of work during the day!  got a really nasty cough today and is dry n shot so that should really help it!",
+   "gold": {
+    "label": "legit"
+   }
+  }
+ ],
+ "examples": {
+  "screen": [
+   {
+    "text": "Ringtone Club: Gr8 new polys direct to your mobile every week !",
+    "label": "spam"
+   },
+   {
+    "text": "Congrats! 2 mobile 3G Videophones R yours. call 09061744553 now! videochat wid ur mates, play java games, Dload polyH music, noline rentl. bx420. ip4. 5we. 150pm",
+    "label": "spam"
+   },
+   {
+    "text": "You have an important customer service announcement from PREMIER.",
+    "label": "spam"
+   },
+   {
+    "text": "I've sent my wife your text. After we buy them she'll tell you what to do. So just relax. We should go get them this wkend.",
+    "label": "legit"
+   },
+   {
+    "text": "Height of \"Oh shit....!!\" situation: A guy throws a luv letter on a gal but falls on her brothers head whos a gay,.;-):-D",
+    "label": "legit"
+   },
+   {
+    "text": "You said not now. No problem. When you can. Let me know.",
+    "label": "legit"
+   }
+  ]
+ }
+}

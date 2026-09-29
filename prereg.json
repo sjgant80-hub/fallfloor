@@ -1,0 +1,39 @@
+{
+  "v": 1,
+  "kind": "fallfloor-prereg",
+  "written": "2026-09-29",
+  "statement": "Fixed and committed before the first run. The run reports every rule below as PASS or FAIL with the number that decided it, whichever way it lands.",
+  "question": "Can a company's everyday AI work run on WebLLM in the browsers of laptops it already owns, passed node to node over WebRTC with no server, and is a chain of stations the right shape for it?",
+  "design": {
+    "company": "A modelled digital bank (not a real client). Three departments, each fed by a public labelled dataset: support (Banking77, CC BY 4.0), security (SMS Spam Collection, CC BY 4.0), people/HR helpdesk (CLINC150 work domain + out-of-scope, CC BY 3.0). 100 held-out items per department, drawn with a published seed; examples drawn from the training data, disjoint from the held-out items.",
+    "arms": {
+      "chain": "Three browser nodes, one station each: route (7 teams) -> intent (the routed team's topics, or 'not my team') -> reply (cites the topic's article). Each node runs Qwen2.5-1.5B-Instruct (q4f16_1) in WebLLM. Items flow node to node over WebRTC.",
+      "pool": "The same three nodes, the same model and the same three station prompts, but each node runs the whole line on its own share of the items. The desk reassigns an item stuck on a node that has gone after 45 s.",
+      "baseline": "One node running the largest model this laptop holds, Qwen2.5-3B-Instruct (q4f16_1), answering intent and reply in ONE prompt that carries every topic and example the chain's stations see."
+    },
+    "sameItems": "All three arms answer the same 100 support items; comparisons are paired, item by item, with an exact McNemar test.",
+    "grading": "Deterministic, against the dataset's own labels. An item is correct end to end only if the topic is right, the line did not stop itself, and the reply passes the reply gate (cites the right article; no other codes, numbers, links or emails). No model judges another model.",
+    "inFlight": "The desk keeps at most 3 items in flight in every arm.",
+    "killTest": "In the chain and the pool, the node running the middle station (n2) is closed after 40 support results and reopened 60 s later; it re-joins by pasting codes again.",
+    "machines": "ONE laptop (Intel Core i7-1255U, Iris Xe graphics, 16 GB). Each node is its own Chrome process with its own profile, joined by real WebRTC data channels on this machine. Signalling codes are carried between the nodes by the test harness, as a person would paste them. No signalling server, no relay server, no cloud model.",
+    "sampling": "temperature 0, top_p 1, seed 7; JSON-schema-constrained answers for the classification stations."
+  },
+  "thresholds": {
+    "capabilityMaxDropPts": 5,
+    "lostMax": 0,
+    "duplicatesMax": 0,
+    "chainP95MaxSec": 60,
+    "chainVsPoolMinGainPts": 5,
+    "coldStartMaxSec": 600
+  },
+  "rules": [
+    "capability: chain end-to-end accuracy is no more than 5 points below the one-model baseline on the same items",
+    "no-loss: no support item is lost and none is accepted twice, in either kill test",
+    "latency: chain p95 time per item is 60 s or less",
+    "chain-shape: the chain beats the pool by 5 points or more, or loses fewer items, or stalls for less time, when a node dies. If not, the chain is the wrong shape and the report says so.",
+    "cold-start: every node gives its first answer within 600 s of starting, model download included"
+  ],
+  "alsoReported": ["team, intent and reply-gate rates per arm", "caught (the line stopped itself) versus silent errors", "p50/p95 latency and throughput", "security and HR accuracy", "tokens and GPU seconds per item", "model download size and load time per node", "duplicate deliveries dropped and hops refused"],
+  "noiseNote": "With 100 items, a difference under about 5 points is noise: it is reported as a tie, not a win.",
+  "prediction": "The builder's stated bet before the run: on a narrow job the pool beats the chain, and the three 1.5B specialists roughly tie the single 3B model."
+}

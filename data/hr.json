@@ -1,0 +1,778 @@
+{
+ "job": "hr",
+ "seed": "fallfloor-2026-09-29",
+ "department": "People (staff helpdesk)",
+ "source": {
+  "name": "CLINC150 (\"work\" domain and out-of-scope)",
+  "by": "Larson et al., 2019, \"An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction\"",
+  "url": "https://github.com/clinc/oos-eval",
+  "license": "CC BY 3.0",
+  "split": "held-out from test + oos_test; examples from train"
+ },
+ "heldOut": [
+  {
+   "id": "hr-8f5f6d72de",
+   "text": "what do my pto days amount to",
+   "gold": {
+    "label": "pto_balance"
+   }
+  },
+  {
+   "id": "hr-476897aa86",
+   "text": "what steps do i need to take to obtain my w2 for taxes",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-0f114e793f",
+   "text": "do you know the process to rollover my 401k",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "hr-7257bdefda",
+   "text": "i need to know status of my day off request",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-26f5cdc381",
+   "text": "let me know the process for new insurance",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "hr-db96413325",
+   "text": "so how many days did i take off",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-7e3822ff0d",
+   "text": "can't find w-2",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-e69070519b",
+   "text": "when is my meeting with jim scheduled for",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-f1235a6ddc",
+   "text": "what do i do to set up a vacation",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-647a3cf87c",
+   "text": "how much of my pto is gone",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-247f4909ae",
+   "text": "can i put in a pto request for september 1st to september 8th",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-9851dd6617",
+   "text": "what insurance plan am i enrolled in",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-1b51d802d6",
+   "text": "i'd like my checks to be deposited into my account directly, how do i do that",
+   "gold": {
+    "label": "direct_deposit"
+   }
+  },
+  {
+   "id": "hr-a780ab184e",
+   "text": "i need a w2 form from",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-27301dabe7",
+   "text": "check today's calendar for meetings",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-221e0c5be9",
+   "text": "i need to know how many days i toof off",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-315c1905b2",
+   "text": "i wanna know the next holiday",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-760dc7334f",
+   "text": "i want help to transfer my 401k",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "hr-b2508ab0ec",
+   "text": "can you let me know if my vacation was approved",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-51ea158d0b",
+   "text": "do you know the price for my taxes in income",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "hr-bd4ed39aaf",
+   "text": "is there any meetings from 5 to 6 pm",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-a469422476",
+   "text": "i have used how much pto so far",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-263d0f6150",
+   "text": "how do i roll over my 401k",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "hr-3d4b4e601e",
+   "text": "how many vacation days are remaining on my time",
+   "gold": {
+    "label": "pto_balance"
+   }
+  },
+  {
+   "id": "hr-370720e50b",
+   "text": "i want to know my income",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-f1cdd1cf79",
+   "text": "when is the next day we have off",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-fe2298f7b5",
+   "text": "is the meeting with lisa today",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-72b6a7d69e",
+   "text": "check how many days off i've taken",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-f0f124b4e3",
+   "text": "does my vacation have approval",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-9f7b9e025c",
+   "text": "i pay how much of taxes with my income",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "hr-2a09811763",
+   "text": "what is the day off request status please",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-5722d77971",
+   "text": "is there a way to get a new insurance plan",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "hr-8912986768",
+   "text": "what time is today's meeting",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-efd9c350a8",
+   "text": "when will my next paycheck be coming",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-6136537e6f",
+   "text": "how do i get my paycheck into direct deposit at nations bank",
+   "gold": {
+    "label": "direct_deposit"
+   }
+  },
+  {
+   "id": "hr-5564817d84",
+   "text": "how many vacation days i have used",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-986045b352",
+   "text": "i need to know how many days off i have used so far",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-b72a82fd38",
+   "text": "how to i change the policy on my insurace",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "hr-87ce58daa4",
+   "text": "can 401ks be moved",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "hr-2ccb629b5d",
+   "text": "go ahead and hold a conference room for friday at 11 am, please",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "hr-1a637b4b95",
+   "text": "explain my health benefits",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-88dffd6572",
+   "text": "how do i get the form to file my taxes from my employer",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-b7f546a01c",
+   "text": "what is the process of making a vacation request",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-ea555a61e4",
+   "text": "how much do i take home yearly",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-db3a443033",
+   "text": "when is my meeting with invoicing scheduled",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-916d81353c",
+   "text": "do you know when our next day off is",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-0b837cb258",
+   "text": "my 401k needs to rollover and i need your help",
+   "gold": {
+    "label": "rollover_401k"
+   }
+  },
+  {
+   "id": "hr-933c2d7076",
+   "text": "what health coverage do i have",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-c34d77dd53",
+   "text": "can i put in a pto request for december 3rd to december 10th",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-31e49e1d90",
+   "text": "am i supposed to attend any meetings today",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-0bad847017",
+   "text": "what holiday is next and when",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-2ca1de9db2",
+   "text": "how many days of vacation do i have left",
+   "gold": {
+    "label": "pto_balance"
+   }
+  },
+  {
+   "id": "hr-19a5a2dba3",
+   "text": "what is the total of my state taxes",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "hr-db04783be9",
+   "text": "what are my benefits on the insurance",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-40fc4e4802",
+   "text": "help me get my w-2 form",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-18d98fc20e",
+   "text": "when do i get paid for my work",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-efc6e69543",
+   "text": "do you know when i'll receive my next paycheck",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-df0a9b906d",
+   "text": "how do i sign up for a new allstatedplan",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "hr-101bd8c33f",
+   "text": "i wanna know where to find a w2",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-7400d24a08",
+   "text": "what was the date when i last go paid",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-c731ff8096",
+   "text": "how do i set up direct deposit",
+   "gold": {
+    "label": "direct_deposit"
+   }
+  },
+  {
+   "id": "hr-fd4691e03f",
+   "text": "what are my benefits with this insurance",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-8d97ce7c67",
+   "text": "tell me the full name of my health plan",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-d72b23ac22",
+   "text": "on what day is our next day off",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-83326e2e76",
+   "text": "will you schedule a conference room for thursday at 4:00",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "hr-ff7446fb92",
+   "text": "how do i plan a vacation",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-1eaab0138c",
+   "text": "what will i make this year",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-147e3d3c0a",
+   "text": "how long until my paycheck shows up",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-1062cad098",
+   "text": "is it possible i have a meeting with kim today",
+   "gold": {
+    "label": "meeting_schedule"
+   }
+  },
+  {
+   "id": "hr-f4d0400309",
+   "text": "i need the data and price from my state taxes",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "hr-4d8e82fb17",
+   "text": "would you please schedule a meeting room for 4:00 on thursday",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "hr-33606b0773",
+   "text": "how long do i have to wait to get a day off",
+   "gold": {
+    "label": "next_holiday"
+   }
+  },
+  {
+   "id": "hr-71d41038ea",
+   "text": "what will i get paid this year",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-1c246ed33b",
+   "text": "any update on my vacation",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-4cf4d54ef9",
+   "text": "walk me through the process of scheduling a meeting",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "hr-cd08a23275",
+   "text": "check meeting rooms available between one and three pm",
+   "gold": {
+    "label": "schedule_meeting"
+   }
+  },
+  {
+   "id": "hr-fe92d16db2",
+   "text": "can you please tell me my income",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-d9f8d8b0e6",
+   "text": "which insurance plan to i have",
+   "gold": {
+    "label": "insurance"
+   }
+  },
+  {
+   "id": "hr-2edb2e43a9",
+   "text": "can i put in a pto request for december 25th to january 1st",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-ed7687ea1b",
+   "text": "i'd like to set up direct deposit",
+   "gold": {
+    "label": "direct_deposit"
+   }
+  },
+  {
+   "id": "hr-407c702616",
+   "text": "notify me how many days off i have used so far",
+   "gold": {
+    "label": "pto_used"
+   }
+  },
+  {
+   "id": "hr-21da7d277b",
+   "text": "when is my paycheck arriving",
+   "gold": {
+    "label": "payday"
+   }
+  },
+  {
+   "id": "hr-ae61eb22f2",
+   "text": "how do i get that tax form from my employer",
+   "gold": {
+    "label": "w2"
+   }
+  },
+  {
+   "id": "hr-2bfbeaa5bf",
+   "text": "when will i hear back about my days off",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-60b22083dc",
+   "text": "please let me know the status of my vacation request",
+   "gold": {
+    "label": "pto_request_status"
+   }
+  },
+  {
+   "id": "hr-9a10d09fe4",
+   "text": "is it ok if i use some of my pto on may 24th to may 29th",
+   "gold": {
+    "label": "pto_request"
+   }
+  },
+  {
+   "id": "hr-42abcf5bdc",
+   "text": "look up how much my state taxes are",
+   "gold": {
+    "label": "taxes"
+   }
+  },
+  {
+   "id": "hr-6e513eff42",
+   "text": "i want to switch to a new insurance plan",
+   "gold": {
+    "label": "insurance_change"
+   }
+  },
+  {
+   "id": "hr-e03241ad39",
+   "text": "what amount is my income",
+   "gold": {
+    "label": "income"
+   }
+  },
+  {
+   "id": "hr-ad22159d9a",
+   "text": "bank options direct deposit",
+   "gold": {
+    "label": "direct_deposit"
+   }
+  },
+  {
+   "id": "hr-483676c613",
+   "text": "how do i stop my child from setting small animals on fire for amusement",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-a8cc10d29c",
+   "text": "give me a recommendation for a local landscaper",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-50badb434c",
+   "text": "how long does it take to get your yellow belt in karate",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-779f8f157e",
+   "text": "create a speech on historical events surrounding albert einstein",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-0395098f88",
+   "text": "look up daily dog kennels in my area",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-d849f65284",
+   "text": "how do i change the windshield wipers",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-9e33c89fc6",
+   "text": "who won in the gsw vs suns game last night",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-e776af882a",
+   "text": "which company has gone up the most today",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-e01adffbd9",
+   "text": "what kind of traits do vampires have",
+   "gold": {
+    "label": "not_hr"
+   }
+  },
+  {
+   "id": "hr-9284f9b29b",
+   "text": "zip the back of the brides maid dress",
+   "gold": {
+    "label": "not_hr"
+   }
+  }
+ ],
+ "examples": {
+  "helpdesk": [
+   {
+    "text": "what is the news on my vacation request",
+    "label": "pto_request_status"
+   },
+   {
+    "text": "i need to know when my next day off is",
+    "label": "next_holiday"
+   },
+   {
+    "text": "i would like to alter my insurance plan",
+    "label": "insurance_change"
+   },
+   {
+    "text": "do you know the health plan i'm on",
+    "label": "insurance"
+   },
+   {
+    "text": "which meetings do i have today",
+    "label": "meeting_schedule"
+   },
+   {
+    "text": "when will i be paid again",
+    "label": "payday"
+   },
+   {
+    "text": "what amount of money do i pay in taxes, please",
+    "label": "taxes"
+   },
+   {
+    "text": "calculate my total income from my job",
+    "label": "income"
+   },
+   {
+    "text": "walk me through the process of transferring my 401k",
+    "label": "rollover_401k"
+   },
+   {
+    "text": "how many days are left for me for vacation if i may ask",
+    "label": "pto_balance"
+   },
+   {
+    "text": "i need a pto request put in for the weekend of june 1st to june 2nd",
+    "label": "pto_request"
+   },
+   {
+    "text": "tell me where to get myy w-2 form",
+    "label": "w2"
+   },
+   {
+    "text": "i want to know if there is meeting room available at 8",
+    "label": "schedule_meeting"
+   },
+   {
+    "text": "i'd like to set up a direct deposit for my paycheck",
+    "label": "direct_deposit"
+   },
+   {
+    "text": "how many days off have i taken",
+    "label": "pto_used"
+   }
+  ]
+ }
+}

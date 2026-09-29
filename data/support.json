@@ -1,0 +1,1184 @@
+{
+ "job": "support",
+ "seed": "fallfloor-2026-09-29",
+ "department": "Customer support",
+ "source": {
+  "name": "Banking77",
+  "by": "PolyAI (Casanueva et al., 2020, \"Efficient Intent Detection with Dual Sentence Encoders\")",
+  "url": "https://github.com/PolyAI-LDN/task-specific-datasets",
+  "license": "CC BY 4.0",
+  "split": "held-out from test.csv; examples from train.csv"
+ },
+ "heldOut": [
+  {
+   "id": "sup-5761f541da",
+   "text": "How do I reset a forgotten passcode, please?",
+   "gold": {
+    "intent": "passcode_forgotten",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-c16edc8d2b",
+   "text": "My card got lost.",
+   "gold": {
+    "intent": "lost_or_stolen_card",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-f45d92ad43",
+   "text": "Is it permissible to hold money in multiple currencies?",
+   "gold": {
+    "intent": "fiat_currency_support",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-3072a4e0ee",
+   "text": "I have a pending transfer",
+   "gold": {
+    "intent": "pending_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-0c0f2e478b",
+   "text": "I bought something and the money appeared back into my account? Why?",
+   "gold": {
+    "intent": "reverted_card_payment?",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-e955ab5727",
+   "text": "What cards to do you support to top up.",
+   "gold": {
+    "intent": "supported_cards_and_currencies",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-0a79710605",
+   "text": "Can i deposit my salary to this account?",
+   "gold": {
+    "intent": "receiving_money",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-0d019d1eb8",
+   "text": "In the past month I often used this account to manage payments for my new holiday villa. Now all of a sudden your fees have increased exorbitantly! Don't you have a rewards programme for frequent users?",
+   "gold": {
+    "intent": "transfer_fee_charged",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-89ca4e6ebf",
+   "text": "Why doesn't the card payment work",
+   "gold": {
+    "intent": "declined_card_payment",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-8d6ad0f29c",
+   "text": "How do I use contactless payments?",
+   "gold": {
+    "intent": "contactless_not_working",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-f2dfba3954",
+   "text": "Salary in GBP has been received, does it need to be configured elsewhere?",
+   "gold": {
+    "intent": "receiving_money",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-15958295f5",
+   "text": "is there a fee for a transfer? if so how much will it be?",
+   "gold": {
+    "intent": "top_up_by_bank_transfer_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-591a88a81c",
+   "text": "Will you handle EUR?",
+   "gold": {
+    "intent": "fiat_currency_support",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-fca0f40d5f",
+   "text": "how do i change name?",
+   "gold": {
+    "intent": "edit_personal_details",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-65f24b4fc3",
+   "text": "Is it possible to get a Visa here?",
+   "gold": {
+    "intent": "visa_or_mastercard",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-d567c9d53e",
+   "text": "What is the age to open an account?",
+   "gold": {
+    "intent": "age_limit",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-3cf1b1fc26",
+   "text": "Which outlets accept my card?",
+   "gold": {
+    "intent": "card_acceptance",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-55ff5bda7a",
+   "text": "My disposable virtual card will not work",
+   "gold": {
+    "intent": "virtual_card_not_working",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-23d6fb0f4c",
+   "text": "Will there be any extra fees for European bank card for top up?",
+   "gold": {
+    "intent": "top_up_by_card_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-fac4b3ceb4",
+   "text": "My card is being used online to make a bunch of purchases! Someone else is using it fraudulently. Can you help me freeze it?",
+   "gold": {
+    "intent": "compromised_card",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-474af064d1",
+   "text": "I would rather the Mastercard.",
+   "gold": {
+    "intent": "visa_or_mastercard",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-dda6d86c8b",
+   "text": "How can I request cash back? The ATM just gave me the wrong amount, the app shows the amount that I've been actually charged though...",
+   "gold": {
+    "intent": "wrong_amount_of_cash_received",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-b6a83df793",
+   "text": "how soon will I see the transfer in my account?",
+   "gold": {
+    "intent": "transfer_timing",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-ea4eb48b68",
+   "text": "When adding money, what are the currencies you take?",
+   "gold": {
+    "intent": "supported_cards_and_currencies",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-968bfe848a",
+   "text": "What do I need to do to transfer money into my account?",
+   "gold": {
+    "intent": "transfer_into_account",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-6d204980d5",
+   "text": "What exchange rate do you use?",
+   "gold": {
+    "intent": "exchange_rate",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-de36ef0e6b",
+   "text": "My card suddenly quit working.",
+   "gold": {
+    "intent": "card_not_working",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-713efc38a0",
+   "text": "i want to close an account but im not sure about setting up a new one in the future, what do you recommend",
+   "gold": {
+    "intent": "terminate_account",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-eb5b0a2e54",
+   "text": "Why is my refund missing from my  statement?",
+   "gold": {
+    "intent": "Refund_not_showing_up",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-610376340e",
+   "text": "what do i do if my verification failed",
+   "gold": {
+    "intent": "unable_to_verify_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-a0a79dd60a",
+   "text": "When can I order a disposable virtual card?",
+   "gold": {
+    "intent": "get_disposable_virtual_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-5234392101",
+   "text": "Can I use any currency to add money?",
+   "gold": {
+    "intent": "supported_cards_and_currencies",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-3963e0821b",
+   "text": "I used my card for a purchase and was charged a fee",
+   "gold": {
+    "intent": "card_payment_fee_charged",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-5d11b04b68",
+   "text": "My account got charged for taking out cash, why did this happen?",
+   "gold": {
+    "intent": "cash_withdrawal_charge",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-e90cf153f1",
+   "text": "Can I verify a top-up and what card is used?",
+   "gold": {
+    "intent": "verify_top_up",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-c3d0c90612",
+   "text": "for some reason I am having a problem with verifying my identity.",
+   "gold": {
+    "intent": "unable_to_verify_identity",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-497159bbb3",
+   "text": "How can I top up by card?",
+   "gold": {
+    "intent": "topping_up_by_card",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-2bd1a60e69",
+   "text": "I have tried transferring money numerous times.  All I keep getting is an error message.  Can you tell me what is going on and how this van be fixed?",
+   "gold": {
+    "intent": "beneficiary_not_allowed",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-d60136f052",
+   "text": "Do these virtual cards have any caps on using them?",
+   "gold": {
+    "intent": "disposable_card_limits",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-5880cd07ff",
+   "text": "Why did the disposable virtual card which I used to pay a gym subscription get denied?",
+   "gold": {
+    "intent": "virtual_card_not_working",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-caace7aa27",
+   "text": "I think my card payment has been stopped",
+   "gold": {
+    "intent": "reverted_card_payment?",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-57fd9cbd8a",
+   "text": "Why am I being charged twice fro a restaurant?",
+   "gold": {
+    "intent": "transaction_charged_twice",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-c9b1744f13",
+   "text": "Please tell me about SWIFT transfers at this bank.",
+   "gold": {
+    "intent": "top_up_by_bank_transfer_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-45d582d7e5",
+   "text": "Can my children have their own account?",
+   "gold": {
+    "intent": "age_limit",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-7e5810fd11",
+   "text": "can you tell me what cards and currencies you take?",
+   "gold": {
+    "intent": "supported_cards_and_currencies",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-d979d7edbe",
+   "text": "Why hasn't my card been delivered?",
+   "gold": {
+    "intent": "card_arrival",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-ba10e7aa8e",
+   "text": "Can I have more than one disposable card?",
+   "gold": {
+    "intent": "disposable_card_limits",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-0c7038ca34",
+   "text": "Is there an exchange fee?",
+   "gold": {
+    "intent": "exchange_charge",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-13f205c954",
+   "text": "How can I top up with this cheque I got?",
+   "gold": {
+    "intent": "top_up_by_cash_or_cheque",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-049299e450",
+   "text": "I'd like more information about choosing a Visa or Mastercard.",
+   "gold": {
+    "intent": "visa_or_mastercard",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-9f85ab175f",
+   "text": "Where can I find a virtual card?",
+   "gold": {
+    "intent": "getting_virtual_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-10b3f59d11",
+   "text": "I've attempted to do a very standard transfer and have tried 5 times at this point. Can you tell me what the issue is? Is the system down?",
+   "gold": {
+    "intent": "failed_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-fbccf79300",
+   "text": "How would I use my money in a different country?",
+   "gold": {
+    "intent": "exchange_via_app",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-f41742cf8a",
+   "text": "My transfer is still coming up as pending.",
+   "gold": {
+    "intent": "pending_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-443c337a40",
+   "text": "Pending transfer?",
+   "gold": {
+    "intent": "pending_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-da560f917e",
+   "text": "There is a payment that is not mine in the app.  Please advise/",
+   "gold": {
+    "intent": "card_payment_not_recognised",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-bc55af7224",
+   "text": "Can it automatically top-up money if there isn't much left?",
+   "gold": {
+    "intent": "automatic_top_up",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-c544c5fb6e",
+   "text": "My password isn't being accepted and I need to reset it.",
+   "gold": {
+    "intent": "passcode_forgotten",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-416c12c600",
+   "text": "I was at an ATM and it swallowed my card.",
+   "gold": {
+    "intent": "card_swallowed",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-faf42fefb3",
+   "text": "How long is the wait for a US transfer?",
+   "gold": {
+    "intent": "transfer_timing",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-76a679b86b",
+   "text": "Can I link an existing card?",
+   "gold": {
+    "intent": "card_linking",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-95cb887a1d",
+   "text": "I tried to get $100 but I just got $20",
+   "gold": {
+    "intent": "wrong_amount_of_cash_received",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-fcaffe1ee2",
+   "text": "As for limits are top ups included?",
+   "gold": {
+    "intent": "top_up_limits",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-b622f438c8",
+   "text": "I found a charge for a direct debit that was not made by me.",
+   "gold": {
+    "intent": "direct_debit_payment_not_recognised",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-cddd8b6b8a",
+   "text": "How long for money transfer to show?",
+   "gold": {
+    "intent": "pending_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-114cdbead4",
+   "text": "My account balance has not gone up even though I just transferred money into it",
+   "gold": {
+    "intent": "balance_not_updated_after_bank_transfer",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-17cc4f2a0c",
+   "text": "Can I exchange and hold all fiat currencies?",
+   "gold": {
+    "intent": "fiat_currency_support",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-ac199aa21c",
+   "text": "Is my pending cash withdrawal processed?",
+   "gold": {
+    "intent": "pending_cash_withdrawal",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-0b8ce5b354",
+   "text": "I want to know if there is a maximum I can top up.",
+   "gold": {
+    "intent": "top_up_limits",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-29e57ec69c",
+   "text": "The ATM keeps declining my card. I tried at a couple different ATMs. Can you tell me if there's a problem with my account?",
+   "gold": {
+    "intent": "declined_cash_withdrawal",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-729f291665",
+   "text": "has my top-up has been cancelled",
+   "gold": {
+    "intent": "top_up_reverted",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-f5c2e3c92d",
+   "text": "Why isn't my PIN available yet?",
+   "gold": {
+    "intent": "get_physical_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-a00f2fed17",
+   "text": "Why can't I transfer to a beneficiary?",
+   "gold": {
+    "intent": "beneficiary_not_allowed",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-ba38d6d3db",
+   "text": "Why is your exchange rate for my card payment wrong",
+   "gold": {
+    "intent": "card_payment_wrong_exchange_rate",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-e10c9fd5d7",
+   "text": "Do I have to pay any fees in order to receive money?",
+   "gold": {
+    "intent": "top_up_by_bank_transfer_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-16ebeded66",
+   "text": "Is there a transfer fee?",
+   "gold": {
+    "intent": "transfer_fee_charged",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-fe8a73d2fe",
+   "text": "Do you know what the restriction of the disposable cards are?",
+   "gold": {
+    "intent": "disposable_card_limits",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-7d81d7036f",
+   "text": "Why do I have to verify the top-up that I started?",
+   "gold": {
+    "intent": "verify_top_up",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-5cb3a3cf10",
+   "text": "I like Mastercard better.",
+   "gold": {
+    "intent": "visa_or_mastercard",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-d1821abec5",
+   "text": "How do I track my card?",
+   "gold": {
+    "intent": "card_arrival",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-78fb6b7972",
+   "text": "I would like to add money to my account through my American Express.",
+   "gold": {
+    "intent": "supported_cards_and_currencies",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-e890834dcf",
+   "text": "Can you tell me what the transfer policy is?",
+   "gold": {
+    "intent": "top_up_by_bank_transfer_charge",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-32137f4f48",
+   "text": "How many cards can I have for one account?",
+   "gold": {
+    "intent": "getting_spare_card",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-4c81cf668a",
+   "text": "How do I exchange currency?",
+   "gold": {
+    "intent": "exchange_via_app",
+    "team": "account_fx"
+   }
+  },
+  {
+   "id": "sup-e811d744f5",
+   "text": "Can I use this account to receive my salary?",
+   "gold": {
+    "intent": "receiving_money",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-1169082d08",
+   "text": "I think I lost my card . I dont know how long it has been missing. Can you see if maybe someone else has been using it?",
+   "gold": {
+    "intent": "lost_or_stolen_card",
+    "team": "cards_problems"
+   }
+  },
+  {
+   "id": "sup-b39d4b67ed",
+   "text": "If I need to do a quick transfer from China, how long should I expect the transfer to take?",
+   "gold": {
+    "intent": "transfer_timing",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-aa354d2f62",
+   "text": "what does pending mean?",
+   "gold": {
+    "intent": "pending_card_payment",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-3dafc4bd41",
+   "text": "Why isn't my transfer not going through? I keep getting an error message.",
+   "gold": {
+    "intent": "beneficiary_not_allowed",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-e8ad2efa46",
+   "text": "I bought something overseas and the wrong exchange rate is on my statement.",
+   "gold": {
+    "intent": "card_payment_wrong_exchange_rate",
+    "team": "card_payments"
+   }
+  },
+  {
+   "id": "sup-d85629e279",
+   "text": "What is the limit to a top-up?",
+   "gold": {
+    "intent": "top_up_limits",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-a1ca7b4881",
+   "text": "Which ATMs accept this placard ?",
+   "gold": {
+    "intent": "atm_support",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-f0d2b9b1a0",
+   "text": "How do I locate my card?",
+   "gold": {
+    "intent": "card_arrival",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-2a46386d22",
+   "text": "How many miles away is the ATM?",
+   "gold": {
+    "intent": "atm_support",
+    "team": "cash_atm"
+   }
+  },
+  {
+   "id": "sup-a69cd6e0cc",
+   "text": "How do I top up my account with a cash payment?",
+   "gold": {
+    "intent": "top_up_by_cash_or_cheque",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-b4828b9713",
+   "text": "I submitted a transaction to the incorrect account.",
+   "gold": {
+    "intent": "cancel_transfer",
+    "team": "transfers"
+   }
+  },
+  {
+   "id": "sup-f7db1b0e38",
+   "text": "Can I add to my account balance with a cheque?",
+   "gold": {
+    "intent": "top_up_by_cash_or_cheque",
+    "team": "top_ups"
+   }
+  },
+  {
+   "id": "sup-4810a61838",
+   "text": "I ordered my card 2 weeks ago and it still isn't here? What do I do?",
+   "gold": {
+    "intent": "card_arrival",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-26243f6557",
+   "text": "how do i add money with my apple watch",
+   "gold": {
+    "intent": "apple_pay_or_google_pay",
+    "team": "cards_delivery"
+   }
+  },
+  {
+   "id": "sup-422a257893",
+   "text": "The transactions showing up are strange, I think my card was used without me knowing.",
+   "gold": {
+    "intent": "compromised_card",
+    "team": "cards_problems"
+   }
+  }
+ ],
+ "examples": {
+  "route": [
+   {
+    "text": "I want a virtual card that is disposable",
+    "label": "cards_delivery"
+   },
+   {
+    "text": "How can I make my card show up in the app?",
+    "label": "cards_delivery"
+   },
+   {
+    "text": "Someone has taken my phone from my hotel room!",
+    "label": "cards_problems"
+   },
+   {
+    "text": "I don't have my cell phone with me so I cannot access the system to complete the transaction.",
+    "label": "cards_problems"
+   },
+   {
+    "text": "Why didn;t my payment work",
+    "label": "card_payments"
+   },
+   {
+    "text": "has my card payment been reverted?",
+    "label": "card_payments"
+   },
+   {
+    "text": "Why is the exchange rate different than expected on my transaction?",
+    "label": "cash_atm"
+   },
+   {
+    "text": "I got a strange cash withdrawal in my statement",
+    "label": "cash_atm"
+   },
+   {
+    "text": "Will I be charged a fee for topping up using a European card?",
+    "label": "top_ups"
+   },
+   {
+    "text": "Why isn't my deposit showing up?",
+    "label": "top_ups"
+   },
+   {
+    "text": "Whats the transfer process",
+    "label": "transfers"
+   },
+   {
+    "text": "how long will it take for my transfer to stop pending",
+    "label": "transfers"
+   },
+   {
+    "text": "How can I change my account details?",
+    "label": "account_fx"
+   },
+   {
+    "text": "How do I delete my account? I am dissatisfied with the service.",
+    "label": "account_fx"
+   }
+  ],
+  "intent": [
+   {
+    "text": "how can i track card you sent",
+    "label": "card_arrival"
+   },
+   {
+    "text": "How long does it take for deliver to the US?",
+    "label": "card_delivery_estimate"
+   },
+   {
+    "text": "Will the PIN come separately?",
+    "label": "get_physical_card"
+   },
+   {
+    "text": "I need an actual card that I can hold in my hand, how do I do that?",
+    "label": "order_physical_card"
+   },
+   {
+    "text": "I haven't received my virtual card yet!!",
+    "label": "getting_virtual_card"
+   },
+   {
+    "text": "Please tell me how disposable virtual cards work?",
+    "label": "get_disposable_virtual_card"
+   },
+   {
+    "text": "Is there any way to get another card on the same account?",
+    "label": "getting_spare_card"
+   },
+   {
+    "text": "Can I order a new card to China?",
+    "label": "card_about_to_expire"
+   },
+   {
+    "text": "I am having trouble activating my card.",
+    "label": "activate_my_card"
+   },
+   {
+    "text": "I recently reported my card as missing/lost, and I just found it. Can I still use it?",
+    "label": "card_linking"
+   },
+   {
+    "text": "I hope to get a Visa card",
+    "label": "visa_or_mastercard"
+   },
+   {
+    "text": "how many transactions can go on a disposable card?",
+    "label": "disposable_card_limits"
+   },
+   {
+    "text": "What are the currencies that are accepted to add money?",
+    "label": "supported_cards_and_currencies"
+   },
+   {
+    "text": "Am I able to Top Up with Apply Pay?",
+    "label": "apple_pay_or_google_pay"
+   },
+   {
+    "text": "Why is my physical card not working?",
+    "label": "card_not_working"
+   },
+   {
+    "text": "The virtual card won't work.",
+    "label": "virtual_card_not_working"
+   },
+   {
+    "text": "I have a contactless that's broken.",
+    "label": "contactless_not_working"
+   },
+   {
+    "text": "My card was eaten by the cash machine what do I do?",
+    "label": "card_swallowed"
+   },
+   {
+    "text": "Has there been any activity on my card today?",
+    "label": "lost_or_stolen_card"
+   },
+   {
+    "text": "I noticed my card was used in a small town that I have never been to. Can you stop the card from being used more?",
+    "label": "compromised_card"
+   },
+   {
+    "text": "I put the wrong pin too many times and now it is blocked. Can you help me unblock it?",
+    "label": "pin_blocked"
+   },
+   {
+    "text": "Is it possible for me to change my PIN number?",
+    "label": "change_pin"
+   },
+   {
+    "text": "I don't remember my password",
+    "label": "passcode_forgotten"
+   },
+   {
+    "text": "I left my phone at the hotel I was staying at so I can't use the app!",
+    "label": "lost_or_stolen_phone"
+   },
+   {
+    "text": "Can I use my card anywhere?",
+    "label": "card_acceptance"
+   },
+   {
+    "text": "I used foreign currency to buy something and I think the rate applied is incorrect.",
+    "label": "card_payment_wrong_exchange_rate"
+   },
+   {
+    "text": "Is it normal to get charged extra when i use my card?",
+    "label": "card_payment_fee_charged"
+   },
+   {
+    "text": "There is an odd payment in my statement",
+    "label": "card_payment_not_recognised"
+   },
+   {
+    "text": "I don't understand why my payment was declined. I thought everything was ok.",
+    "label": "declined_card_payment"
+   },
+   {
+    "text": "Why is my card payment pending?",
+    "label": "pending_card_payment"
+   },
+   {
+    "text": "The card payment didn't work",
+    "label": "reverted_card_payment?"
+   },
+   {
+    "text": "Why does my statement show various transaction times?",
+    "label": "transaction_charged_twice"
+   },
+   {
+    "text": "There is an odd 1£ charge that appears as pending on my statement. What's the reason for that? I haven't purchased anything for a pound.",
+    "label": "extra_charge_on_statement"
+   },
+   {
+    "text": "Hello. How do i go about getting a refund of an item i bought ? I want to cancel the payment since i have not received the item yet.",
+    "label": "request_refund"
+   },
+   {
+    "text": "I returned an item but don't see it on my account?",
+    "label": "Refund_not_showing_up"
+   },
+   {
+    "text": "How do I dispute a direct debit transaction?",
+    "label": "direct_debit_payment_not_recognised"
+   },
+   {
+    "text": "My atm withdraw is stillpending",
+    "label": "pending_cash_withdrawal"
+   },
+   {
+    "text": "When I went to withdraw cash today the ATM gave me the wrong amount of cash. The app is showing a larger amount.",
+    "label": "wrong_amount_of_cash_received"
+   },
+   {
+    "text": "atm refused to give me money",
+    "label": "declined_cash_withdrawal"
+   },
+   {
+    "text": "Please help me, its urgent. Someone has withdrawn money from my account as few hours before my wallet has been. Now i want to stop withdrawal of more money.",
+    "label": "cash_withdrawal_not_recognised"
+   },
+   {
+    "text": "what is this extra charge for a withdrawal?",
+    "label": "cash_withdrawal_charge"
+   },
+   {
+    "text": "Rates were applied wrong while using foreign currency at an ATM.",
+    "label": "wrong_exchange_rate_for_cash_withdrawal"
+   },
+   {
+    "text": "Can I use the card at any cash machine?",
+    "label": "atm_support"
+   },
+   {
+    "text": "Is there an auto top up option?",
+    "label": "automatic_top_up"
+   },
+   {
+    "text": "How much would it cost me if I transfer?",
+    "label": "top_up_by_bank_transfer_charge"
+   },
+   {
+    "text": "Can you please sort out your top up? I need this to go through asap because I really need the money. It's already been pending for an hour.",
+    "label": "pending_top_up"
+   },
+   {
+    "text": "Do I have a limit to the number of top-ups per day?",
+    "label": "top_up_limits"
+   },
+   {
+    "text": "It appears my top-ups have been canceled.",
+    "label": "top_up_reverted"
+   },
+   {
+    "text": "Is it simple to transfer money using my credit card?",
+    "label": "topping_up_by_card"
+   },
+   {
+    "text": "Where Is the top up verification code found?",
+    "label": "verify_top_up"
+   },
+   {
+    "text": "I would like to use cash to make a top-up?",
+    "label": "top_up_by_cash_or_cheque"
+   },
+   {
+    "text": "I need to add more funds to my card today because it keeps being declined, and I need to use it immediately. Can you fix this or tell me alternatives?",
+    "label": "top_up_failed"
+   },
+   {
+    "text": "Will you charge me more if I use a European bank card for a top up?",
+    "label": "top_up_by_card_charge"
+   },
+   {
+    "text": "After I deposited my cash, I still don't see it in my account.",
+    "label": "balance_not_updated_after_cheque_or_cash_deposit"
+   },
+   {
+    "text": "I haven't yet received money that I transferred",
+    "label": "balance_not_updated_after_bank_transfer"
+   },
+   {
+    "text": "Please cancel the transfer I just made.  I put in the wrong account number and can't seem to stop it on the app.",
+    "label": "cancel_transfer"
+   },
+   {
+    "text": "The day before yesterday I transferred funds to another account within the country.  The funds have not yet arrived.  I double and triple checked the account number and it was correct.  Why hasn't the transfer been completed yet?",
+    "label": "transfer_not_received_by_recipient"
+   },
+   {
+    "text": "Transfer was declined, could not complete request.",
+    "label": "declined_transfer"
+   },
+   {
+    "text": "What's the time frame on EU transfers? I purchased something a couple of days ago but the seller hasn't received my payment.",
+    "label": "pending_transfer"
+   },
+   {
+    "text": "Can I quickly send a transfer from China?  How long will it take?",
+    "label": "transfer_timing"
+   },
+   {
+    "text": "The transfer to my account was not allowed.",
+    "label": "beneficiary_not_allowed"
+   },
+   {
+    "text": "Why was I charged an extra fee when doing a transfer?",
+    "label": "transfer_fee_charged"
+   },
+   {
+    "text": "My salary comes in GBP can I change my options somewhere?",
+    "label": "receiving_money"
+   },
+   {
+    "text": "Why wouldn't a transfer go through?",
+    "label": "failed_transfer"
+   },
+   {
+    "text": "What currencies can I use to top up my account?",
+    "label": "transfer_into_account"
+   },
+   {
+    "text": "What is the foreign exchange rate you will apply?",
+    "label": "exchange_rate"
+   },
+   {
+    "text": "Is it possible to hold money in different currencies?",
+    "label": "fiat_currency_support"
+   },
+   {
+    "text": "How can I change the currency I'm exchanging from AUD to GBP?",
+    "label": "exchange_via_app"
+   },
+   {
+    "text": "Can you tell me about the exchange fee?",
+    "label": "exchange_charge"
+   },
+   {
+    "text": "Is there an age limit for opening an account?",
+    "label": "age_limit"
+   },
+   {
+    "text": "Can I update my details?",
+    "label": "edit_personal_details"
+   },
+   {
+    "text": "Why do you have the identity check",
+    "label": "why_verify_identity"
+   },
+   {
+    "text": "What proof do you need for my identification?",
+    "label": "unable_to_verify_identity"
+   },
+   {
+    "text": "How do i change my identity?",
+    "label": "verify_my_identity"
+   },
+   {
+    "text": "Where did my money come from?",
+    "label": "verify_source_of_funds"
+   },
+   {
+    "text": "your company is awful, i would like to delete my account please",
+    "label": "terminate_account"
+   },
+   {
+    "text": "I live in the UK. Can I get a card?",
+    "label": "country_support"
+   }
+  ]
+ }
+}
