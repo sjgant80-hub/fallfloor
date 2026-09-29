@@ -2,7 +2,7 @@
 
 **Live page: https://sjgant80-hub.github.io/fallfloor/** — the results, every signed receipt (with a "verify the ledger" button that re-checks them in your browser), the cost comparison with its sources, and a node console to join from your own machine.
 
-**The full enterprise case — local-first vs the corporate model, costed over five years (seats, APIs, hardware, power, people, compliance) and mapped to GDPR, UK GDPR and the EU AI Act: https://sjgant80-hub.github.io/fallfloor-enterprise/** — this repository is the measured evidence it stands on.
+**The full enterprise case — Copilot on every desk against local-first on the laptops already owned, costed over five years (seats, staff time, team, compliance and power, rising with inflation) and mapped to GDPR, UK GDPR and the EU AI Act: https://sjgant80-hub.github.io/fallfloor-enterprise/** — this repository is the measured evidence it stands on.
 
 ## Why local-first
 
