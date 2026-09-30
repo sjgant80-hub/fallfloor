@@ -1,0 +1,15 @@
+{
+ "declared": true,
+ "name": "fallfloor",
+ "system": "A modelled bank's everyday AI work — support triage and reply drafts for agents to approve, inbound spam screening, HR routing — run by open models in the browsers of laptops the company owns, passed peer to peer over WebRTC, every step signed. In production it reads customer tickets and messages; the evidence run used public datasets.",
+ "ai": "generative",
+ "builtBy": "self",
+ "deployment": "local",
+ "personalData": true,
+ "euOutput": true,
+ "interactsWithPublic": false,
+ "generatesContent": true,
+ "significantDecision": false,
+ "annexIII": null,
+ "prohibited": null
+}

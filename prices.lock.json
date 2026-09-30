@@ -1,0 +1,90 @@
+{
+ "registry": "sjgant80-hub/fallstack",
+ "entries": [
+  {
+   "id": "gpt-5-nano",
+   "kind": "api",
+   "provider": "OpenAI",
+   "model": "gpt-5-nano",
+   "inPerM": 0.05,
+   "outPerM": 0.4,
+   "currency": "USD",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "gpt-4o-mini",
+   "kind": "api",
+   "provider": "OpenAI",
+   "model": "gpt-4o-mini",
+   "inPerM": 0.15,
+   "outPerM": 0.6,
+   "currency": "USD",
+   "tier": "standard",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "gpt-5-mini",
+   "kind": "api",
+   "provider": "OpenAI",
+   "model": "gpt-5-mini",
+   "inPerM": 0.25,
+   "outPerM": 2,
+   "currency": "USD",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "gemini-3.1-flash-lite",
+   "kind": "api",
+   "provider": "Google",
+   "model": "Gemini 3.1 Flash-Lite",
+   "inPerM": 0.25,
+   "outPerM": 1.5,
+   "currency": "USD",
+   "source": "https://ai.google.dev/gemini-api/docs/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "claude-haiku-4.5",
+   "kind": "api",
+   "provider": "Anthropic",
+   "model": "Claude Haiku 4.5",
+   "inPerM": 1,
+   "outPerM": 5,
+   "currency": "USD",
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "claude-sonnet-5",
+   "kind": "api",
+   "provider": "Anthropic",
+   "model": "Claude Sonnet 5",
+   "inPerM": 2,
+   "outPerM": 10,
+   "currency": "USD",
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "fx-gbp-usd",
+   "kind": "fx",
+   "gbpPerUsd": 0.75396,
+   "how": "ECB euro reference rates for 2026-09-28: USD 1.1378 and GBP 0.85785 per euro, so GBP per USD = 0.85785 / 1.1378",
+   "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+   "checked": "2026-09-29"
+  },
+  {
+   "id": "ofgem-price-cap-2026-q4",
+   "kind": "energy",
+   "pencePerKwh": 26.32,
+   "period": "1 October to 31 December 2026",
+   "how": "Ofgem energy price cap, GB average electricity unit rate, Direct Debit. The page states there is no VAT on electricity from 1 October 2026 to 31 March 2027.",
+   "source": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges",
+   "checked": "2026-09-29"
+  }
+ ],
+ "pulled": "2026-09-30"
+}

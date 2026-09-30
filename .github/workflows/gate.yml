@@ -31,3 +31,13 @@ jobs:
 
       - name: the committed run re-verifies from its receipts alone
         run: node tools/verify-run.mjs
+
+      - name: the basis — every price traced to fallstack's registry, and this build's own current compliance map
+        run: |
+          mkdir -p /tmp/estate
+          git clone --quiet https://github.com/sjgant80-hub/fallstack /tmp/estate/fallstack
+          git -C /tmp/estate/fallstack checkout --quiet 4eeb828
+          git clone --quiet https://github.com/sjgant80-hub/fall-euaiact /tmp/estate/fall-euaiact
+          git -C /tmp/estate/fall-euaiact checkout --quiet d522314
+          node /tmp/estate/fallstack/tools/price-check.mjs .
+          node /tmp/estate/fall-euaiact/tools/comply-build.mjs . --check

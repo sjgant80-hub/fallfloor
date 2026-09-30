@@ -1,18 +1,111 @@
 {
-  "_rule": "Every figure here is a public list price, a published specification or a measured value, with where it came from and when it was checked. Volumes are the modelled company's assumptions, labelled as such, and the page lets you change them.",
+ "_rule": "Every figure here is a public list price, a published specification or a measured value, with where it came from and when it was checked. Volumes are the modelled company's assumptions, labelled as such, and the page lets you change them.",
+ "checked": "2026-09-29",
+ "prices": [
+  {
+   "id": "gpt-5-nano",
+   "provider": "OpenAI",
+   "model": "gpt-5-nano",
+   "inPerM": 0.05,
+   "outPerM": 0.4,
+   "currency": "USD",
+   "tier": "standard",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29",
+   "registry": "gpt-5-nano"
+  },
+  {
+   "id": "gpt-4o-mini",
+   "provider": "OpenAI",
+   "model": "gpt-4o-mini",
+   "inPerM": 0.15,
+   "outPerM": 0.6,
+   "currency": "USD",
+   "tier": "standard",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29",
+   "registry": "gpt-4o-mini"
+  },
+  {
+   "id": "gpt-5-mini",
+   "provider": "OpenAI",
+   "model": "gpt-5-mini",
+   "inPerM": 0.25,
+   "outPerM": 2,
+   "currency": "USD",
+   "tier": "standard",
+   "source": "https://developers.openai.com/api/docs/pricing",
+   "checked": "2026-09-29",
+   "registry": "gpt-5-mini"
+  },
+  {
+   "id": "gemini-3.1-flash-lite",
+   "provider": "Google",
+   "model": "Gemini 3.1 Flash-Lite",
+   "inPerM": 0.25,
+   "outPerM": 1.5,
+   "currency": "USD",
+   "tier": "paid, standard",
+   "source": "https://ai.google.dev/gemini-api/docs/pricing",
+   "checked": "2026-09-29",
+   "registry": "gemini-3.1-flash-lite"
+  },
+  {
+   "id": "claude-haiku-4.5",
+   "provider": "Anthropic",
+   "model": "Claude Haiku 4.5",
+   "inPerM": 1,
+   "outPerM": 5,
+   "currency": "USD",
+   "tier": "base input / output",
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "checked": "2026-09-29",
+   "registry": "claude-haiku-4.5"
+  },
+  {
+   "id": "claude-sonnet-5",
+   "provider": "Anthropic",
+   "model": "Claude Sonnet 5",
+   "inPerM": 2,
+   "outPerM": 10,
+   "currency": "USD",
+   "tier": "base input / output",
+   "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "checked": "2026-09-29",
+   "registry": "claude-sonnet-5"
+  }
+ ],
+ "tokenizerNote": "Token counts are measured with the local model's own tokenizer (Qwen2.5). Cloud providers count with their own tokenizers; Anthropic's pricing page notes that its newer tokenizer produces approximately 30% more tokens for the same text. The cloud figures are therefore approximate, in either direction.",
+ "fx": {
+  "gbpPerUsd": 0.75396,
+  "how": "ECB euro reference rates for 2026-09-28: USD 1.1378 and GBP 0.85785 per euro, so GBP per USD = 0.85785 / 1.1378",
+  "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
   "checked": "2026-09-29",
-  "prices": [
-    { "id": "gpt-5-nano", "provider": "OpenAI", "model": "gpt-5-nano", "inPerM": 0.05, "outPerM": 0.40, "currency": "USD", "tier": "standard", "source": "https://developers.openai.com/api/docs/pricing", "checked": "2026-09-29" },
-    { "id": "gpt-4o-mini", "provider": "OpenAI", "model": "gpt-4o-mini", "inPerM": 0.15, "outPerM": 0.60, "currency": "USD", "tier": "standard", "source": "https://developers.openai.com/api/docs/pricing", "checked": "2026-09-29" },
-    { "id": "gpt-5-mini", "provider": "OpenAI", "model": "gpt-5-mini", "inPerM": 0.25, "outPerM": 2.00, "currency": "USD", "tier": "standard", "source": "https://developers.openai.com/api/docs/pricing", "checked": "2026-09-29" },
-    { "id": "gemini-3.1-flash-lite", "provider": "Google", "model": "Gemini 3.1 Flash-Lite", "inPerM": 0.25, "outPerM": 1.50, "currency": "USD", "tier": "paid, standard", "source": "https://ai.google.dev/gemini-api/docs/pricing", "checked": "2026-09-29" },
-    { "id": "claude-haiku-4.5", "provider": "Anthropic", "model": "Claude Haiku 4.5", "inPerM": 1.00, "outPerM": 5.00, "currency": "USD", "tier": "base input / output", "source": "https://platform.claude.com/docs/en/about-claude/pricing", "checked": "2026-09-29" },
-    { "id": "claude-sonnet-5", "provider": "Anthropic", "model": "Claude Sonnet 5", "inPerM": 2.00, "outPerM": 10.00, "currency": "USD", "tier": "base input / output", "source": "https://platform.claude.com/docs/en/about-claude/pricing", "checked": "2026-09-29" }
-  ],
-  "tokenizerNote": "Token counts are measured with the local model's own tokenizer (Qwen2.5). Cloud providers count with their own tokenizers; Anthropic's pricing page notes that its newer tokenizer produces approximately 30% more tokens for the same text. The cloud figures are therefore approximate, in either direction.",
-  "fx": { "gbpPerUsd": 0.75396, "how": "ECB euro reference rates for 2026-09-28: USD 1.1378 and GBP 0.85785 per euro, so GBP per USD = 0.85785 / 1.1378", "source": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", "checked": "2026-09-29" },
-  "power": { "wattsLow": 15, "wattsHigh": 55, "chip": "Intel Core i7-1255U (Iris Xe graphics)", "how": "An ESTIMATE, not a meter reading: the chip's published Processor Base Power (15 W) to Maximum Turbo Power (55 W). The whole laptop draws more (screen, memory), and GPU work does not hold turbo continuously.", "source": "https://www.intel.com/content/www/us/en/products/sku/226259/intel-core-i71255u-processor-12m-cache-up-to-4-70-ghz/specifications.html", "checked": "2026-09-29" },
-  "electricity": { "pencePerKwh": 26.32, "period": "1 October to 31 December 2026", "how": "Ofgem energy price cap, GB average electricity unit rate, Direct Debit. The page states there is no VAT on electricity from 1 October 2026 to 31 March 2027.", "source": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges", "checked": "2026-09-29" },
-  "volumes": { "support": 15000, "security": 40000, "hr": 2000, "how": "MODELLED ASSUMPTIONS for a mid-sized digital bank's month — not measured, not a client's figures. Change them on the page." },
-  "hardware": { "how": "The laptops are already owned: no new hardware is bought for this work. Wear and the staff time to set a node up are not costed here." }
+  "registry": "fx-gbp-usd"
+ },
+ "power": {
+  "wattsLow": 15,
+  "wattsHigh": 55,
+  "chip": "Intel Core i7-1255U (Iris Xe graphics)",
+  "how": "An ESTIMATE, not a meter reading: the chip's published Processor Base Power (15 W) to Maximum Turbo Power (55 W). The whole laptop draws more (screen, memory), and GPU work does not hold turbo continuously.",
+  "source": "https://www.intel.com/content/www/us/en/products/sku/226259/intel-core-i71255u-processor-12m-cache-up-to-4-70-ghz/specifications.html",
+  "checked": "2026-09-29"
+ },
+ "electricity": {
+  "pencePerKwh": 26.32,
+  "period": "1 October to 31 December 2026",
+  "how": "Ofgem energy price cap, GB average electricity unit rate, Direct Debit. The page states there is no VAT on electricity from 1 October 2026 to 31 March 2027.",
+  "source": "https://www.ofgem.gov.uk/your-energy-supply/your-energy-bill/energy-price-cap-unit-rates-and-standing-charges",
+  "checked": "2026-09-29",
+  "registry": "ofgem-price-cap-2026-q4"
+ },
+ "volumes": {
+  "support": 15000,
+  "security": 40000,
+  "hr": 2000,
+  "how": "MODELLED ASSUMPTIONS for a mid-sized digital bank's month — not measured, not a client's figures. Change them on the page."
+ },
+ "hardware": {
+  "how": "The laptops are already owned: no new hardware is bought for this work. Wear and the staff time to set a node up are not costed here."
+ }
 }
