@@ -1,0 +1,29 @@
+{
+  "kind": "kard.v1",
+  "name": "fallfloor",
+  "title": "fallfloor",
+  "retires": "a company-wide AI subscription",
+  "category": "AI you own",
+  "license": "MIT",
+  "live": "https://sjgant80-hub.github.io/fallfloor/",
+  "repo": "https://github.com/sjgant80-hub/fallfloor",
+  "studs": {
+    "brain": {
+      "how": "inline",
+      "version": "3.1.0"
+    },
+    "mesh": {
+      "device": true,
+      "peer": true
+    },
+    "memory": {
+      "indexeddb": true,
+      "localstorage": true
+    },
+    "proof": {
+      "workflows": 2,
+      "tests": 1
+    }
+  },
+  "fits": true
+}
